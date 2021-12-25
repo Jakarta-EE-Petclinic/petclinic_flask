@@ -1,0 +1,51 @@
+@startuml
+left to right direction
+
+
+package flask_petclinic.domain_modell {
+
+    entity Owner {
+	    id: Integer
+	    first_name: String
+	    last_name: String
+	    address: String
+	    city: String
+	    telephone: String
+	}
+
+	entity Pet {
+	    id: Integer
+	    name: String
+	    birthdate: Date
+	}
+
+	entity PetType {
+	    id: Integer
+	    name: String
+	}
+
+	entity Visit {
+	    id: Integer
+	    date: Date
+	    information: String
+	}
+
+	entity Vet {
+	    id: Integer
+	    first_name: String
+	    last_name: String
+	}
+
+	entity Specialty {
+	    id: Integer
+	    name: String
+	}
+
+	Owner "1" --> "*"  Pet: pets
+	Pet "*" --> "1" PetType
+	Pet "1" --> "*" Visit
+	Vet "*" --> "*" Specialty
+	Visit "*" --> "*" Vet
+}
+
+@enduml
