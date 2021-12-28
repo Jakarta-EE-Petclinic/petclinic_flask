@@ -9,8 +9,8 @@ from flask_bs4 import Bootstrap
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-from project.app_bootstrap import config
-from project.app_bootstrap import pytestconfig
+from project.config import config
+from project.config import pytestconfig
 
 # from flask_caching import Cache
 
@@ -186,10 +186,10 @@ class Covid19Application:
         return self.__init_celery()
 
     def __print_config(self):
-        self.app.logger.debug("-------------------------------------------------------")
+        self.app.logger.debug("------------------------------------------------------")
         for key in self.app.config.keys():
             self.app.logger.debug(" " + str(key) + " " + str(self.app.config[key]))
-        self.app.logger.debug("-------------------------------------------------------")
+        self.app.logger.debug("------------------------------------------------------")
 
 
 covid19_application = Covid19Application()
