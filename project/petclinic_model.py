@@ -1,4 +1,4 @@
-from project.config.database import db
+from project.config.database import db, items_per_page
 from sqlalchemy import Sequence
 
 
@@ -200,7 +200,7 @@ class Vet(db.Model):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
 
-@classmethod
+    @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()
         db.session.commit()
