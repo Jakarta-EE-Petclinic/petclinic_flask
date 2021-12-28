@@ -1,4 +1,4 @@
-from project.config.database import db, items_per_page
+from project.config.database import db, items_per_page, app, celery
 from sqlalchemy import Sequence
 
 
@@ -96,6 +96,7 @@ class Pet(db.Model):
     @classmethod
     def find_by_id(cls, other_id):
         return cls.__query_all().filter(cls.id == other_id).one_or_none()
+
 
 class PetType(db.Model):
     __tablename__ = "pettype"
