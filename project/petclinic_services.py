@@ -3,25 +3,67 @@ from project.petclinic_model import db, items_per_page, app, celery
 
 
 class OwnerService:
-    pass
+    def __init__(self, database):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" OwnerService [init]")
+        app.logger.debug("-----------------------------------------------------------")
+        self.__database = database
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info("  OwnerService [done]")
+        app.logger.debug("-----------------------------------------------------------")
 
 
 class PetService:
-    pass
+    def __init__(self, database):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" PetService [init]")
+        app.logger.debug("-----------------------------------------------------------")
+        self.__database = database
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" PetService [done]")
+        app.logger.debug("-----------------------------------------------------------")
 
 
 class PetTypeService:
-    pass
+    def __init__(self, database):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" PetTypeService [init]")
+        app.logger.debug("-----------------------------------------------------------")
+        self.__database = database
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" PetTypeService [done]")
+        app.logger.debug("-----------------------------------------------------------")
 
 
 class VisitService:
-    pass
+    def __init__(self, database):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" VisitService [init]")
+        app.logger.debug("-----------------------------------------------------------")
+        self.__database = database
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" VisitService [done]")
+        app.logger.debug("-----------------------------------------------------------")
 
 
 class VetService:
-    pass
+    def __init__(self, database):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" VetService [init]")
+        app.logger.debug("-----------------------------------------------------------")
+        self.__database = database
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" VetService [done]")
+        app.logger.debug("-----------------------------------------------------------")
 
 
 class SpecialtyService:
-    pass
+    def __init__(self, database):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" SpecialtyService [init]")
+        app.logger.debug("-----------------------------------------------------------")
+        self.__database = database
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" SpecialtyService [done]")
+        app.logger.debug("-----------------------------------------------------------")
 
