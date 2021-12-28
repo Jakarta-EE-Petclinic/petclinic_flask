@@ -1,7 +1,7 @@
 """
-flask_covid19
+flask_petclinic
 -------------
-Various utility functions and custom data types for SQLAlchemy.
+Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al
 """
 import logging
 import os
@@ -214,10 +214,9 @@ def get_python_requirements_from_txt():
 
 setup(
     name="flask_covid19",
-    description="Covid19 Data Aggregation "
-    + "- also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
+    description="Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.",
     version="0.0.78",
-    url="https://github.com/thomaswoehlke/covid19python.git",
+    url="https://github.com/thomaswoehlke/flask_petclinic.git",
     author="Thomas Woehlke",
     author_email="thomas.woehlke@gmail.com",
     license="GNU General Public License v3 (GPLv3)",
