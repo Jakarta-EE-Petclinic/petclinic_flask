@@ -9,9 +9,14 @@ PIP := pip
 NPM := npm
 GIT := git
 MAKE := make
+PIP_REQUIREMENTS_DIR := requirements
+PIP_REQUIREMENTS_IN_DIR := requirements/in
+PIP_REQUIREMENTS_WINDOWS_DIR := requirements/windows
+PIP_REQUIREMENTS_LINUX_DIR := requirements/inux
 
 DB_DIR := db
 DOCS_DIR := docs
+
 DATA_DIR := data
 PIP_REQUIREMENTS_IN_DIR := requirements/in
 PIP_REQUIREMENTS_WINDOWS_DIR := requirements/windows
