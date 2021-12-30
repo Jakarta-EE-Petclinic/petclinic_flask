@@ -70,7 +70,7 @@ class AppUserUrls:
         if current_user.is_authenticated:
             return redirect(url_for("usr.profile"))
         form = LoginForm()
-        return flask.render_template("usr/login.html", form=form, page_info=page_info)
+        return flask.render_template("../templates/usr/login.html", form=form, page_info=page_info)
 
     @staticmethod
     @blueprint_app_user.route("/login", methods=["POST"])
@@ -86,14 +86,14 @@ class AppUserUrls:
                 return redirect(url_for("usr.login"))
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for("usr.profile"))
-        return flask.render_template("usr/login.html", form=form, page_info=page_info)
+        return flask.render_template("../templates/usr/login.html", form=form, page_info=page_info)
 
     @staticmethod
     @blueprint_app_user.route("/profile")
     @login_required
     def profile():
         page_info = WebPageContent("USR", "profile")
-        return flask.render_template("usr/profile.html", page_info=page_info)
+        return flask.render_template("../templates/usr/profile.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_user.route("/logout")
@@ -128,14 +128,14 @@ class AppUserUrls:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "usr/user_info.html", page_data=page_data, page_info=page_info
+            "../templates/usr/user_info.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod
     @blueprint_app_user.route("/tasks")
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
-        return render_template("usr/user_tasks.html", page_info=page_info)
+        return render_template("../templates/usr/user_tasks.html", page_info=page_info)
 
 
 app_user_urls = AppUserUrls()
