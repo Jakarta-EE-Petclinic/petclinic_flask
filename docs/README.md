@@ -88,7 +88,7 @@ and in another termninal:
 
 * [fixing-conflicting-dependencies](https://pip.pypa.io/en/latest/user_guide/#fixing-conflicting-dependencies)
 
-## UML Blueprints
+## UML
 
 ### all
 
