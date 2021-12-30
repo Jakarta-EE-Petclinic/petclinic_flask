@@ -19,6 +19,14 @@ blueprint_app_user = Blueprint(
     "usr", __name__, template_folder="templates", url_prefix="/app/usr"
 )
 
+blueprint_application = Blueprint(
+    "app_web", __name__, template_folder="templates", url_prefix="/"
+)
+
+app.register_blueprint(blueprint_application, url_prefix="/")
+app.register_blueprint(blueprint_app_user, url_prefix="/app/usr")
+
+
 class BlueprintApplicationUrls:
     def __init__(self):
         app.logger.debug("-----------------------------------------------------------")
@@ -29,7 +37,10 @@ class BlueprintApplicationUrls:
     @app.route("/home")
     def url_home():
         page_info = WebPageContent("Home", "Covid19 Data")
-        return render_template("../templates/app_application/page_home.html", page_info=page_info)
+        return render_template(
+            "app_application/page_home.html",
+            page_info=page_info
+        )
 
     @staticmethod
     @app.route("/")
@@ -40,16 +51,13 @@ class BlueprintApplicationUrls:
     @app.route("/admin")
     def url_admin_index():
         page_info = WebPageContent("Admin", "Covid19 Admin")
-        return render_template("../templates/app_application/index.html", page_info=page_info)
+        return render_template(
+            "app_application/index.html",
+            page_info=page_info
+        )
 
 
 blueprint_application_urls = BlueprintApplicationUrls()
-
-
-
-blueprint_app_user = Blueprint(
-    "usr", __name__, template_folder="templates", url_prefix="/app/usr"
-)
 
 
 # ------------------------------------------------------------------------------------
@@ -70,7 +78,11 @@ class AppUserUrls:
         if current_user.is_authenticated:
             return redirect(url_for("usr.profile"))
         form = LoginForm()
-        return flask.render_template("../templates/usr/login.html", form=form, page_info=page_info)
+        return flask.render_template(
+            "usr/login.html",
+            form=form,
+            page_info=page_info
+        )
 
     @staticmethod
     @blueprint_app_user.route("/login", methods=["POST"])
@@ -86,14 +98,14 @@ class AppUserUrls:
                 return redirect(url_for("usr.login"))
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for("usr.profile"))
-        return flask.render_template("../templates/usr/login.html", form=form, page_info=page_info)
+        return flask.render_template("usr/login.html", form=form, page_info=page_info)
 
     @staticmethod
     @blueprint_app_user.route("/profile")
     @login_required
     def profile():
         page_info = WebPageContent("USR", "profile")
-        return flask.render_template("../templates/usr/profile.html", page_info=page_info)
+        return flask.render_template("usr/profile.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_user.route("/logout")
@@ -128,15 +140,16 @@ class AppUserUrls:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "../templates/usr/user_info.html", page_data=page_data, page_info=page_info
+            "/usr/user_info.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod
     @blueprint_app_user.route("/tasks")
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
-        return render_template("../templates/usr/user_tasks.html", page_info=page_info)
+        return render_template("usr/user_tasks.html", page_info=page_info)
 
 
 app_user_urls = AppUserUrls()
+
 
