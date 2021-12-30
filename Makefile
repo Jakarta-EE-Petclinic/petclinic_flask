@@ -342,15 +342,6 @@ test:
 	@echo "making test DONE"
 	@echo "------------------"
 
-download:
-	@echo "------------------"
-	@echo "download"
-	@echo "------------------"
-	$(MAKE) -w -C $(DATA_DIR) download
-	@echo "------------------"
-	@echo "download DONE"
-	@echo "------------------"
-
 # -------------------------------------------------------------------------------------
 #
 #   frontend

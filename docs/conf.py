@@ -19,13 +19,13 @@ from pallets_sphinx_themes import ProjectLink
 
 # -- Project information -----------------------------------------------------
 
-project = "flask_covid19"
+project = "flask_petclinic"
 copyright = "2021, Thomas Woehlke"
 author = "Thomas Woehlke"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.78"
-version = "0.0.78"
+release = "0.0.1"
+version = "0.0.1"
 
 # -- General configuration ---------------------------------------------------
 
