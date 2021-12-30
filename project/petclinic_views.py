@@ -56,6 +56,60 @@ class BlueprintApplicationUrls:
             page_info=page_info
         )
 
+    @staticmethod
+    @app.route("/owner")
+    def url_owner_index():
+        page_info = WebPageContent("owner", "index")
+        return render_template(
+            "owner/index.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/pet")
+    def url_pet_index():
+        page_info = WebPageContent("pet", "index")
+        return render_template(
+            "pet/index.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/pettype")
+    def url_pettype_index():
+        page_info = WebPageContent("pettype", "index")
+        return render_template(
+            "pettype/index.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/visit")
+    def url_visit_index():
+        page_info = WebPageContent("visit", "index")
+        return render_template(
+            "visit/index.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/vet")
+    def url_vet_index():
+        page_info = WebPageContent("vet", "index")
+        return render_template(
+            "vet/index.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/specialty")
+    def url_specialty_index():
+        page_info = WebPageContent("specialty", "index")
+        return render_template(
+            "specialty/index.html",
+            page_info=page_info
+        )
+
 
 blueprint_application_urls = BlueprintApplicationUrls()
 
@@ -140,7 +194,7 @@ class AppUserUrls:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "/usr/user_info.html", page_data=page_data, page_info=page_info
+            "usr/user_info.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod

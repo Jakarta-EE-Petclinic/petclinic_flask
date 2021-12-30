@@ -154,7 +154,6 @@ class Visit(db.Model):
     datum = db.Column(db.Date, nullable=False)
     information = db.Column(db.String(1024), nullable=False)
 
-
     @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()
