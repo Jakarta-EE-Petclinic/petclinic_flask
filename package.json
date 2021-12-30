@@ -1,5 +1,5 @@
 {
-    "name": "flask-covid19-static",
+    "name": "flask-petclinic-static",
     "version": "0.0.1",
     "description": "Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.",
     "main": "/static/index.js",
