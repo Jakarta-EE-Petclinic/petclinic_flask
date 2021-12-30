@@ -1,13 +1,13 @@
-# flask_covid19
+# flask_petclinic
 
-* Version 0.0.78
+* Version 0.0.1
 
 ## git
 
-* [https://github.com/thomaswoehlke/flask_covid19.git](https://github.com/thomaswoehlke/flask_covid19.git)
+* [https://github.com/thomaswoehlke/flask_petclinic.git](https://github.com/thomaswoehlke/flask_petclinic.git)
 
 ````bash
-    git clone git@github.com:thomaswoehlke/flask_covid19.git
+    git clone git@github.com:thomaswoehlke/flask_petclinic.git
 ````
 
 ## setup and run
@@ -16,15 +16,13 @@
     make venv
     . ./venv/bin/activate
     make start
-    cd flask_covid
-    ./mq.sh
+    ./run.sh
 ````
 
 and in another termninal:
 
 ````bash
     . ./venv/bin/activate
-    cd flask_covid
     python app.py
 ````
 
@@ -38,23 +36,23 @@ and in another termninal:
 ## change configuration
 
 ````bash
-    vim flask_covid19/app_config/config.py
-    vim flask_covid19/app_config/database.py
-    vim flask_covid19/app_build/requirements/build.in
+    vim project/config/config.py
+    vim project/config/database.py
+    vim requirements/in/build.in
+    make start
 ````
 
 ## change dependencies
 
 ````bash
     . ./venv/bin/activate
-    make update
-    vim flask_covid19/app_build/requirements/build.in
-    vim flask_covid19/app_build/requirements/docs.in
-    vim flask_covid19/app_build/requirements/tests.in
-    vim flask_covid19/app_build/requirements/typing.in
-    vim flask_covid19/app_build/requirements/dev.in
-    vim flask_covid19/app_build/requirements/linux.in
-    vim flask_covid19/app_build/requirements/windows.in
+    vim requirements/in/build.in
+    vim requirements/in/docs.in
+    vim requirements/in/tests.in
+    vim requirements/in/typing.in
+    vim requirements/in/dev.in
+    vim requirements/in/linux.in
+    vim requirements/in/windows.in
     make update
 ````
 

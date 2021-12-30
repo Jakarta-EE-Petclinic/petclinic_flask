@@ -13,6 +13,7 @@ Welcome to flask_covid19's documentation!
    README.md
    BACKLOG.md
    db/MariadDB.md
+   db/PostgresSQL.md
    TODO.md
 
 Indices and tables
