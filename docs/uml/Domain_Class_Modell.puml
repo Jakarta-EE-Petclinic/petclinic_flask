@@ -42,10 +42,10 @@ package flask_petclinic.domain_modell {
 	}
 
 	Owner "1" --> "*"  Pet: pets
-	Pet "*" --> "1" PetType
-	Pet "1" --> "*" Visit
-	Vet "*" --> "*" Specialty
-	Visit "*" --> "*" Vet
+	Pet "*" --> "1" PetType: petType
+	Pet "1" --> "*" Visit: visits
+	Visit "*" --> "1" Vet: vet
+	Vet "*" --> "*" Specialty: specialties
 }
 
 @enduml
