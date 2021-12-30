@@ -128,7 +128,7 @@ class Covid19Application:
         return None
 
     def get_db(self):
-        self.__init_db()
+        self.__init_db
         return self.db
 
     def create_db(self):
@@ -200,3 +200,6 @@ root_dir = covid19_application.root_dir
 login_manager = covid19_application.login_manager
 items_per_page = covid19_application.items_per_page
 celery = covid19_application.create_celery()
+
+with app.app_context():
+    db.create_all()

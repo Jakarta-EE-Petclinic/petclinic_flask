@@ -1,13 +1,16 @@
+
 import click
+
 from project.petclinic_views import Owner, Pet, PetType, Visit, Vet, Specialty
 from project.petclinic_views import db, items_per_page, app, celery
 from project.petclinic_views import OwnerService, PetService, PetTypeService
 from project.petclinic_views import VisitService, VetService, SpecialtyService
 
 
-
 def create_app():
     # run_web()
+    with app.app_context():
+        db.create_all()
     return app
 
 
@@ -283,4 +286,5 @@ def admin_database_table_row_count():
 # ---------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    run_web()
+    db.create_all()
+    # run_web()
