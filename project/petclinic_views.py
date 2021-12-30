@@ -36,7 +36,7 @@ class BlueprintApplicationUrls:
     @staticmethod
     @app.route("/home")
     def url_home():
-        page_info = WebPageContent("Home", "Covid19 Data")
+        page_info = WebPageContent("Home", "Petclinic")
         return render_template(
             "app_application/page_home.html",
             page_info=page_info
@@ -50,7 +50,7 @@ class BlueprintApplicationUrls:
     @staticmethod
     @app.route("/admin")
     def url_admin_index():
-        page_info = WebPageContent("Admin", "Covid19 Admin")
+        page_info = WebPageContent("Admin", "Petclinic")
         return render_template(
             "app_application/index.html",
             page_info=page_info
