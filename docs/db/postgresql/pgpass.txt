@@ -1,0 +1,10 @@
+# hostname:port:database:username:password
+
+localhost:5432:flask_petclinic:flask_petclinic:flask_petclinicpwd
+localhost:5432:flask_petclinic_testing:flask_petclinic:flask_petclinicpwd
+
+tw-thinkpad:5432:flask_petclinic:flask_petclinic:flask_petclinicpwd
+tw-thinkpad:5432:flask_petclinic_testing:flask_petclinic:flask_petclinicpwd
+
+tw-asus7:5432:flask_petclinic:flask_petclinic:flask_petclinicpwd
+tw-asus7:5432:flask_petclinic_testing:flask_petclinic:flask_petclinicpwd
