@@ -8,6 +8,7 @@ from sqlalchemy.exc import OperationalError
 
 from project.config.database import db, items_per_page, login_manager
 from project.user.user_model import LoginForm, User
+from project.user.user_service import UserService
 from project.web.web_model_transient import WebPageContent
 from project.petclinic_services import Owner, Pet, PetType, Visit, Vet, Specialty
 from project.petclinic_services import db, items_per_page, app
@@ -25,6 +26,7 @@ visit_service = VisitService(db)
 vet_service = VetService(db)
 specialty_service = SpecialtyService(db)
 sys_admin_service = SysAdminService(db)
+user_service = UserService(db)
 
 app_user = Blueprint(
     "usr", __name__, template_folder="templates", url_prefix="/usr"

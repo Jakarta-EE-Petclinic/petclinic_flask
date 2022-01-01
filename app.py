@@ -5,13 +5,14 @@ from project.petclinic_views import Owner, Pet, PetType, Visit, Vet, Specialty
 from project.petclinic_views import items_per_page, db, app
 from project.petclinic_views import owner_service, pet_service, pet_type_service
 from project.petclinic_views import visit_service, vet_service, specialty_service
-from project.petclinic_views import sys_admin_service, app_web
+from project.petclinic_views import sys_admin_service, app_web, user_service
 
 
 def create_app():
     # run_web()
     with app.app_context():
         db.create_all()
+    user_service.prepare_default_user_login()
     return app
 
 
@@ -20,6 +21,7 @@ def admin_database_dump():
     """[Admin] database create"""
     with app.app_context():
         db.create_all()
+        user_service.prepare_default_user_login()
 
 
 @app.cli.command("db-dump")

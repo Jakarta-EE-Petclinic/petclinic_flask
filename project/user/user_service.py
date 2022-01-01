@@ -22,9 +22,8 @@ class UserService:
         user.password = form.password
         return user
 
-    def prepare_default_user_login(self, database):
+    def prepare_default_user_login(self):
         app.logger.info(" UserService.prepare_default_user_login()")
-        self.__database = database
         if User.count() == 0:
             app.logger.debug("-------------------------------------------------------")
             app.logger.info(" User.count() == 0")
