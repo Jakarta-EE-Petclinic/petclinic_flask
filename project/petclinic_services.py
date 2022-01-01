@@ -1,5 +1,5 @@
 from project.petclinic_model import Owner, Pet, PetType, Visit, Vet, Specialty
-from project.petclinic_model import db, items_per_page, app, celery
+from project.petclinic_model import db, items_per_page, app
 
 
 class OwnerService:
@@ -67,3 +67,13 @@ class SpecialtyService:
         app.logger.info(" SpecialtyService [done]")
         app.logger.debug("-----------------------------------------------------------")
 
+
+class SysAdminService:
+    def __init__(self, database):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" SysAdminService [init]")
+        app.logger.debug("-----------------------------------------------------------")
+        self.__database = database
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" SysAdminService [done]")
+        app.logger.debug("-----------------------------------------------------------")

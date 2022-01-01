@@ -6,10 +6,22 @@ from flask import url_for
 from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
 
-from project.config.database import login_manager
+from project.config.database import db, items_per_page, login_manager
 from project.user.user_model import LoginForm, User
 from project.web.web_model_transient import WebPageContent
-from project.petclinic_services import app
+from project.petclinic_services import Owner, Pet, PetType, Visit, Vet, Specialty
+from project.petclinic_services import db, items_per_page, app
+from project.petclinic_services import SysAdminService
+from project.petclinic_services import OwnerService, PetService, PetTypeService
+from project.petclinic_services import VisitService, VetService, SpecialtyService
+
+owner_service = OwnerService()
+pet_service = PetService()
+pet_type_service = PetTypeService()
+visit_service = VisitService()
+vet_service = VetService()
+specialty_service = SpecialtyService()
+sys_admin_service = SysAdminService()
 
 blueprint_app_user = Blueprint(
     "usr", __name__, template_folder="templates", url_prefix="/app/usr"
