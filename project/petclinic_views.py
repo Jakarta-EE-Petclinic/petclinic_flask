@@ -7,6 +7,7 @@ from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
 
 from project.config.database import db, items_per_page, login_manager
+from project.task.all_task_model import Task
 from project.user.user_model import LoginForm, User
 from project.web.web_model_transient import WebPageContent
 from project.petclinic_services import Owner, Pet, PetType, Visit, Vet, Specialty
@@ -15,13 +16,13 @@ from project.petclinic_services import SysAdminService
 from project.petclinic_services import OwnerService, PetService, PetTypeService
 from project.petclinic_services import VisitService, VetService, SpecialtyService
 
-owner_service = OwnerService()
-pet_service = PetService()
-pet_type_service = PetTypeService()
-visit_service = VisitService()
-vet_service = VetService()
-specialty_service = SpecialtyService()
-sys_admin_service = SysAdminService()
+owner_service = OwnerService(db)
+pet_service = PetService(db)
+pet_type_service = PetTypeService(db)
+visit_service = VisitService(db)
+vet_service = VetService(db)
+specialty_service = SpecialtyService(db)
+sys_admin_service = SysAdminService(db)
 
 blueprint_app_user = Blueprint(
     "usr", __name__, template_folder="templates", url_prefix="/app/usr"
@@ -35,7 +36,7 @@ app.register_blueprint(blueprint_application, url_prefix="/")
 app.register_blueprint(blueprint_app_user, url_prefix="/app/usr")
 
 
-class BlueprintApplicationUrls:
+class ApplicationUrls:
     def __init__(self):
         app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] ApplicationUrls ")
@@ -118,9 +119,30 @@ class BlueprintApplicationUrls:
             page_info=page_info
         )
 
+    @staticmethod
+    @app.route("/notification/page/<int:page>")
+    @app.route("/notification")
+    @login_required
+    def url_all_notification(page=1):
+        page_info = WebPageContent("All", "Notifications")
+        page_data = Task.notifications_get(page)
+        return render_template("app_all/notification/app_all_notification.html",
+                               page_data=page_data,
+                               page_info=page_info)
 
-blueprint_application_urls = BlueprintApplicationUrls()
+    @staticmethod
+    @app.route("/notification/read/page/<int:page>")
+    @app.route("/notification/read")
+    @login_required
+    def url_all_notification_mark_read(page=1):
+        page_data = Task.notifications_get(page)
+        for o in page_data.items:
+            o.read()
+            db.session.add(o)
+        db.session.commit()
+        return redirect(url_for("app_all.url_all_notification"))
 
+application_urls = ApplicationUrls()
 
 # ------------------------------------------------------------------------------------
 # URLs Login and Logout
