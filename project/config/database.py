@@ -41,9 +41,7 @@ class PetclinicApplication:
         self.database_type = self.app.config["SQLALCHEMY_DATABASE_TYPE"]
         self.db_uri = self.__create_db_uri(self.database_type)
         self.app.config["SQLALCHEMY_DATABASE_URI"] = self.db_uri
-        self.app.config[
-            "SQLALCHEMY_TRACK_MODIFICATIONS"
-        ] = False  # silence the deprecation warning
+        self.app.config[ "SQLALCHEMY_TRACK_MODIFICATIONS"] = False
         self.items_per_page = self.app.config["SQLALCHEMY_ITEMS_PER_PAGE"]
         return self
 
@@ -56,7 +54,7 @@ class PetclinicApplication:
 
     def __init_login(self):
         self.login_manager = LoginManager()
-        self.login_manager.login_view = "usr.login"
+        self.login_manager.login_view = "login"
         return self
 
     def __init_admin(self):
@@ -114,10 +112,13 @@ class PetclinicApplication:
 
     def get_db(self):
         self.__init_db()
+        with app.app_context():
+            db.create_all()
         return self.db
 
     def create_db(self):
-        self.db.create_all()
+        with app.app_context():
+            db.create_all()
         return self
 
     def __print_config(self):
@@ -135,5 +136,4 @@ root_dir = petclinic_application.root_dir
 login_manager = petclinic_application.login_manager
 items_per_page = petclinic_application.items_per_page
 
-with app.app_context():
-    db.create_all()
+petclinic_application.create_db()

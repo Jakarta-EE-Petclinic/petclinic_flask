@@ -15,28 +15,35 @@ def create_app():
     return app
 
 
-@app.cli.command("admin-database-dump")
+@app.cli.command("db-create")
+def admin_database_dump():
+    """[Admin] database create"""
+    with app.app_context():
+        db.create_all()
+
+
+@app.cli.command("db-dump")
 def admin_database_dump():
     """[Admin] database dump"""
     with app.app_context():
         sys_admin_service.database_dump()
 
 
-@app.cli.command("admin-database-dump-reimport")
+@app.cli.command("db-dump-reimport")
 def admin_database_dump_reimport():
     """[Admin] database dump reimport"""
     with app.app_context():
         sys_admin_service.database_dump_reimport()
 
 
-@app.cli.command("admin-database-drop-and-create")
+@app.cli.command("db-drop-and-create")
 def admin_database_drop_and_create():
     """[Admin] database drop and create"""
     with app.app_context():
         sys_admin_service.database_drop_and_create()
 
 
-@app.cli.command("admin-database-table-row-count")
+@app.cli.command("db-table-count")
 def admin_database_table_row_count():
     """[Admin] database table row count"""
     with app.app_context():
@@ -48,5 +55,10 @@ def admin_database_table_row_count():
 # ---------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    db.create_all()
+    app.logger.info("----------------------------------------------------")
+    app.logger.info("                     MAIN                           ")
+    create_app()
+    with app.app_context():
+        db.create_all()
+    app.logger.info("----------------------------------------------------")
     # run_web()
