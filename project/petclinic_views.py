@@ -26,16 +26,16 @@ vet_service = VetService(db)
 specialty_service = SpecialtyService(db)
 sys_admin_service = SysAdminService(db)
 
-blueprint_app_user = Blueprint(
-    "usr", __name__, template_folder="templates", url_prefix="/app/usr"
+app_user = Blueprint(
+    "app_usr", __name__, template_folder="templates", url_prefix="/usr"
 )
 
-blueprint_application = Blueprint(
+app_web = Blueprint(
     "app_web", __name__, template_folder="templates", url_prefix="/"
 )
 
-app.register_blueprint(blueprint_application, url_prefix="/")
-app.register_blueprint(blueprint_app_user, url_prefix="/app/usr")
+app.register_blueprint(app_web, url_prefix="/")
+app.register_blueprint(app_user, url_prefix="/usr")
 
 
 class ApplicationUrls:
@@ -158,7 +158,7 @@ class AppUserUrls:
         app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
-    @blueprint_app_user.route("/login", methods=["GET"])
+    @app_user.route("/login", methods=["GET"])
     def login_form():
         page_info = WebPageContent("usr", "Login")
         if current_user.is_authenticated:
@@ -171,7 +171,7 @@ class AppUserUrls:
         )
 
     @staticmethod
-    @blueprint_app_user.route("/login", methods=["POST"])
+    @app_user.route("/login", methods=["POST"])
     def login():
         page_info = WebPageContent("USR", "Login")
         if current_user.is_authenticated:
@@ -187,14 +187,14 @@ class AppUserUrls:
         return flask.render_template("usr/login.html", form=form, page_info=page_info)
 
     @staticmethod
-    @blueprint_app_user.route("/profile")
+    @app_user.route("/profile")
     @login_required
     def profile():
         page_info = WebPageContent("USR", "profile")
         return flask.render_template("usr/profile.html", page_info=page_info)
 
     @staticmethod
-    @blueprint_app_user.route("/logout")
+    @app_user.route("/logout")
     @login_required
     def logout():
         logout_user()
@@ -216,8 +216,8 @@ class AppUserUrls:
     # ---------------------------------------------------------------------------------
 
     @staticmethod
-    @blueprint_app_user.route("/info/page/<int:page>")
-    @blueprint_app_user.route("/info")
+    @app_user.route("/info/page/<int:page>")
+    @app_user.route("/info")
     def url_user_info(page=1):
         page_info = WebPageContent("USR", "Info")
         try:
@@ -230,7 +230,7 @@ class AppUserUrls:
         )
 
     @staticmethod
-    @blueprint_app_user.route("/tasks")
+    @app_user.route("/tasks")
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
         return render_template("usr/user_tasks.html", page_info=page_info)
