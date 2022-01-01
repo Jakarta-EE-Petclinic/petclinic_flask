@@ -18,7 +18,6 @@ mysqldb-wrapper
 mariadb
 wget
 email_validator
-celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.1
 dataframetodb
 pangres
 scipy
