@@ -77,3 +77,39 @@ class SysAdminService:
         app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" SysAdminService [done]")
         app.logger.debug("-----------------------------------------------------------")
+
+    def database_dump(self):
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_dump [init]")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" ")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_dump [done]")
+        app.logger.info("-----------------------------------------------------------")
+
+    def database_dump_reimport(self):
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_dump_reimport [init]")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" ")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_dump_reimport [done]")
+        app.logger.info("-----------------------------------------------------------")
+
+    def database_drop_and_create(self):
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_drop_and_create [init]")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" ")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_drop_and_create [done]")
+        app.logger.info("-----------------------------------------------------------")
+
+    def database_table_row_count(self):
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_table_row_count [init]")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" ")
+        app.logger.info("-----------------------------------------------------------")
+        app.logger.info(" database_table_row_count [done]")
+        app.logger.info("-----------------------------------------------------------")
