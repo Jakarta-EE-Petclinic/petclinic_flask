@@ -1,114 +1,130 @@
 @startuml
 left to right direction
 
-package flask_petclinic.user {
-	actor AnonymousVisitor as av
-	actor AuthentifiedVisitor as au
-	actor SysAdmin as sa
+actor AnonymousVisitor as av
+actor AuthentifiedVisitor as au
+actor SysAdmin as sa
 
-	av <|-- au
-    au <|-- sa
+av <|-- au
+au <|-- sa
 
-	usecase login as uc01
-	usecase logout as uc02
-    uc01 --> uc02
+package flask_petclinic {
 
-	av --> uc01
-	au --> uc01
-	sa --> uc01
+    package flask_petclinic.system {
+        usecase login as uc1000
+        usecase logout as uc1001
+        uc1000 --> uc1001
 
-	av --> uc02
-	au --> uc02
-	sa --> uc02
+        av --> uc1000
+        au --> uc1001
+        sa --> uc1001
+    }
+
+    package flask_petclinic.specialty {
+        usecase specialty_search as uc2000
+        usecase specialty_list as uc2001
+        usecase specialty_new as uc2002
+        usecase specialty_change as uc2003
+        usecase specialty_remove as uc2004
+
+        au --> uc2000
+        au --> uc2001
+        au --> uc2002
+        au --> uc2003
+        au --> uc2004
+    }
+
+    package flask_petclinic.vet {
+        usecase vet_search as uc3000
+        usecase vet_list as uc3001
+        usecase vet_new as uc3002
+        usecase vet_change as uc3003
+        usecase vet_choose_specialties as uc3004
+        usecase vet_remove as uc3005
+
+        au --> uc3000
+        au --> uc3001
+        au --> uc3002
+        au --> uc3003
+        au --> uc3004
+        au --> uc3005
+    }
+
+    package flask_petclinic.pettype {
+        usecase pettype_search as uc4000
+        usecase pettype_list as uc4001
+        usecase pettype_new as uc4002
+        usecase pettype_change as uc4003
+        usecase pettype_remove as uc4004
+
+        au --> uc4000
+        au --> uc4001
+        au --> uc4002
+        au --> uc4003
+        au --> uc4004
+    }
+
+    package flask_petclinic.pet {
+        usecase pet_search as uc5000
+        usecase pet_list as uc5001
+        usecase pet_new as uc5002
+        usecase pet_change as uc5003
+        usecase pet_remove as uc5004
+        usecase pet_choose_pettype as uc5005
+
+        au --> uc5000
+        au --> uc5001
+        au --> uc5002
+        au --> uc5003
+        au --> uc5004
+        au --> uc5005
+    }
+
+    package flask_petclinic.owner {
+
+        usecase owner_search as uc6000
+        usecase owner_list as uc6001
+        usecase owner_change as uc6002
+        usecase owner_new as uc6003
+
+        usecase owner_add_new_pet as uc6004
+        usecase owner_change_pet as uc6005
+        usecase owner_remove_pet as uc6006
+
+        au --> uc6000
+        au --> uc6001
+        au --> uc6002
+        au --> uc6003
+        au --> uc6004
+        au --> uc6005
+        au --> uc6006
+    }
+
+    package flask_petclinic.visit {
+
+        usecase pet_list_visits as uc7000
+        usecase pet_add_visit_to_pet_and_vet as uc7001
+        usecase pet_change_visit_to_pet_and_vet as uc7002
+        usecase pet_remove_visit as uc7003
+
+        au --> uc7000
+        au --> uc7001
+        au --> uc7002
+        au --> uc7003
+    }
+
+    package flask_petclinic.system {
+        usecase db_create as uc10000
+        usecase db_drop_and_create as uc10001
+        usecase db_dump as uc10002
+        usecase db_dump_reimport as uc10003
+        usecase db_table_count as uc10004
+
+        sa --> uc10000
+        sa --> uc10001
+        sa --> uc10002
+        sa --> uc10003
+        sa --> uc10004
+    }
 }
-
-package flask_petclinic.specialty {
-    usecase specialty_crud as uc10
-    usecase specialty_search as uc11
-    usecase specialty_list as uc12
-
-	au --> uc10
-	au --> uc11
-	au --> uc12
-}
-
-package flask_petclinic.vet {
-	usecase vet_create as uc20
-	usecase vet_read as uc21
-	usecase vet_update as uc22
-	usecase vet_choose_specialties as uc23
-	usecase vet_delete as uc24
-    usecase vet_search as uc25
-    usecase vet_list as uc26
-
-	au --> uc20
-	au --> uc21
-	au --> uc22
-	au --> uc23
-	au --> uc24
-	au --> uc25
-	au --> uc26
-}
-
-
-package flask_petclinic.pettype {
-    usecase pettype_crud as uc30
-    usecase pettype_search as uc31
-    usecase pettype_list as uc32
-
-	au --> uc30
-	au --> uc31
-	au --> uc32
-}
-
-package flask_petclinic.pet {
-	usecase pet_create as uc40
-	usecase pet_read as uc41
-	usecase pet_update as uc42
-	usecase pet_delete as uc44
-    usecase pet_search as uc45
-    usecase pet_list as uc46
-	usecase pet_choose_pettype as uc43
-
-	au --> uc40
-	au --> uc41
-	au --> uc42
-	au --> uc43
-	au --> uc44
-	au --> uc45
-	au --> uc46
-}
-
-package flask_petclinic.visit {
-	usecase pet_add_visit as uc47
-    usecase pet_select_vet_for_visit as uc50
-	usecase pet_find_date_for_visit as uc51
-    usecase pet_remove_visit as uc48
-    usecase pet_update_visit as uc49
-
-	au --> uc47
-	au --> uc48
-	au --> uc49
-	au --> uc50
-	au --> uc51
-}
-
-package flask_petclinic.owner {
-    usecase pettype_crud as uc55
-    usecase pettype_list as uc56
-    usecase pettype_search as uc57
-	usecase owner_add_pet as uc60
-    usecase owner_remove_pet as uc61
-    usecase owner_update_pet as uc62
-    usecase owner_select_pettype_for_pet as uc63
-
-    au --> uc55
-    au --> uc56
-    au --> uc57
-	au --> uc60
-	au --> uc61
-	au --> uc62
-	au --> uc63
-}
-
 @enduml
