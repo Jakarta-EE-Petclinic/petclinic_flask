@@ -5,7 +5,7 @@ from project.petclinic_views import Owner, Pet, PetType, Visit, Vet, Specialty
 from project.petclinic_views import items_per_page, db, app
 from project.petclinic_views import owner_service, pet_service, pet_type_service
 from project.petclinic_views import visit_service, vet_service, specialty_service
-from project.petclinic_views import sys_admin_service, app_user_urls, app_web
+from project.petclinic_views import sys_admin_service, app_web
 
 
 def create_app():

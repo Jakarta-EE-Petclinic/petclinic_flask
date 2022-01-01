@@ -142,28 +142,14 @@ class ApplicationUrls:
             o.read()
             db.session.add(o)
         db.session.commit()
-        return redirect(url_for("app_all.url_all_notification"))
-
-
-app_web_urls = ApplicationUrls()
-
-# ------------------------------------------------------------------------------------
-# URLs Login and Logout
-# ------------------------------------------------------------------------------------
-
-
-class AppUserUrls:
-    def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.info(" ready: [USR] UserUrls ")
-        app.logger.debug("-----------------------------------------------------------")
+        return redirect(url_for("url_all_notification"))
 
     @staticmethod
-    @app_user.route("/login", methods=["GET"])
+    @app.route("/login", methods=["GET"])
     def login_form():
         page_info = WebPageContent("usr", "Login")
         if current_user.is_authenticated:
-            return redirect(url_for("usr.profile"))
+            return redirect(url_for("profile"))
         form = LoginForm()
         return flask.render_template(
             "usr/login.html",
@@ -172,34 +158,34 @@ class AppUserUrls:
         )
 
     @staticmethod
-    @app_user.route("/login", methods=["POST"])
+    @app.route("/login", methods=["POST"])
     def login():
         page_info = WebPageContent("USR", "Login")
         if current_user.is_authenticated:
-            return redirect(url_for("usr.profile"))
+            return redirect(url_for("profile"))
         form = LoginForm()
         if form.validate_on_submit():
             user = User.query.filter_by(email=form.email.data).first()
             if user is None or not user.check_password(form.password.data):
                 flash("Invalid username or password")
-                return redirect(url_for("usr.login"))
+                return redirect(url_for("login"))
             login_user(user, remember=form.remember_me.data)
-            return redirect(url_for("usr.profile"))
+            return redirect(url_for("profile"))
         return flask.render_template("usr/login.html", form=form, page_info=page_info)
 
     @staticmethod
-    @app_user.route("/profile")
+    @app.route("/logout")
+    @login_required
+    def logout():
+        logout_user()
+        return redirect(url_for("login"))
+
+    @staticmethod
+    @app.route("/profile")
     @login_required
     def profile():
         page_info = WebPageContent("USR", "profile")
         return flask.render_template("usr/profile.html", page_info=page_info)
-
-    @staticmethod
-    @app_user.route("/logout")
-    @login_required
-    def logout():
-        logout_user()
-        return redirect(url_for("usr.login"))
 
     @staticmethod
     @login_manager.user_loader
@@ -210,15 +196,11 @@ class AppUserUrls:
     @login_manager.unauthorized_handler
     def unauthorized():
         flash("not authorized")
-        return redirect(url_for("usr.login"))
-
-    # ---------------------------------------------------------------------------------
-    #  Url Routes Frontend
-    # ---------------------------------------------------------------------------------
+        return redirect(url_for("login"))
 
     @staticmethod
-    @app_user.route("/info/page/<int:page>")
-    @app_user.route("/info")
+    @app.route("/info/page/<int:page>")
+    @app.route("/info")
     def url_user_info(page=1):
         page_info = WebPageContent("USR", "Info")
         try:
@@ -237,6 +219,26 @@ class AppUserUrls:
         return render_template("usr/user_tasks.html", page_info=page_info)
 
 
-app_user_urls = AppUserUrls()
+app_web_urls = ApplicationUrls()
+
+# ------------------------------------------------------------------------------------
+# URLs Login and Logout
+# ------------------------------------------------------------------------------------
+
+
+class AppUserUrls:
+    def __init__(self):
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" ready: [USR] UserUrls ")
+        app.logger.debug("-----------------------------------------------------------")
+
+    # ---------------------------------------------------------------------------------
+    #  Url Routes Frontend
+    # ---------------------------------------------------------------------------------
+
+
+
+
+# app_user_urls = AppUserUrls()
 
 
