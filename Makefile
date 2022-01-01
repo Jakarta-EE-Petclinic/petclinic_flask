@@ -121,7 +121,7 @@ pip_install_windows:
 	@echo "------------------"
 	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/windows.txt
 	@echo "------------------"
-	$(PIP) freeze > etc/requirements_windows.txt
+	$(PIP) freeze > requirements/requirements_windows.txt
 	@echo "------------------"
 	$(PIP) check
 	@echo "------------------"
@@ -174,7 +174,7 @@ pip_install_linux: pip_install_linux_build
 	@echo "------------------"
 	@echo "making pip_install_linux linux.txt"
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux.txt
-	$(PIP) freeze > etc/requirements_linux.txt
+	$(PIP) freeze > requirements/requirements_linux.txt
 	$(PIP) check
 	@echo "------------------"
 	@echo "making pip_install_linux DONE"
@@ -184,9 +184,9 @@ pip_uninstall_linux:
 	@echo "------------------"
 	@echo "making pip_uninstall_linux"
 	@echo "------------------"
-	$(PIP) freeze > etc/requirements_linux.txt
+	$(PIP) freeze > requirements/requirements_linux.txt
 	@echo "------------------"
-	$(PIP) uninstall -r etc/requirements_linux.txt -y
+	$(PIP) uninstall -r requirements/requirements_linux.txt -y
 	@echo "------------------"
 	$(PIP) check
 	@echo "------------------"
