@@ -1,4 +1,4 @@
-from project.config.database import db, items_per_page, app, celery
+from project.config.database import items_per_page, db,  app
 from sqlalchemy import Sequence
 
 

@@ -27,11 +27,11 @@ specialty_service = SpecialtyService(db)
 sys_admin_service = SysAdminService(db)
 
 app_user = Blueprint(
-    "app_usr", __name__, template_folder="templates", url_prefix="/usr"
+    "usr", __name__, template_folder="templates", url_prefix="/usr"
 )
 
 app_web = Blueprint(
-    "app_web", __name__, template_folder="templates", url_prefix="/"
+    "web", __name__, template_folder="templates", url_prefix="/"
 )
 
 app.register_blueprint(app_web, url_prefix="/")
@@ -144,7 +144,8 @@ class ApplicationUrls:
         db.session.commit()
         return redirect(url_for("app_all.url_all_notification"))
 
-application_urls = ApplicationUrls()
+
+app_web_urls = ApplicationUrls()
 
 # ------------------------------------------------------------------------------------
 # URLs Login and Logout

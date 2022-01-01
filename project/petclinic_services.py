@@ -1,5 +1,5 @@
 from project.petclinic_model import Owner, Pet, PetType, Visit, Vet, Specialty
-from project.petclinic_model import db, items_per_page, app
+from project.petclinic_model import items_per_page, db, app
 
 
 class OwnerService:
