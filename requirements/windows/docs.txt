@@ -19,7 +19,7 @@ babel==2.9.1
 backports.entry-points-selectable==1.1.1
     # via virtualenv
 build==0.7.0
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 certifi==2021.10.8
     # via
     #   pipenv
@@ -32,12 +32,6 @@ click==8.0.3
     # via
     #   flask
     #   pip-tools
-colorama==0.4.4
-    # via
-    #   build
-    #   click
-    #   sphinx
-    #   tox
 cycler==0.11.0
     # via matplotlib
 distlib==0.3.4
@@ -55,7 +49,7 @@ filelock==3.4.0
     #   tox
     #   virtualenv
 flask==2.0.2
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 fonttools==4.28.3
     # via matplotlib
 identify==2.4.0
@@ -115,18 +109,18 @@ pep517==0.12.0
     #   pip-tools
 pillow==8.4.0
     # via
-    #   -r requirements/in\build.in
+    #   -r requirements/in/build.in
     #   matplotlib
 pip-tools==6.4.0
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 pipenv==2021.11.23
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 platformdirs==2.4.0
     # via virtualenv
 pluggy==1.0.0
     # via tox
 pre-commit==2.16.0
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 py==1.11.0
     # via tox
 pyaml==21.10.1
@@ -150,11 +144,11 @@ pyrsistent==0.18.0
 python-dateutil==2.8.2
     # via matplotlib
 python-dotenv==0.19.2
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 python-magic==0.4.24
     # via pytoolbox
 pytoolbox==14.1.0
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 pytz==2021.3
     # via
     #   babel
@@ -248,7 +242,7 @@ sphinxcontrib-srclinks==0.2.4
     # via -r requirements/in/docs.in
 toml==0.10.2
     # via
-    #   -r requirements/in\build.in
+    #   -r requirements/in/build.in
     #   pre-commit
     #   tox
 tomli==1.2.2
@@ -257,14 +251,14 @@ tomli==1.2.2
     #   pep517
     #   setuptools-scm
 tox==3.24.4
-    # via -r requirements/in\build.in
+    # via -r requirements/in/build.in
 urllib3==1.26.7
     # via
-    #   -r requirements/in\build.in
+    #   -r requirements/in/build.in
     #   requests
 virtualenv==20.10.0
     # via
-    #   -r requirements/in\build.in
+    #   -r requirements/in/build.in
     #   pipenv
     #   pre-commit
     #   tox
@@ -274,7 +268,7 @@ werkzeug==2.0.2
     # via flask
 wheel==0.37.0
     # via
-    #   -r requirements/in\build.in
+    #   -r requirements/in/build.in
     #   pip-tools
 zipp==3.6.0
     # via importlib-metadata
