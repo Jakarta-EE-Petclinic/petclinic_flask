@@ -15,8 +15,8 @@ from project.petclinic_services import db, items_per_page, app
 from project.petclinic_services import SysAdminService
 from project.petclinic_services import OwnerService, PetService, PetTypeService
 from project.petclinic_services import VisitService, VetService, SpecialtyService
-from project.task.all_task_model import Task
-from project.task.all_task_service import TaskService
+from project.transaction.transaction_model import Task
+from project.transaction.transaction_service import TaskService
 
 task_service = TaskService(db)
 owner_service = OwnerService(db)

@@ -1,5 +1,5 @@
 from project.config.database import app
-from project.task.all_task_model import Task
+from project.transaction.all_task_model import Task
 
 
 class TaskService:
