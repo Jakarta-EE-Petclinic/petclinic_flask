@@ -1,7 +1,7 @@
 
-from project.config.database import db, items_per_page, app, celery
+from project.config.database import app
 
-from project.model.user_model import LoginForm, User
+from project.user.user_model import LoginForm, User
 
 
 class UserService:

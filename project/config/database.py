@@ -12,12 +12,10 @@ from flask_sqlalchemy import SQLAlchemy
 from project.config import config
 from project.config import pytestconfig
 
-# from flask_caching import Cache
 
-
-class Covid19Application:
+class PetclinicApplication:
     def __init__(self, testing=False):
-        self.app = Flask("flask_covid19")
+        self.app = Flask("flask_petclinic")
         self.app_cors = CORS()
         if testing:
             self.app.config.from_object(pytestconfig)
@@ -192,7 +190,7 @@ class Covid19Application:
         self.app.logger.debug("------------------------------------------------------")
 
 
-covid19_application = Covid19Application()
+covid19_application = PetclinicApplication()
 app = covid19_application.app
 db = covid19_application.db
 admin = covid19_application.admin
