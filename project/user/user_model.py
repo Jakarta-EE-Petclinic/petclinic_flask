@@ -3,7 +3,8 @@ from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from sqlalchemy import Sequence
 
-from project.petclinic_services import db, items_per_page, app, celery
+from project.app_bootstrap.database import db
+from project.app_bootstrap.database import items_per_page
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
 from wtforms import BooleanField

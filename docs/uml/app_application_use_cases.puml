@@ -1,5 +1,114 @@
 @startuml
 left to right direction
 
+package flask_petclinic.user {
+	actor AnonymousVisitor as av
+	actor AuthentifiedVisitor as au
+	actor SysAdmin as sa
+
+	av <|-- au
+    au <|-- sa
+
+	usecase login as uc01
+	usecase logout as uc02
+    uc01 --> uc02
+
+	av --> uc01
+	au --> uc01
+	sa --> uc01
+
+	av --> uc02
+	au --> uc02
+	sa --> uc02
+}
+
+package flask_petclinic.specialty {
+    usecase specialty_crud as uc10
+    usecase specialty_search as uc11
+    usecase specialty_list as uc12
+
+	au --> uc10
+	au --> uc11
+	au --> uc12
+}
+
+package flask_petclinic.vet {
+	usecase vet_create as uc20
+	usecase vet_read as uc21
+	usecase vet_update as uc22
+	usecase vet_choose_specialties as uc23
+	usecase vet_delete as uc24
+    usecase vet_search as uc25
+    usecase vet_list as uc26
+
+	au --> uc20
+	au --> uc21
+	au --> uc22
+	au --> uc23
+	au --> uc24
+	au --> uc25
+	au --> uc26
+}
+
+
+package flask_petclinic.pettype {
+    usecase pettype_crud as uc30
+    usecase pettype_search as uc31
+    usecase pettype_list as uc32
+
+	au --> uc30
+	au --> uc31
+	au --> uc32
+}
+
+package flask_petclinic.pet {
+	usecase pet_create as uc40
+	usecase pet_read as uc41
+	usecase pet_update as uc42
+	usecase pet_delete as uc44
+    usecase pet_search as uc45
+    usecase pet_list as uc46
+	usecase pet_choose_pettype as uc43
+
+	au --> uc40
+	au --> uc41
+	au --> uc42
+	au --> uc43
+	au --> uc44
+	au --> uc45
+	au --> uc46
+}
+
+package flask_petclinic.visit {
+	usecase pet_add_visit as uc47
+    usecase pet_select_vet_for_visit as uc50
+	usecase pet_find_date_for_visit as uc51
+    usecase pet_remove_visit as uc48
+    usecase pet_update_visit as uc49
+
+	au --> uc47
+	au --> uc48
+	au --> uc49
+	au --> uc50
+	au --> uc51
+}
+
+package flask_petclinic.owner {
+    usecase pettype_crud as uc55
+    usecase pettype_list as uc56
+    usecase pettype_search as uc57
+	usecase owner_add_pet as uc60
+    usecase owner_remove_pet as uc61
+    usecase owner_update_pet as uc62
+    usecase owner_select_pettype_for_pet as uc63
+
+    au --> uc55
+    au --> uc56
+    au --> uc57
+	au --> uc60
+	au --> uc61
+	au --> uc62
+	au --> uc63
+}
 
 @enduml

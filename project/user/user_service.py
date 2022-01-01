@@ -1,7 +1,6 @@
-
-from project.config.database import app
-
-from project.user.user_model import LoginForm, User
+from project.app_bootstrap.database import app
+from project.app_web.user.user_model import LoginForm
+from project.app_web.user.user_model import User
 
 
 class UserService:

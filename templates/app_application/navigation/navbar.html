@@ -52,7 +52,18 @@
                       </li>
                     </ul>
                     <ul class="navbar-nav end">
-
+                      <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'app_all.url_all_notification') }}">
+                          <i class="fas fa-bell"></i>
+                        </a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item"
+                               href="{{ url_for( 'usr.login') }}">
+                            <i class="fas fa-user"></i>  Login
+                          </a>
+                        </li>
                     </ul>
                 </div>
             </div>
