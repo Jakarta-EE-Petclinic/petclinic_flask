@@ -7,7 +7,6 @@ from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
 
 from project.config.database import db, items_per_page, login_manager
-from project.task.all_task_model import Task
 from project.user.user_model import LoginForm, User
 from project.web.web_model_transient import WebPageContent
 from project.petclinic_services import Owner, Pet, PetType, Visit, Vet, Specialty
@@ -15,7 +14,10 @@ from project.petclinic_services import db, items_per_page, app
 from project.petclinic_services import SysAdminService
 from project.petclinic_services import OwnerService, PetService, PetTypeService
 from project.petclinic_services import VisitService, VetService, SpecialtyService
+from project.task.all_task_model import Task
+from project.task.all_task_service import TaskService
 
+task_service = TaskService(db)
 owner_service = OwnerService(db)
 pet_service = PetService(db)
 pet_type_service = PetTypeService(db)

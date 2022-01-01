@@ -6,13 +6,13 @@
 {{super()}}
 <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootswatch/superhero/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/flask_covid19.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/flask_petclinic.css') }}">
 {% endblock %}
 
 {% block scripts %}
 {{super()}}
 <script src="{{ url_for('static', filename='vendor/fontawesome-free/js/all.js')}} "></script>
-<script src="{{ url_for('static', filename='js/flask_covid19.js')}} "></script>
+<script src="{{ url_for('static', filename='js/flask_petclinic.js')}} "></script>
 {% endblock %}
 
 {% block html_attribs %} lang="en"{% endblock %}
