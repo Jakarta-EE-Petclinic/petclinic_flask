@@ -9,14 +9,10 @@ PIP := pip
 NPM := npm
 GIT := git
 MAKE := make
-PIP_REQUIREMENTS_DIR := requirements
-PIP_REQUIREMENTS_IN_DIR := requirements/in
-PIP_REQUIREMENTS_WINDOWS_DIR := requirements/windows
-PIP_REQUIREMENTS_LINUX_DIR := requirements/inux
+UNAME = $(shell uname)
 
-DB_DIR := db
+DB_DIR := project/db
 DOCS_DIR := docs
-
 DATA_DIR := data
 PIP_REQUIREMENTS_IN_DIR := requirements/in
 PIP_REQUIREMENTS_WINDOWS_DIR := requirements/windows
@@ -33,29 +29,38 @@ all: start
 # -------------------------------------------------------------------------------------
 
 clean_linux:
-	@echo "------------------"
+	@echo "--------------------"
 	@echo "making clean_linux"
-	@echo "------------------"
+	@echo "--------------------"
 	rm -rf .eggs
 	rm -rf project.egg-info
+	rm -rf flask_covid19.egg-info
 	rm -rf build
 	rm -rf dist
 	rm -rf .checkmate
 	rm -rf node_modules
+	rm -rf broker
 	rm -rf .tox
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -rf {} +
-	@echo "------------------"
+	@echo "-------------------------"
 	@echo "making clean_linux DONE"
-	@echo "------------------"
+	@echo "-------------------------"
 
 clean_windows:
-	@echo "clean_windows"
-	@echo "TBD"
+	@echo "----------------------"
+	@echo "making clean_windows"
+	@echo "----------------------"
+	$(shell rm -rf flask_covid19.egg-info)
+	$(shell rm -rf node_modules)
+	$(shell rm -rf .tox)
+	$(shell rm -rf broker)
+	@echo "---------------------------"
+	@echo "making clean_windows DONE"
+	@echo "---------------------------"
 
-clean:	clean_linux
 
 # -------------------------------------------------------------------------------------
 #
@@ -71,6 +76,7 @@ pip_compile_windows:
 	@echo "------------------"
 	@echo "making pip_compile_windows"
 	@echo "------------------"
+	python -m pip install --upgrade pip
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
@@ -90,6 +96,7 @@ pip_compile_linux:
 	@echo "------------------"
 	@echo "making pip_compile_linux"
 	@echo "------------------"
+	python -m pip install --upgrade pip
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
@@ -105,11 +112,16 @@ pip_compile_linux:
 	@echo "making pip_compile_linux DONE"
 	@echo "------------------"
 
-pip_install_windows:
+pip_install_windows_build:
 	@echo "------------------"
 	@echo "making pip_install"
 	@echo "------------------"
 	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt
+	@echo "------------------"
+
+pip_install_windows: pip_install_windows_build
+	@echo "------------------"
+	@echo "making pip_install"
 	@echo "------------------"
 	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/docs.txt
 	@echo "------------------"
@@ -121,23 +133,11 @@ pip_install_windows:
 	@echo "------------------"
 	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/windows.txt
 	@echo "------------------"
-	$(PIP) freeze > requirements/requirements_windows.txt
+	$(PIP) freeze > etc/requirements_windows.txt
 	@echo "------------------"
 	$(PIP) check
 	@echo "------------------"
 	@echo "making pip_install DONE"
-	@echo "------------------"
-
-pip_install_windows_build:
-	@echo "------------------"
-	@echo "making pip_install_windows_build"
-	@echo "------------------"
-	$(PYTHON) -m pip install --upgrade pip
-	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt
-	$(PIP) freeze > requirements/requirements_windows.txt
-	$(PIP) check
-	@echo "------------------"
-	@echo "making pip_install_windows_build DONE"
 	@echo "------------------"
 
 pip_install_linux_build:
@@ -146,7 +146,7 @@ pip_install_linux_build:
 	@echo "------------------"
 	$(PYTHON) -m pip install --upgrade pip
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt
-	$(PIP) freeze > requirements/requirements_linux.txt
+	$(PIP) freeze > etc/requirements_linux.txt
 	$(PIP) check
 	@echo "------------------"
 	@echo "making pip_install_linux_build DONE"
@@ -174,7 +174,7 @@ pip_install_linux: pip_install_linux_build
 	@echo "------------------"
 	@echo "making pip_install_linux linux.txt"
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux.txt
-	$(PIP) freeze > requirements/requirements_linux.txt
+	$(PIP) freeze > etc/requirements_linux.txt
 	$(PIP) check
 	@echo "------------------"
 	@echo "making pip_install_linux DONE"
@@ -184,9 +184,9 @@ pip_uninstall_linux:
 	@echo "------------------"
 	@echo "making pip_uninstall_linux"
 	@echo "------------------"
-	$(PIP) freeze > requirements/requirements_linux.txt
+	$(PIP) freeze > etc/requirements_linux.txt
 	@echo "------------------"
-	$(PIP) uninstall -r requirements/requirements_linux.txt -y
+	$(PIP) uninstall -r etc/requirements_linux.txt -y
 	@echo "------------------"
 	$(PIP) check
 	@echo "------------------"
@@ -342,6 +342,15 @@ test:
 	@echo "making test DONE"
 	@echo "------------------"
 
+download:
+	@echo "------------------"
+	@echo "download"
+	@echo "------------------"
+	$(MAKE) -w -C $(DATA_DIR) download
+	@echo "------------------"
+	@echo "download DONE"
+	@echo "------------------"
+
 # -------------------------------------------------------------------------------------
 #
 #   frontend
@@ -368,23 +377,33 @@ setup_npm:
 	@echo "------------------"
 
 
-
 distclean: venv_clean renv_clean
 
-pip_windows: pip_compile_windows pip_install_windows pip_check setup_frontend
+update_windows: clean_windows pip_compile_windows pip_install_windows pip_check setup_frontend
 
-pip_linux: pip_compile_linux pip_install_linux pip_check setup_frontend
+update_linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend
 
-windows: clean_windows pip_windows
+start_windows: pip_install_windows_build update_windows
 
-linux: clean_linux pip_linux
+start_linux: pip_install_linux_build update_linux
 
-start_windows: pip_install_windows_build windows
+clean:
+ifeq ($(UNAME),Linux)
+	make clean_linux
+else
+	make clean_windows
+endif
 
-start_linux: pip_install_linux_build linux
+update:
+ifeq ($(UNAME),Linux)
+	make update_linux
+else
+	make update_windows
+endif
 
-update: linux
-# update: windows
-
-start: start_linux
-# start: start_windows
+start:
+ifeq ($(UNAME),Linux)
+	make start_linux
+else
+	make start_windows
+endif
