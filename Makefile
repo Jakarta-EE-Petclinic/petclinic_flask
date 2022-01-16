@@ -146,7 +146,7 @@ pip_install_linux_build:
 	@echo "------------------"
 	$(PYTHON) -m pip install --upgrade pip
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt
-	$(PIP) freeze > etc/requirements_linux.txt
+	$(PIP) freeze > requirements/requirements_linux.txt
 	$(PIP) check
 	@echo "------------------"
 	@echo "making pip_install_linux_build DONE"
@@ -174,7 +174,7 @@ pip_install_linux: pip_install_linux_build
 	@echo "------------------"
 	@echo "making pip_install_linux linux.txt"
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux.txt
-	$(PIP) freeze > etc/requirements_linux.txt
+	$(PIP) freeze > requirements/requirements_linux.txt
 	$(PIP) check
 	@echo "------------------"
 	@echo "making pip_install_linux DONE"
