@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+package flask_petclinic {
+
+    package app {
+
+        entity Notification {
+            id: Integer
+            datum_started: Date
+            datum_finished: Date
+            sector: String
+            task_name: String
+            notification: Boolean
+            result_code: Integer
+            data1_code = Integer
+            data1_txt = String
+            data2_code = Integer
+            data2_txt = String
+            data3_code = Integer
+            data3_txt = String
+        }
+
+        entity User {
+            id: Integer
+            email: String
+            name: String
+            password_hash: String
+        }
+    }
+
+}
+
+@enduml
