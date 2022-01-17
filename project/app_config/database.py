@@ -8,8 +8,8 @@ from flask_bs4 import Bootstrap
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-from project.config import config
-from project.config import pytestconfig
+from project.app_config import config
+from project.app_config import pytestconfig
 
 
 class PetclinicApplication:

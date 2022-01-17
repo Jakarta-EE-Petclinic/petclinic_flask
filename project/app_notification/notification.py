@@ -2,8 +2,8 @@ from datetime import datetime
 
 from sqlalchemy import and_, Sequence
 
-from project.config.database import db
-from project.config.database import items_per_page
+from project.app_config.database import db
+from project.app_config.database import items_per_page
 
 
 class Notification(db.Model):
@@ -14,7 +14,7 @@ class Notification(db.Model):
             "datum_started",
             "sector",
             "task_name",
-            "notification",
+            "app_notification",
             name="uix_task",
         ),
     )

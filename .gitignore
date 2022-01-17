@@ -895,7 +895,7 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# Note: Comment the next line if you want to checkin your web deploy settings,
+# Note: Comment the next line if you want to checkin your app_web deploy settings,
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -914,7 +914,7 @@ PublishScripts/
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
-#!**/[Pp]ackages/repositories.config
+#!**/[Pp]ackages/repositories.app_config
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
@@ -1031,7 +1031,7 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/**
-# !tools/packages.config
+# !tools/packages.app_config
 
 # Tabs Studio
 *.tss
@@ -1090,7 +1090,7 @@ ehthumbs_vista.db
 # Dump file
 *.stackdump
 
-# Folder config file
+# Folder app_config file
 [Dd]esktop.ini
 
 # Recycle Bin used on file shares

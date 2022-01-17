@@ -1,4 +1,4 @@
-from project.config.database import app
+from project.app_config.database import app
 
 
 class SysAdminService:

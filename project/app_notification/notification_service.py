@@ -1,5 +1,5 @@
-from project.config.database import app
-from project.notification.notification import Notification
+from project.app_config.database import app
+from project.app_notification.notification import Notification
 
 
 class NotificationService:

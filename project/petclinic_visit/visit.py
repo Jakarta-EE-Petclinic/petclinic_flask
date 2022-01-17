@@ -1,6 +1,6 @@
 from sqlalchemy import Sequence
 
-from project.config.database import db, items_per_page
+from project.app_config.database import db, items_per_page
 
 
 class Visit(db.Model):

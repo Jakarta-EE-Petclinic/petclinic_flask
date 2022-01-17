@@ -110,7 +110,7 @@
 ````bash
         git submodule init
         git submodule update
-        git config --global diff.submodule log
+        git app_config --global diff.submodule log
 
         git submodule update --remote --merge
 ````

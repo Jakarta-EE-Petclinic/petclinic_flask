@@ -36,8 +36,8 @@
 ### change configuration
 
 ````bash
-    vim project/config/config.py
-    vim project/config/database.py
+    vim project/app_config/app_config.py
+    vim project/app_config/database.py
     vim requirements/in/build.in
     make start
 ````

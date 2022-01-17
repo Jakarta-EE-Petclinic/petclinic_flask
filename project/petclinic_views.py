@@ -6,20 +6,20 @@ from flask import url_for
 from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
 
-from project.config.database import db, login_manager
-from project.user.user import LoginForm, User
-from project.user.user_service import UserService
-from project.web.web_model_transient import WebPageContent
-from project.web.petclinic_services import db, app
-from project.web.petclinic_services import SysAdminService
+from project.app_config.database import db, login_manager
+from project.app_user.user import LoginForm, User
+from project.app_user.user_service import UserService
+from project.app_web.web_model_transient import WebPageContent
+from project.app_web.petclinic_services import db, app
+from project.app_web.petclinic_services import SysAdminService
 from project.petclinic_owner.owner_service import OwnerService
 from project.petclinic_pet.pet_service import PetService
 from project.petclinic_pettype.pettype_service import PetTypeService
 from project.petclinic_specialty.specialty_service import SpecialtyService
 from project.petclinic_vet.vet_service import VetService
 from project.petclinic_visit.visit_service import VisitService
-from project.notification.notification import Notification
-from project.notification.notification_service import NotificationService
+from project.app_notification.notification import Notification
+from project.app_notification.notification_service import NotificationService
 
 task_service = NotificationService(db)
 owner_service = OwnerService(db)
@@ -36,7 +36,7 @@ app_user = Blueprint(
 )
 
 app_web = Blueprint(
-    "web", __name__, template_folder="templates", url_prefix="/"
+    "app_web", __name__, template_folder="templates", url_prefix="/"
 )
 
 app.register_blueprint(app_web, url_prefix="/")
