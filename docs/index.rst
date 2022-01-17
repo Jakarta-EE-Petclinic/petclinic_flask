@@ -16,6 +16,9 @@ Welcome to flask_covid19's documentation!
    db/PostgresSQL.md
    TODO.md
 
+.. uml:: uml/Domain_Class_Modell.png
+.. uml:: uml/use_cases.puml
+
 Indices and tables
 ==================
 
