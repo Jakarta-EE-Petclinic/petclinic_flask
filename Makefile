@@ -136,7 +136,7 @@ pip_install_windows: pip_install_windows_build
 	@echo "------------------"
 	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/windows.txt
 	@echo "------------------"
-	$(PIP) freeze > etc/requirements_windows.txt
+	$(PIP) freeze > requirements/requirements_windows.txt
 	@echo "------------------"
 	$(PIP) check
 	@echo "------------------"
