@@ -6,18 +6,12 @@ from flask import url_for
 from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
 
-from project.config.database import db, items_per_page, login_manager
+from project.config.database import db, login_manager
 from project.user.user import LoginForm, User
 from project.user.user_service import UserService
 from project.web.web_model_transient import WebPageContent
-from project.petclinic_owner.owner import Owner
-from project.petclinic_pet.pet import Pet
-from project.petclinic_pettype.pettype import PetType
-from project.petclinic_specialty.specialty import Specialty
-from project.petclinic_vet.vet import Vet
-from project.petclinic_visit.visit import Visit
-from project.petclinic_services import db, items_per_page, app
-from project.petclinic_services import SysAdminService
+from project.web.petclinic_services import db, app
+from project.web.petclinic_services import SysAdminService
 from project.petclinic_owner.owner_service import OwnerService
 from project.petclinic_pet.pet_service import PetService
 from project.petclinic_pettype.pettype_service import PetTypeService
@@ -248,8 +242,4 @@ class AppUserUrls:
     # ---------------------------------------------------------------------------------
 
 
-
-
-# app_user_urls = AppUserUrls()
-
-
+app_user_urls = AppUserUrls()

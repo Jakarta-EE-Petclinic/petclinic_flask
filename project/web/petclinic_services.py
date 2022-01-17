@@ -1,4 +1,4 @@
-from project.petclinic_model import app
+from project.config.database import app
 
 
 class SysAdminService:
