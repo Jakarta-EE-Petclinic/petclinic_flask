@@ -46,9 +46,7 @@ app.register_blueprint(app_user, url_prefix="/app_user")
 
 class ApplicationUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.info(" ready: [WEB] ApplicationUrls ")
-        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" ApplicationUrls [init]")
 
     @staticmethod
     @app.route("/home")
@@ -235,9 +233,7 @@ app_web_urls = ApplicationUrls()
 
 class AppUserUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.info(" ready: [USR] UserUrls ")
-        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" AppUserUrls [init]")
 
     # ---------------------------------------------------------------------------------
     #  Url Routes Frontend
