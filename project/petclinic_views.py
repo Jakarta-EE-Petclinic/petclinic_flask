@@ -11,14 +11,21 @@ from project.app_user.user import LoginForm, User
 from project.app_user.user_service import UserService
 from project.app_web.web_model_transient import WebPageContent
 from project.app_web.admin_services import AdminService
-from project.petclinic_owner.owner_service import OwnerService
-from project.petclinic_pet.pet_service import PetService
-from project.petclinic_pettype.pettype_service import PetTypeService
-from project.petclinic_specialty.specialty_service import SpecialtyService
-from project.petclinic_vet.vet_service import VetService
-from project.petclinic_visit.visit_service import VisitService
 from project.app_notification.notification import Notification
 from project.app_notification.notification_service import NotificationService
+
+from project.petclinic_owner.owner import Owner
+from project.petclinic_owner.owner_service import OwnerService
+from project.petclinic_pet.pet import Pet
+from project.petclinic_pet.pet_service import PetService
+from project.petclinic_pettype.pettype import PetType
+from project.petclinic_pettype.pettype_service import PetTypeService
+from project.petclinic_specialty.specialty import Specialty
+from project.petclinic_specialty.specialty_service import SpecialtyService
+from project.petclinic_vet.vet import Vet
+from project.petclinic_vet.vet_service import VetService
+from project.petclinic_visit.visit import Visit
+from project.petclinic_visit.visit_service import VisitService
 
 
 owner_service = OwnerService(db)
@@ -46,12 +53,12 @@ app.register_blueprint(app_user, url_prefix="/app_user")
 
 class ApplicationUrls:
     def __init__(self):
+        app.logger.info(" ApplicationUrls [init]")
         with app.app_context():
             task = Notification.create(sector="WEB", task_name="init")
             db.create_all()
             user_service.prepare_default_user_login(db)
             Notification.finish(task_id=task.id)
-            app.logger.info(" ApplicationUrls [init]")
 
     @staticmethod
     @app.route("/home")
