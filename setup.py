@@ -37,7 +37,7 @@ pip_requirements_windows_dir = (
 
 
 readme = open("docs" + os.sep + "README.md").read()
-history = open("docs" + os.sep + "BACKLOG.md").read()
+history = open("docs" + os.sep + "CHANGES.md").read()
 
 keywords_list = [
     "data",

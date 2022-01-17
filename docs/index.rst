@@ -11,10 +11,10 @@ Welcome to flask_covid19's documentation!
    :caption: Contents:
 
    README.md
-   BACKLOG.md
+   CHANGES.md
+   TODO.md
    db/MariadDB.md
    db/PostgresSQL.md
-   TODO.md
 
 .. sqla-model:: project.petclinic_owner.owner.Owner
 .. sqla-model:: project.petclinic_pet.pet.Pet
