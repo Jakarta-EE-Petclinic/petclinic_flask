@@ -18,10 +18,10 @@ from project.petclinic_pettype.pettype_service import PetTypeService
 from project.petclinic_specialty.specialty_service import SpecialtyService
 from project.petclinic_vet.vet_service import VetService
 from project.petclinic_visit.visit_service import VisitService
-from project.notification.notification import Task
-from project.notification.notification_service import TaskService
+from project.notification.notification import Notification
+from project.notification.notification_service import NotificationService
 
-task_service = TaskService(db)
+task_service = NotificationService(db)
 owner_service = OwnerService(db)
 pet_service = PetService(db)
 pet_type_service = PetTypeService(db)
@@ -132,7 +132,7 @@ class ApplicationUrls:
     @login_required
     def url_all_notification(page=1):
         page_info = WebPageContent("All", "Notifications")
-        page_data = Task.notifications_get(page)
+        page_data = Notification.notifications_get(page)
         return render_template("app_all/notification/app_all_notification.html",
                                page_data=page_data,
                                page_info=page_info)
@@ -142,7 +142,7 @@ class ApplicationUrls:
     @app.route("/notification/read")
     @login_required
     def url_all_notification_mark_read(page=1):
-        page_data = Task.notifications_get(page)
+        page_data = Notification.notifications_get(page)
         for o in page_data.items:
             o.read()
             db.session.add(o)

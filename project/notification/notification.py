@@ -6,7 +6,7 @@ from project.config.database import db
 from project.config.database import items_per_page
 
 
-class Task(db.Model):
+class Notification(db.Model):
     __tablename__ = "task"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
@@ -78,7 +78,7 @@ class Task(db.Model):
     def create(cls, sector: str, task_name: str):
         # tz = timezone(offset=+1, name="CEST")
         datum_started = datetime.now()
-        o = Task(
+        o = Notification(
             datum_started=datum_started,
             sector=sector,
             task_name=task_name,
@@ -98,7 +98,7 @@ class Task(db.Model):
     @classmethod
     def finish(cls, task_id: int):
         datum_finished = datetime.now()
-        o = Task.find_by_id(task_id)
+        o = Notification.find_by_id(task_id)
         o.datum_finished = datum_finished
         db.session.add(o)
         db.session.commit()
