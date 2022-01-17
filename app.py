@@ -7,10 +7,11 @@ from project.petclinic_pettype.pettype import PetType
 from project.petclinic_specialty.specialty import Specialty
 from project.petclinic_vet.vet import Vet
 from project.petclinic_visit.visit import Visit
+
 from project.petclinic_views import items_per_page, db, app
-from project.petclinic_views import owner_service, pet_service, pet_type_service
+from project.petclinic_views import owner_service, pet_service, pettype_service
 from project.petclinic_views import visit_service, vet_service, specialty_service
-from project.petclinic_views import sys_admin_service, app_web, user_service
+from project.petclinic_views import admin_service, app_web, user_service
 
 
 def create_app():
@@ -33,28 +34,28 @@ def admin_database_dump():
 def admin_database_dump():
     """[Admin] database dump"""
     with app.app_context():
-        sys_admin_service.database_dump()
+        admin_service.database_dump()
 
 
 @app.cli.command("db-dump-reimport")
 def admin_database_dump_reimport():
     """[Admin] database dump reimport"""
     with app.app_context():
-        sys_admin_service.database_dump_reimport()
+        admin_service.database_dump_reimport()
 
 
 @app.cli.command("db-drop-and-create")
 def admin_database_drop_and_create():
     """[Admin] database drop and create"""
     with app.app_context():
-        sys_admin_service.database_drop_and_create()
+        admin_service.database_drop_and_create()
 
 
 @app.cli.command("db-table-count")
 def admin_database_table_row_count():
     """[Admin] database table row count"""
     with app.app_context():
-        sys_admin_service.database_table_row_count()
+        admin_service.database_table_row_count()
 
 
 # ---------------------------------------------------------------------------------

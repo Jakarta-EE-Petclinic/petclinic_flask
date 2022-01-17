@@ -7,17 +7,35 @@ from project.app_config.database import items_per_page
 
 
 class Notification(db.Model):
-    __tablename__ = "task"
+    __tablename__ = "notification"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint(
             "datum_started",
             "sector",
             "task_name",
-            "app_notification",
+            "notification",
             name="uix_task",
         ),
     )
+
+    id_seq = Sequence('task_id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
+    datum_started = db.Column(db.DateTime, nullable=False)
+    datum_finished = db.Column(db.DateTime, nullable=True)
+    sector = db.Column(db.String(16), nullable=False)
+    task_name = db.Column(db.String(255), nullable=False)
+    notification = db.Column(db.Boolean, nullable=False)
+    result_code = db.Column(db.Integer, nullable=False)
+    data1_code = db.Column(db.Integer, nullable=False)
+    data1_txt = db.Column(db.String(255), nullable=False)
+    data2_code = db.Column(db.Integer, nullable=False)
+    data2_txt = db.Column(db.String(255), nullable=False)
+    data3_code = db.Column(db.Integer, nullable=False)
+    data3_txt = db.Column(db.String(255), nullable=False)
 
     def __repr__(self):
         this_id = self.id
@@ -51,24 +69,6 @@ class Notification(db.Model):
             self.task_name,
             self.new_notification
         )
-
-    id_seq = Sequence('task_id_seq')
-    id = db.Column(db.Integer,
-                   id_seq,
-                   server_default=id_seq.next_value(),
-                   primary_key=True)
-    datum_started = db.Column(db.DateTime, nullable=False)
-    datum_finished = db.Column(db.DateTime, nullable=True)
-    sector = db.Column(db.String(16), nullable=False)
-    task_name = db.Column(db.String(255), nullable=False)
-    notification = db.Column(db.Boolean, nullable=False)
-    result_code = db.Column(db.Integer, nullable=False)
-    data1_code = db.Column(db.Integer, nullable=False)
-    data1_txt = db.Column(db.String(255), nullable=False)
-    data2_code = db.Column(db.Integer, nullable=False)
-    data2_txt = db.Column(db.String(255), nullable=False)
-    data3_code = db.Column(db.Integer, nullable=False)
-    data3_txt = db.Column(db.String(255), nullable=False)
 
     def read(self):
         self.notification = False
