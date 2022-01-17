@@ -50,6 +50,8 @@ flask==2.0.2
     # via -r requirements/in/build.in
 fonttools==4.28.3
     # via matplotlib
+greenlet==1.1.2
+    # via sqlalchemy
 identify==2.4.0
     # via pre-commit
 idna==3.3
@@ -216,6 +218,10 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 sphinxcontrib-srclinks==0.2.4
+    # via -r requirements/in/docs.in
+sqlalchemy==1.4.29
+    # via sqlalchemy-sphinx
+sqlalchemy-sphinx==0.9.0
     # via -r requirements/in/docs.in
 toml==0.10.2
     # via

@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor AnonymousVisitor as av
+actor AuthentifiedVisitor as au
+actor SysAdmin as sa
+
+av <|-- au
+au <|-- sa
+
+package flask_petclinic {
+
+    package app_web {
+        usecase db_create as uc1020
+        usecase db_drop_and_create as uc1021
+        usecase db_dump as uc1022
+        usecase db_dump_reimport as uc1023
+        usecase db_table_count as uc1024
+
+        sa --> uc1020
+        sa --> uc1021
+        sa --> uc1022
+        sa --> uc1023
+        sa --> uc1024
+    }
+
+}
+@enduml

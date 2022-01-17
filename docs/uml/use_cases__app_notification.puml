@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor AnonymousVisitor as av
+actor AuthentifiedVisitor as au
+actor SysAdmin as sa
+
+av <|-- au
+au <|-- sa
+
+package flask_petclinic {
+
+    package app_notification {
+        usecase notification_list as uc1010
+
+        au --> uc1010
+        sa --> uc1010
+    }
+}
+@enduml

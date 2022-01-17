@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+
+actor AnonymousVisitor as av
+actor AuthentifiedVisitor as au
+actor SysAdmin as sa
+
+av <|-- au
+au <|-- sa
+
+package flask_petclinic {
+
+    package app_user {
+        usecase login as uc1000
+        usecase logout as uc1001
+        usecase userprofile as uc1002
+        usecase userlist as uc1003
+        uc1000 --> uc1001
+        uc1002 --> uc1001
+
+        av --> uc1000
+        au --> uc1002
+        sa --> uc1002
+        sa --> uc1003
+        au --> uc1001
+        sa --> uc1001
+    }
+
+}
+@enduml
