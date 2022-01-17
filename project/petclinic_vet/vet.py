@@ -4,7 +4,7 @@ from project.app_config.database import db, items_per_page
 
 
 class Vet(db.Model):
-    __tablename__ = "vet"
+    __tablename__ = "petclinic_vet"
 
     all_entity_id_seq = Sequence('vet_id_seq')
     id = db.Column(db.Integer,

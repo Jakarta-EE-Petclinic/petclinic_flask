@@ -75,54 +75,54 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/owner")
     def url_owner_index():
-        page_info = WebPageContent("owner", "index")
+        page_info = WebPageContent("petclinic_owner", "index")
         return render_template(
-            "owner/index.html",
+            "petclinic_owner/index.html",
             page_info=page_info
         )
 
     @staticmethod
     @app.route("/pet")
     def url_pet_index():
-        page_info = WebPageContent("pet", "index")
+        page_info = WebPageContent("petclinic_pet", "index")
         return render_template(
-            "pet/index.html",
+            "petclinic_pet/index.html",
             page_info=page_info
         )
 
     @staticmethod
     @app.route("/pettype")
     def url_pettype_index():
-        page_info = WebPageContent("pettype", "index")
+        page_info = WebPageContent("petclinic_pettype", "index")
         return render_template(
-            "pettype/index.html",
+            "petclinic_pettype/index.html",
             page_info=page_info
         )
 
     @staticmethod
     @app.route("/visit")
     def url_visit_index():
-        page_info = WebPageContent("visit", "index")
+        page_info = WebPageContent("petclinic_visit", "index")
         return render_template(
-            "visit/index.html",
+            "petclinic_visit/index.html",
             page_info=page_info
         )
 
     @staticmethod
     @app.route("/vet")
     def url_vet_index():
-        page_info = WebPageContent("vet", "index")
+        page_info = WebPageContent("petclinic_vet", "index")
         return render_template(
-            "vet/index.html",
+            "petclinic_vet/index.html",
             page_info=page_info
         )
 
     @staticmethod
     @app.route("/specialty")
     def url_specialty_index():
-        page_info = WebPageContent("specialty", "index")
+        page_info = WebPageContent("petclinic_specialty", "index")
         return render_template(
-            "specialty/index.html",
+            "petclinic_specialty/index.html",
             page_info=page_info
         )
 

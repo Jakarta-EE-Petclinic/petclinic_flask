@@ -4,7 +4,7 @@ from project.app_config.database import db, items_per_page
 
 
 class Owner(db.Model):
-    __tablename__ = "owner"
+    __tablename__ = "petclinic_owner"
 
     all_entity_id_seq = Sequence('owner_id_seq')
     id = db.Column(db.Integer,
