@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/app_user/bin/env bash
 
 # . ./venv/bin/activate
 

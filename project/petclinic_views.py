@@ -32,7 +32,7 @@ sys_admin_service = SysAdminService(db)
 user_service = UserService(db)
 
 app_user = Blueprint(
-    "usr", __name__, template_folder="templates", url_prefix="/usr"
+    "app_user", __name__, template_folder="templates", url_prefix="/app_user"
 )
 
 app_web = Blueprint(
@@ -40,7 +40,7 @@ app_web = Blueprint(
 )
 
 app.register_blueprint(app_web, url_prefix="/")
-app.register_blueprint(app_user, url_prefix="/usr")
+app.register_blueprint(app_user, url_prefix="/app_user")
 
 
 class ApplicationUrls:
@@ -152,12 +152,12 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/login", methods=["GET"])
     def login_form():
-        page_info = WebPageContent("usr", "Login")
+        page_info = WebPageContent("app_user", "Login")
         if current_user.is_authenticated:
             return redirect(url_for("profile"))
         form = LoginForm()
         return flask.render_template(
-            "usr/login.html",
+            "app_user/login.html",
             form=form,
             page_info=page_info
         )
@@ -176,7 +176,7 @@ class ApplicationUrls:
                 return redirect(url_for("login"))
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for("profile"))
-        return flask.render_template("usr/login.html", form=form, page_info=page_info)
+        return flask.render_template("app_user/login.html", form=form, page_info=page_info)
 
     @staticmethod
     @app.route("/logout")
@@ -190,7 +190,7 @@ class ApplicationUrls:
     @login_required
     def profile():
         page_info = WebPageContent("USR", "profile")
-        return flask.render_template("usr/profile.html", page_info=page_info)
+        return flask.render_template("app_user/profile.html", page_info=page_info)
 
     @staticmethod
     @login_manager.user_loader
@@ -214,14 +214,14 @@ class ApplicationUrls:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "usr/user_info.html", page_data=page_data, page_info=page_info
+            "app_user/user_info.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod
     @app_user.route("/tasks")
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
-        return render_template("usr/user_tasks.html", page_info=page_info)
+        return render_template("app_user/user_tasks.html", page_info=page_info)
 
 
 app_web_urls = ApplicationUrls()

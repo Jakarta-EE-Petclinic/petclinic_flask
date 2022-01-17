@@ -15,7 +15,7 @@ from wtforms import validators
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = "usr"
+    __tablename__ = "app_user"
     __table_args__ = (
         db.UniqueConstraint("email", name="uix_usr"),
     )
