@@ -10,6 +10,8 @@ backports.entry-points-selectable==1.1.1
     # via virtualenv
 build==0.7.0
     # via -r requirements/in/build.in
+cachecontrol[filecache]==0.12.10
+    # via pip-audit
 certifi==2021.10.8
     # via
     #   pipenv
@@ -22,6 +24,8 @@ click==8.0.3
     # via
     #   flask
     #   pip-tools
+cyclonedx-python-lib==0.12.3
+    # via pip-audit
 distlib==0.3.4
     # via virtualenv
 filelock==3.4.0
@@ -30,6 +34,8 @@ filelock==3.4.0
     #   virtualenv
 flask==2.0.2
     # via -r requirements/in/build.in
+html5lib==1.1
+    # via pip-audit
 identify==2.4.0
     # via pre-commit
 idna==3.3
@@ -38,19 +44,30 @@ itsdangerous==2.0.1
     # via flask
 jinja2==3.0.3
     # via flask
+lockfile==0.12.2
+    # via cachecontrol
 markupsafe==2.0.1
     # via jinja2
+msgpack==1.0.3
+    # via cachecontrol
 nodeenv==1.6.0
     # via pre-commit
+packageurl-python==0.9.6
+    # via cyclonedx-python-lib
 packaging==21.3
     # via
     #   build
+    #   pip-audit
     #   tox
 pep517==0.12.0
     # via
     #   build
     #   pip-tools
 pillow==9.0.0
+    # via -r requirements/in/build.in
+pip-api==0.0.26
+    # via pip-audit
+pip-audit==1.1.2
     # via -r requirements/in/build.in
 pip-tools==6.4.0
     # via -r requirements/in/build.in
@@ -62,6 +79,8 @@ pluggy==1.0.0
     # via tox
 pre-commit==2.16.0
     # via -r requirements/in/build.in
+progress==1.6
+    # via pip-audit
 py==1.11.0
     # via tox
 pyaml==21.10.1
@@ -81,14 +100,20 @@ pyyaml==6.0
     #   pre-commit
     #   pyaml
 requests==2.26.0
-    # via pytoolbox
+    # via
+    #   cachecontrol
+    #   pytoolbox
+resolvelib==0.8.1
+    # via pip-audit
 six==1.16.0
     # via
+    #   html5lib
     #   tox
     #   virtualenv
 toml==0.10.2
     # via
     #   -r requirements/in/build.in
+    #   cyclonedx-python-lib
     #   pre-commit
     #   tox
 tomli==1.2.2
@@ -97,6 +122,10 @@ tomli==1.2.2
     #   pep517
 tox==3.24.4
     # via -r requirements/in/build.in
+types-setuptools==57.4.7
+    # via cyclonedx-python-lib
+types-toml==0.10.3
+    # via cyclonedx-python-lib
 urllib3==1.26.7
     # via
     #   -r requirements/in/build.in
@@ -109,6 +138,8 @@ virtualenv==20.10.0
     #   tox
 virtualenv-clone==0.5.7
     # via pipenv
+webencodings==0.5.1
+    # via html5lib
 werkzeug==2.0.2
     # via flask
 wheel==0.37.0
