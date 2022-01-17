@@ -10,8 +10,8 @@ from project.app_config.database import db, login_manager
 from project.app_user.user import LoginForm, User
 from project.app_user.user_service import UserService
 from project.app_web.web_model_transient import WebPageContent
-from project.app_web.petclinic_services import db, app
-from project.app_web.petclinic_services import SysAdminService
+from project.app_web.admin_services import db, app
+from project.app_web.admin_services import SysAdminService
 from project.petclinic_owner.owner_service import OwnerService
 from project.petclinic_pet.pet_service import PetService
 from project.petclinic_pettype.pettype_service import PetTypeService
