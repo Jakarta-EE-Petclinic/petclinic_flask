@@ -46,7 +46,12 @@ app.register_blueprint(app_user, url_prefix="/app_user")
 
 class ApplicationUrls:
     def __init__(self):
-        app.logger.info(" ApplicationUrls [init]")
+        with app.app_context():
+            task = Notification.create(sector="WEB", task_name="init")
+            db.create_all()
+            user_service.prepare_default_user_login(db)
+            Notification.finish(task_id=task.id)
+            app.logger.info(" ApplicationUrls [init]")
 
     @staticmethod
     @app.route("/home")
