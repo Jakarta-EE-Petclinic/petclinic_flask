@@ -18,8 +18,8 @@ from project.petclinic_pettype.pettype_service import PetTypeService
 from project.petclinic_specialty.specialty_service import SpecialtyService
 from project.petclinic_vet.vet_service import VetService
 from project.petclinic_visit.visit_service import VisitService
-from project.transaction.transaction_model import Task
-from project.transaction.transaction_service import TaskService
+from project.notification.transaction_model import Task
+from project.notification.transaction_service import TaskService
 
 task_service = TaskService(db)
 owner_service = OwnerService(db)
