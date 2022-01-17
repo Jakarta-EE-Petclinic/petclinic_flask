@@ -55,9 +55,9 @@ class ApplicationUrls:
     def __init__(self):
         app.logger.info(" ApplicationUrls [init]")
         with app.app_context():
-            task = Notification.create(sector="WEB", task_name="init")
             db.create_all()
-            user_service.prepare_default_user_login(db)
+            task = Notification.create(sector="WEB", task_name="init")
+            user_service.prepare_default_user_login()
             Notification.finish(task_id=task.id)
 
     @staticmethod
@@ -138,7 +138,6 @@ class ApplicationUrls:
         )
 
     @staticmethod
-    @app.route("/notification/page/<int:page>")
     @app.route("/notification")
     @login_required
     def url_all_notification(page=1):
