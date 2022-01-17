@@ -1,15 +1,10 @@
 from project.app_config.database import app
 
 
-class SysAdminService:
+class AdminService:
     def __init__(self, database):
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.debug(" SysAdminService [init]")
-        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.info(" SysAdminService [ready]")
-        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" AdminService [init]")
 
     def database_dump(self):
         app.logger.info("-----------------------------------------------------------")

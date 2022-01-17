@@ -7,7 +7,7 @@ from project.app_config.database import items_per_page
 
 
 class Notification(db.Model):
-    __tablename__ = "notification"
+    __tablename__ = "app_notification"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint(

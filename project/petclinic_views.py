@@ -10,7 +10,7 @@ from project.app_config.database import app, db, login_manager, items_per_page
 from project.app_user.user import LoginForm, User
 from project.app_user.user_service import UserService
 from project.app_web.web_model_transient import WebPageContent
-from project.app_web.admin_services import SysAdminService
+from project.app_web.admin_services import AdminService
 from project.petclinic_owner.owner_service import OwnerService
 from project.petclinic_pet.pet_service import PetService
 from project.petclinic_pettype.pettype_service import PetTypeService
@@ -29,7 +29,7 @@ vet_service = VetService(db)
 specialty_service = SpecialtyService(db)
 
 notification_service = NotificationService(db)
-admin_service = SysAdminService(db)
+admin_service = AdminService(db)
 user_service = UserService(db)
 
 app_user = Blueprint(
@@ -133,7 +133,7 @@ class ApplicationUrls:
         page_info = WebPageContent("All", "Notifications")
         page_data = Notification.notifications_get(page)
         return render_template(
-            "app_all/../templates/app_notification/notification/app_all_notification.html",
+            "app_notification/notification/app_all_notification.html",
             page_data=page_data,
             page_info=page_info)
 
