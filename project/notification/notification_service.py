@@ -1,5 +1,5 @@
 from project.config.database import app
-from project.notification.transaction_model import Task
+from project.notification.notification import Task
 
 
 class TaskService:
