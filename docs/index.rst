@@ -16,12 +16,12 @@ Welcome to flask_covid19's documentation!
    db/PostgresSQL.md
    TODO.md
 
-.. sqla-model:: project.petclinic_owner.owner import Owner
-.. sqla-model:: project.petclinic_pet.pet import Pet
-.. sqla-model:: project.petclinic_pettype.pettype import PetType
-.. sqla-model:: project.petclinic_specialty.specialty import Specialty
-.. sqla-model:: project.petclinic_vet.vet import Vet
-.. sqla-model:: project.petclinic_visit.visit import Visit
+.. sqla-model:: project.petclinic_owner.owner.Owner
+.. sqla-model:: project.petclinic_pet.pet.Pet
+.. sqla-model:: project.petclinic_pettype.pettype.PetType
+.. sqla-model:: project.petclinic_specialty.specialty.Specialty
+.. sqla-model:: project.petclinic_vet.vet.Vet
+.. sqla-model:: project.petclinic_visit.visit.Visit
 
 .. uml:: uml/Domain_Class_Modell.png
 .. uml:: uml/use_cases.puml
