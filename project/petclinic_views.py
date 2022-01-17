@@ -54,7 +54,7 @@ class ApplicationUrls:
     def url_home():
         page_info = WebPageContent("Home", "Petclinic")
         return render_template(
-            "app_application/page_home.html",
+            "app_web/page_home.html",
             page_info=page_info
         )
 
@@ -68,7 +68,7 @@ class ApplicationUrls:
     def url_admin_index():
         page_info = WebPageContent("Admin", "Petclinic")
         return render_template(
-            "app_application/index.html",
+            "app_web/index.html",
             page_info=page_info
         )
 
@@ -133,9 +133,10 @@ class ApplicationUrls:
     def url_all_notification(page=1):
         page_info = WebPageContent("All", "Notifications")
         page_data = Notification.notifications_get(page)
-        return render_template("app_all/notification/app_all_notification.html",
-                               page_data=page_data,
-                               page_info=page_info)
+        return render_template(
+            "app_all/../templates/app_notification/notification/app_all_notification.html",
+            page_data=page_data,
+            page_info=page_info)
 
     @staticmethod
     @app.route("/notification/read/page/<int:page>")
