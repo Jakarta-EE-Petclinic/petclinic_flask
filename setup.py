@@ -23,18 +23,18 @@ def get_version():
     return re.search(pattern, contents, re.MULTILINE).group(1)
 
 
-scripts_dir = "project" + os.sep + "app_bootstrap" + os.sep + "scripts" + os.sep
+scripts_dir = "scripts" + os.sep
 
 pip_requirements_in_dir = (
-    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_in"
+    "requirements" + os.sep + "in"
 )
 
 pip_requirements_linux_dir = (
-    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_linux"
+    "requirements" + os.sep + "linux"
 )
 
 pip_requirements_windows_dir = (
-    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_windows"
+    "requirements" + os.sep + "windows"
 )
 
 
@@ -188,16 +188,6 @@ def run_npm_install():
             logging.info("return_code: " + str(return_code))
         else:
             logging.error("return_code: " + str(return_code))
-    return None
-
-
-def get_python_requirements_from_txt():
-    my_cmd = ["bash", "scripts" + os.sep + "script_get_python_requirements_from_txt.sh"]
-    return_code = subprocess.call(my_cmd, shell=True)
-    if return_code == 0:
-        logging.info("return_code: " + str(return_code))
-    else:
-        logging.error("return_code: " + str(return_code))
     return None
 
 

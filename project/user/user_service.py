@@ -1,6 +1,6 @@
 from project.config.database import app
-from project.user.user_model import LoginForm
-from project.user.user_model import User
+from project.user.user import LoginForm
+from project.user.user import User
 
 
 class UserService:
