@@ -23,8 +23,6 @@ def get_version():
     return re.search(pattern, contents, re.MULTILINE).group(1)
 
 
-scripts_dir = "scripts" + os.sep
-
 pip_requirements_in_dir = (
     "requirements" + os.sep + "in"
 )
@@ -118,13 +116,6 @@ requires_dev = [
     "cx_Oracle",
     "wget",
     "email_validator",
-    "celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.2.2",
-    "dataframetodb",
-    "pangres",
-    "scipy",
-    "matplotlib",
-    "statsmodels",
-    "pandas",
 ] + pytest_runner
 
 
@@ -230,9 +221,5 @@ setup(
     install_requires=requires_dev,
     setup_requires=requires_build,
     tests_require=requires_test,
-    scripts=[
-        scripts_dir + "script_setup_requirements.py",
-        scripts_dir + "script_npm_install.py",
-    ],
     python_requires=">= 3.9",
 )

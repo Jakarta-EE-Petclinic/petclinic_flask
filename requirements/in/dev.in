@@ -19,10 +19,3 @@ mariadb
 cx_Oracle
 wget
 email_validator
-celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.2.2
-dataframetodb
-pangres
-scipy
-matplotlib
-statsmodels
-pandas
