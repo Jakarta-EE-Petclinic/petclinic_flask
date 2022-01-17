@@ -2,6 +2,7 @@ wheel
 build
 pip-tools
 pre-commit
+pip-audit
 tox
 toml
 pipenv>=2022.1.8

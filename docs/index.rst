@@ -6,16 +6,8 @@
 Welcome to flask_covid19's documentation!
 =========================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   README.md
-   CHANGES.md
-   TODO.md
-   db/MariadDB.md
-   db/PostgresSQL.md
-
+.. sqla-model:: project.app_notification.notification.Notification
+.. sqla-model:: project.app_user.user.User
 .. sqla-model:: project.petclinic_owner.owner.Owner
 .. sqla-model:: project.petclinic_pet.pet.Pet
 .. sqla-model:: project.petclinic_pettype.pettype.PetType
@@ -25,6 +17,16 @@ Welcome to flask_covid19's documentation!
 
 .. uml:: uml/Domain_Class_Modell.png
 .. uml:: uml/use_cases.puml
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   README.md
+   CHANGES.md
+   TODO.md
+   db/MariadDB.md
+   db/PostgresSQL.md
 
 Indices and tables
 ==================

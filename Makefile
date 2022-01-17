@@ -72,6 +72,8 @@ clean_windows:
 pip_check:
 	@echo "pip_check"
 	$(PYTHON) -m pip check
+	pip-audit
+
 
 pip_compile_windows:
 	@echo "------------------"
