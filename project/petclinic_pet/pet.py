@@ -6,7 +6,7 @@ from project.app_config.database import db, items_per_page
 class Pet(db.Model):
     __tablename__ = "petclinic_pet"
 
-    all_entity_id_seq = Sequence('pet_id_seq')
+    all_entity_id_seq = Sequence('id_seq_petclinic_pet')
     id = db.Column(db.Integer,
                    all_entity_id_seq,
                    server_default=all_entity_id_seq.next_value(),

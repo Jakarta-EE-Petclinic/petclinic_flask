@@ -21,14 +21,16 @@ from project.petclinic_visit.visit_service import VisitService
 from project.app_notification.notification import Notification
 from project.app_notification.notification_service import NotificationService
 
-task_service = NotificationService(db)
+
 owner_service = OwnerService(db)
 pet_service = PetService(db)
-pet_type_service = PetTypeService(db)
+pettype_service = PetTypeService(db)
 visit_service = VisitService(db)
 vet_service = VetService(db)
 specialty_service = SpecialtyService(db)
-sys_admin_service = SysAdminService(db)
+
+notification_service = NotificationService(db)
+admin_service = SysAdminService(db)
 user_service = UserService(db)
 
 app_user = Blueprint(
