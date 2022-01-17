@@ -34,9 +34,10 @@ clean_linux:
 	@echo "--------------------"
 	rm -rf .eggs
 	rm -rf project.egg-info
-	rm -rf flask_covid19.egg-info
+	rm -rf flask_petclinic.egg-info
 	rm -rf build
 	rm -rf dist
+	rm -rf .pytest_cache
 	rm -rf .checkmate
 	rm -rf node_modules
 	rm -rf broker
