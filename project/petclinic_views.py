@@ -20,7 +20,7 @@ from project.petclinic_owner.owner import Owner
 from project.petclinic_owner.owner_service import OwnerService
 from project.petclinic_pet.pet import Pet
 from project.petclinic_pet.pet_service import PetService
-from project.petclinic_pettype.pettype import PetType
+from project.petclinic_pettype.pettype import PetType, PetTypeForm
 from project.petclinic_pettype.pettype_service import PetTypeService
 from project.petclinic_specialty.specialty import Specialty, SpecialtyForm
 from project.petclinic_specialty.specialty_service import SpecialtyService
@@ -105,10 +105,29 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/pettype")
-    def url_pettype_index():
+    def url_pettype_index(page=1):
         page_info = WebPageContent("petclinic_pettype", "index")
+        page_data = PetType.get_all(page)
         return render_template(
             "petclinic_pettype/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/pettype/new", methods=['GET', 'POST'])
+    def url_pettype_new():
+        form = PetTypeForm()
+        if form.validate_on_submit():
+            o = PetType()
+            o.name = form.name.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_pettype_index'))
+        page_info = WebPageContent("petclinic_pettype", "new")
+        return render_template(
+            "petclinic_pettype/new.html",
+            form=form,
             page_info=page_info
         )
 
@@ -143,7 +162,7 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/specialty/new" , methods=['GET', 'POST'])
-    def url_specialty_new_form():
+    def url_specialty_new():
         form = SpecialtyForm()
         if form.validate_on_submit():
             o = Specialty()

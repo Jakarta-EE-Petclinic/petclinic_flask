@@ -18,5 +18,29 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_pettype/index_pagination.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_pettype/index_table.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_pettype/index_pagination.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <a class="page-link" href="{{ url_for('url_pettype_new') }}">
+                add New PetType
+              </a>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
