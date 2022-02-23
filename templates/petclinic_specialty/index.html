@@ -14,16 +14,31 @@
                       Python Flask Version of Spring Petclinic
                       with SQLAlchemy, Celery et al.
                     </p>
-                    <p>
-                      
-                    </p>
-                    <p>
-                      <a class="page-link"
-                          href="{{ url_for('url_specialty_new_form') }}">
-                            + New Specialty
-                        </a>
-                    </p>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_specialty/index_pagination.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_specialty/index_table.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_specialty/index_pagination.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <a class="page-link" href="{{ url_for('url_specialty_new_form') }}">
+                add New Specialty
+              </a>
             </div>
         </div>
     </div>

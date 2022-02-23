@@ -134,12 +134,12 @@ class ApplicationUrls:
     @app.route("/specialty")
     def url_specialty_index(page=1):
         page_info = WebPageContent("petclinic_specialty", "index")
-        specialty_list = Specialty.get_all(page)
-        for o in specialty_list.items:
+        page_data = Specialty.get_all(page)
+        for o in page_data.items:
             logging.info(o.name)
         return render_template(
             "petclinic_specialty/index.html",
-            specialty_list=specialty_list,
+            page_data=page_data,
             page_info=page_info
         )
 
