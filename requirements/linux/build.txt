@@ -6,7 +6,7 @@
 #
 argparse==1.4.0
     # via pytoolbox
-backports.entry-points-selectable==1.1.1
+backports-entry-points-selectable==1.1.1
     # via virtualenv
 build==0.7.0
     # via -r requirements/in/build.in
@@ -69,7 +69,7 @@ pip-api==0.0.26
     # via pip-audit
 pip-audit==1.1.2
     # via -r requirements/in/build.in
-pip-tools==6.4.0
+pip-tools==6.5.1
     # via -r requirements/in/build.in
 pipenv==2022.1.8
     # via -r requirements/in/build.in
