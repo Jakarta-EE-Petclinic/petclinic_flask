@@ -10,12 +10,13 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from project.app_config import config
 from project.app_config import pytestconfig
-
+from flask_wtf.csrf import CSRFProtect
 
 class PetclinicApplication:
     def __init__(self, testing=False):
         self.app = Flask("flask_petclinic")
         self.app_cors = CORS()
+        self.csrf = CSRFProtect()
         if testing:
             self.app.config.from_object(pytestconfig)
         else:
@@ -29,7 +30,8 @@ class PetclinicApplication:
             self.db,
             self.app_cors,
             self.login_manager,
-            self.app_bootstrap
+            self.app_bootstrap,
+            self.csrf
         ]
         for oo in oo_list:
             oo.init_app(self.app)

@@ -15,13 +15,11 @@
                       with SQLAlchemy, Celery et al.
                     </p>
                     <p>
-                      
-                    </p>
-                    <p>
-                      <a class="page-link"
-                          href="{{ url_for('url_specialty_new_form') }}">
-                            + New Specialty
-                        </a>
+                      <form method="POST" enctype="multipart/form-data">
+                        {{ form.csrf_token }}
+                        {{ form.name }}
+                        <input type="submit" value="Save New Specialty" class="page-link">
+                      </form>
                     </p>
                 </div>
             </div>

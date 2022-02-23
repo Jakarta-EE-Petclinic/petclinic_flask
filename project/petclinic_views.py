@@ -1,3 +1,5 @@
+import logging
+
 import flask
 from flask import Blueprint, flash
 from flask import redirect
@@ -20,7 +22,7 @@ from project.petclinic_pet.pet import Pet
 from project.petclinic_pet.pet_service import PetService
 from project.petclinic_pettype.pettype import PetType
 from project.petclinic_pettype.pettype_service import PetTypeService
-from project.petclinic_specialty.specialty import Specialty
+from project.petclinic_specialty.specialty import Specialty, SpecialtyForm
 from project.petclinic_specialty.specialty_service import SpecialtyService
 from project.petclinic_vet.vet import Vet
 from project.petclinic_vet.vet_service import VetService
@@ -130,10 +132,31 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/specialty")
-    def url_specialty_index():
+    def url_specialty_index(page=1):
         page_info = WebPageContent("petclinic_specialty", "index")
+        specialty_list = Specialty.get_all(page)
+        for o in specialty_list.items:
+            logging.info(o.name)
         return render_template(
             "petclinic_specialty/index.html",
+            specialty_list=specialty_list,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/specialty/new" , methods=['GET', 'POST'])
+    def url_specialty_new_form():
+        form = SpecialtyForm()
+        if form.validate_on_submit():
+            o = Specialty()
+            o.name = form.name.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_specialty_index'))
+        page_info = WebPageContent("petclinic_specialty", "new")
+        return render_template(
+            "petclinic_specialty/new.html",
+            form=form,
             page_info=page_info
         )
 

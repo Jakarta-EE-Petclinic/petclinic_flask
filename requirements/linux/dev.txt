@@ -108,7 +108,9 @@ flask-sqlalchemy==2.5.1
     #   flask-migrate
     #   pytest-flask-sqlalchemy
 flask-wtf==1.0.0
-    # via flask-bs4
+    # via
+    #   -r requirements/in/dev.in
+    #   flask-bs4
 fonttools==4.28.3
     # via matplotlib
 greenlet==1.1.2

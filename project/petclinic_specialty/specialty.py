@@ -1,6 +1,12 @@
 from sqlalchemy import Sequence
+from flask_wtf import FlaskForm
+from wtforms import StringField
 
 from project.app_config.database import db, items_per_page
+
+
+class SpecialtyForm(FlaskForm):
+    name = StringField('Name')
 
 
 class Specialty(db.Model):

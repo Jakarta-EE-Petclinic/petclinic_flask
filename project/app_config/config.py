@@ -2,8 +2,9 @@
 import os
 import socket
 
-WTF_CSRF_ENABLED = True
 DEBUG = True
+WTF_CSRF_ENABLED = True
+WTF_CSRF_SECRET_KEY = 'hgd76j5gd7h5gf768h5g$%$§%'
 SECRET_KEY = "vfdjv423ndf654&%%"
 SQLALCHEMY_DATABASE_USER = "flask_petclinic"
 SQLALCHEMY_DATABASE_PW = "flask_petclinicpwd"
