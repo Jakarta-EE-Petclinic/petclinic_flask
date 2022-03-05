@@ -2,11 +2,13 @@
                 <table class="table table-hover table-striped table-dark">
                     <thead class="table-secondary">
                         <tr>
-                            <th scope="col">first_name</th>
-                            <th scope="col">last_name</th>
-                            <th scope="col">address</th>
+                            <th scope="col">first name</th>
+                            <th scope="col">last name</th>
+                            <th scope="col">street address</th>
+                            <th scope="col">zip code</th>
                             <th scope="col">city</th>
                             <th scope="col">telephone</th>
+                            <th scope="col">email</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -14,19 +16,23 @@
                         <tr>
                             <td>{{ o.first_name }}</td>
                             <td>{{ o.last_name }}</td>
-                            <td>{{ o.address }}</td>
+                            <td>{{ o.street_address }}</td>
+                            <td>{{ o.zip_code }}</td>
                             <td>{{ o.city }}</td>
                             <td>{{ o.telephone }}</td>
+                            <td>{{ o.email }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                     <tfoot class="table-secondary">
                         <tr>
-                            <th scope="col">first_name</th>
-                            <th scope="col">last_name</th>
-                            <th scope="col">address</th>
+                            <th scope="col">first name</th>
+                            <th scope="col">last name</th>
+                            <th scope="col">street address</th>
+                            <th scope="col">zip code</th>
                             <th scope="col">city</th>
                             <th scope="col">telephone</th>
+                            <th scope="col">email</th>
                         </tr>
                     </tfoot>
                 </table>

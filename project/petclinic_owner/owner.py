@@ -2,15 +2,17 @@ from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page
 from flask_wtf import FlaskForm
-from wtforms import StringField, TelField
+from wtforms import StringField, TelField, EmailField
 
 
 class OwnerForm(FlaskForm):
     first_name = StringField('First Name')
     last_name = StringField('Last Name')
-    address = StringField('Address')
+    street_address = StringField('Address')
+    zip_code = StringField('ZIP Code')
     city = StringField('City')
     telephone = TelField('Telephone')
+    email = EmailField('Email')
 
 
 class Owner(db.Model):
@@ -23,9 +25,11 @@ class Owner(db.Model):
                    primary_key=True)
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
-    address = db.Column(db.String(1024), nullable=False)
+    street_address = db.Column(db.String(1024), nullable=False)
+    zip_code = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     telephone = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
 
     @classmethod
     def remove_all(cls):
