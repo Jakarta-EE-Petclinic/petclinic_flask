@@ -104,11 +104,11 @@ class ApplicationUrls:
             o = Owner()
             o.first_name = form.first_name.data
             o.last_name = form.last_name.data
-            o.address = form.street_address.data
-            o.city = form.zip_code.data
-            o.telephone = form.city.data
+            o.street_address = form.street_address.data
+            o.zip_code = form.zip_code.data
+            o.city = form.city.data
             o.telephone = form.telephone.data
-            o.telephone = form.email.data
+            o.email = form.email.data
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_owner_index'))
