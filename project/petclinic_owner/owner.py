@@ -6,11 +6,11 @@ from wtforms import StringField, TelField
 
 
 class OwnerForm(FlaskForm):
-    first_name = StringField('first_name')
-    last_name = StringField('last_name')
-    address = StringField('address')
-    city = StringField('city')
-    telephone = TelField('telephone')
+    first_name = StringField('First Name')
+    last_name = StringField('Last Name')
+    address = StringField('Address')
+    city = StringField('City')
+    telephone = TelField('Telephone')
 
 
 class Owner(db.Model):
