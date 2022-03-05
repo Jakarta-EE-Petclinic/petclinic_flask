@@ -1,6 +1,13 @@
 from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page
+from flask_wtf import FlaskForm
+from wtforms import StringField, DateField
+
+
+class PetForm(FlaskForm):
+    name = StringField('Name')
+    date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
 
 
 class Pet(db.Model):
@@ -12,8 +19,7 @@ class Pet(db.Model):
                    server_default=all_entity_id_seq.next_value(),
                    primary_key=True)
     name = db.Column(db.String(255), nullable=False)
-    dateofbirth = db.Column(db.Date, nullable=False)
-
+    date_of_birth = db.Column(db.Date, nullable=False)
 
     @classmethod
     def remove_all(cls):

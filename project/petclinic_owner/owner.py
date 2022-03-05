@@ -1,6 +1,16 @@
 from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page
+from flask_wtf import FlaskForm
+from wtforms import StringField, TelField
+
+
+class OwnerForm(FlaskForm):
+    first_name = StringField('first_name')
+    last_name = StringField('last_name')
+    address = StringField('address')
+    city = StringField('city')
+    telephone = TelField('telephone')
 
 
 class Owner(db.Model):

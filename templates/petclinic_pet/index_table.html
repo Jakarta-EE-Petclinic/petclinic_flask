@@ -1,0 +1,24 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">name</th>
+                            <th scope="col">date_of_birth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for o in page_data.items %}
+                        <tr>
+                            <td>{{ o.name }}</td>
+                            <td>{{ o.date_of_birth }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        <tr>
+                            <th scope="col">name</th>
+                            <th scope="col">date_of_birth</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                </div>

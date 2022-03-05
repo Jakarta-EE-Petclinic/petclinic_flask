@@ -16,9 +16,9 @@ from project.app_web.admin_services import AdminService
 from project.app_notification.notification import Notification
 from project.app_notification.notification_service import NotificationService
 
-from project.petclinic_owner.owner import Owner
+from project.petclinic_owner.owner import Owner, OwnerForm
 from project.petclinic_owner.owner_service import OwnerService
-from project.petclinic_pet.pet import Pet
+from project.petclinic_pet.pet import Pet, PetForm
 from project.petclinic_pet.pet_service import PetService
 from project.petclinic_pettype.pettype import PetType, PetTypeForm
 from project.petclinic_pettype.pettype_service import PetTypeService
@@ -26,7 +26,7 @@ from project.petclinic_specialty.specialty import Specialty, SpecialtyForm
 from project.petclinic_specialty.specialty_service import SpecialtyService
 from project.petclinic_vet.vet import Vet, VetForm
 from project.petclinic_vet.vet_service import VetService
-from project.petclinic_visit.visit import Visit
+from project.petclinic_visit.visit import Visit, VisitForm
 from project.petclinic_visit.visit_service import VisitService
 
 
@@ -87,19 +87,62 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/owner")
-    def url_owner_index():
+    def url_owner_index(page=1):
         page_info = WebPageContent("petclinic_owner", "index")
+        page_data = Owner.get_all(page)
         return render_template(
             "petclinic_owner/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/owner/new", methods=['GET', 'POST'])
+    def url_owner_new():
+        form = OwnerForm()
+        if form.validate_on_submit():
+            o = Owner()
+            o.first_name = form.first_name.data
+            o.last_name = form.last_name.data
+            o.address = form.address.data
+            o.city = form.city.data
+            o.telephone = form.telephone.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_owner_index'))
+        page_info = WebPageContent("petclinic_owner", "new")
+        return render_template(
+            "petclinic_owner/new.html",
+            form=form,
             page_info=page_info
         )
 
     @staticmethod
     @app.route("/pet")
-    def url_pet_index():
+    def url_pet_index(page=1):
         page_info = WebPageContent("petclinic_pet", "index")
+        page_data = PetType.get_all(page)
         return render_template(
             "petclinic_pet/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/pet/new", methods=['GET', 'POST'])
+    def url_pet_new():
+        form = PetForm()
+        if form.validate_on_submit():
+            o = Pet()
+            o.name = form.name.data
+            o.date_of_birth = form.date_of_birth.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_pet_index'))
+        page_info = WebPageContent("petclinic_pet", "new")
+        return render_template(
+            "petclinic_pet/new.html",
+            form=form,
             page_info=page_info
         )
 
@@ -133,10 +176,30 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/visit")
-    def url_visit_index():
+    def url_visit_index(page=1):
         page_info = WebPageContent("petclinic_visit", "index")
+        page_data = Visit.get_all(page)
         return render_template(
             "petclinic_visit/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/visit/new", methods=['GET', 'POST'])
+    def url_visit_new():
+        form = VisitForm()
+        if form.validate_on_submit():
+            o = Visit()
+            o.datum = form.datum.data
+            o.information = form.information.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_visit_index'))
+        page_info = WebPageContent("petclinic_visit", "new")
+        return render_template(
+            "petclinic_visit/new.html",
+            form=form,
             page_info=page_info
         )
 
