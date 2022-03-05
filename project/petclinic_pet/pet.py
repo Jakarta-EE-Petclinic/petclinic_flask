@@ -2,12 +2,13 @@ from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField
+from wtforms import StringField, DateField, SubmitField
 
 
 class PetForm(FlaskForm):
     name = StringField('Name')
     date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
+    submit = SubmitField('Save New Pet')
 
 
 class Pet(db.Model):

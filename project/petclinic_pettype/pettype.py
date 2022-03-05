@@ -1,6 +1,6 @@
 from sqlalchemy import Sequence
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 from project.app_config.database import db, items_per_page
@@ -8,6 +8,7 @@ from project.app_config.database import db, items_per_page
 
 class PetTypeForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
+    submit = SubmitField('Save New PetType')
 
 
 class PetType(db.Model):

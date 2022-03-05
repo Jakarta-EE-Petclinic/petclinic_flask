@@ -2,7 +2,7 @@ from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page
 from flask_wtf import FlaskForm
-from wtforms import StringField, TelField, EmailField
+from wtforms import StringField, TelField, EmailField, SubmitField
 
 
 class OwnerForm(FlaskForm):
@@ -13,6 +13,7 @@ class OwnerForm(FlaskForm):
     city = StringField('City')
     telephone = TelField('Telephone')
     email = EmailField('Email')
+    submit = SubmitField('Save New Owner')
 
 
 class Owner(db.Model):
