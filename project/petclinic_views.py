@@ -123,7 +123,7 @@ class ApplicationUrls:
     @app.route("/pet")
     def url_pet_index(page=1):
         page_info = WebPageContent("petclinic_pet", "index")
-        page_data = PetType.get_all(page)
+        page_data = Pet.get_all(page)
         return render_template(
             "petclinic_pet/index.html",
             page_data=page_data,
