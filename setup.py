@@ -102,7 +102,7 @@ requires_dev = [
     "Flask-SQLAlchemy",
     "Flask-Migrate",
     "Flask-Cors",
-    "Flask-BS4>=5.0.0.1",
+    "Flask-BS4>=5.1.3.0",
     "Flask-Admin",
     "Flask-Login",
     "flask-login-dictabase-blueprint",
