@@ -3,11 +3,13 @@ from sqlalchemy import Sequence
 from project.app_config.database import db, items_per_page
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+from wtforms.validators import InputRequired
+
 
 
 class VetForm(FlaskForm):
-    first_name = StringField('First Name')
-    last_name = StringField('Last Name')
+    first_name = StringField('First Name', validators=[InputRequired()])
+    last_name = StringField('Last Name', validators=[InputRequired()])
     submit = SubmitField('Save New Vet')
 
 

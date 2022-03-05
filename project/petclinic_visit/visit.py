@@ -3,11 +3,12 @@ from sqlalchemy import Sequence
 from project.app_config.database import db, items_per_page
 from flask_wtf import FlaskForm
 from wtforms import DateField, TextAreaField, SubmitField
+from wtforms.validators import InputRequired
 
 
 class VisitForm(FlaskForm):
-    datum = DateField('Date of Visit', format='%Y-%m-%d')
-    information = TextAreaField('information')
+    datum = DateField('Date of Visit', format='%Y-%m-%d', validators=[InputRequired()])
+    information = TextAreaField('information', validators=[InputRequired()])
     submit = SubmitField('Save New Visit')
 
 

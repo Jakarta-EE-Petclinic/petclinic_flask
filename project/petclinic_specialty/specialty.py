@@ -1,12 +1,14 @@
 from sqlalchemy import Sequence
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+from wtforms.validators import InputRequired
+
 
 from project.app_config.database import db, items_per_page
 
 
 class SpecialtyForm(FlaskForm):
-    name = StringField('Name')
+    name = StringField('Name', validators=[InputRequired()])
     submit = SubmitField('Save New Specialty')
 
 
