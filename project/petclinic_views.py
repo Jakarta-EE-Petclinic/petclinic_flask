@@ -24,7 +24,7 @@ from project.petclinic_pettype.pettype import PetType, PetTypeForm
 from project.petclinic_pettype.pettype_service import PetTypeService
 from project.petclinic_specialty.specialty import Specialty, SpecialtyForm
 from project.petclinic_specialty.specialty_service import SpecialtyService
-from project.petclinic_vet.vet import Vet
+from project.petclinic_vet.vet import Vet, VetForm
 from project.petclinic_vet.vet_service import VetService
 from project.petclinic_visit.visit import Visit
 from project.petclinic_visit.visit_service import VisitService
@@ -142,10 +142,30 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/vet")
-    def url_vet_index():
+    def url_vet_index(page=1):
         page_info = WebPageContent("petclinic_vet", "index")
+        page_data = Vet.get_all(page)
         return render_template(
             "petclinic_vet/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/vet/new", methods=['GET', 'POST'])
+    def url_vet_new():
+        form = VetForm()
+        if form.validate_on_submit():
+            o = Vet()
+            o.first_name = form.first_name.data
+            o.last_name = form.last_name.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_vet_index'))
+        page_info = WebPageContent("petclinic_vet", "new")
+        return render_template(
+            "petclinic_vet/new.html",
+            form=form,
             page_info=page_info
         )
 
@@ -161,7 +181,7 @@ class ApplicationUrls:
         )
 
     @staticmethod
-    @app.route("/specialty/new" , methods=['GET', 'POST'])
+    @app.route("/specialty/new", methods=['GET', 'POST'])
     def url_specialty_new():
         form = SpecialtyForm()
         if form.validate_on_submit():

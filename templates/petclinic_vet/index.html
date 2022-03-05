@@ -17,6 +17,28 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_vet/index_pagination.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_vet/index_table.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'petclinic_vet/index_pagination.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <a class="page-link" href="{{ url_for('url_vet_new') }}">
+                add New Vet
+              </a>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

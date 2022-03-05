@@ -1,6 +1,13 @@
 from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page
+from flask_wtf import FlaskForm
+from wtforms import StringField
+
+
+class VetForm(FlaskForm):
+    first_name = StringField('First Name')
+    last_name = StringField('Last Name')
 
 
 class Vet(db.Model):
