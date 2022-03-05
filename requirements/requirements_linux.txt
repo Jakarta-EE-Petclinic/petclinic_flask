@@ -8,7 +8,6 @@ banal==1.0.6
 billiard==3.6.4.0
 build==0.7.0
 CacheControl==0.12.10
-celery==5.2.1
 certifi==2021.10.8
 cffi==1.15.0
 cfgv==3.3.1
