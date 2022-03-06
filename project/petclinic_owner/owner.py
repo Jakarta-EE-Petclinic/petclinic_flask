@@ -3,7 +3,7 @@ from sqlalchemy import Sequence
 from project.app_config.database import db, items_per_page
 from flask_wtf import FlaskForm
 from wtforms import StringField, TelField, EmailField, SubmitField
-from wtforms.validators import InputRequired
+from wtforms.validators import InputRequired, Email
 
 
 class OwnerForm(FlaskForm):
@@ -13,7 +13,7 @@ class OwnerForm(FlaskForm):
     zip_code = StringField('ZIP Code', validators=[InputRequired()])
     city = StringField('City', validators=[InputRequired()])
     telephone = TelField('Telephone', validators=[InputRequired()])
-    email = EmailField('Email', validators=[InputRequired()])
+    email = EmailField('Email', validators=[InputRequired(), Email()])
     submit = SubmitField('Save New Owner', validators=[InputRequired()])
 
 

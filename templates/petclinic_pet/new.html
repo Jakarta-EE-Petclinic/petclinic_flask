@@ -17,10 +17,9 @@
                     <p>
                       <form method="POST" enctype="multipart/form-data">
                         {{ form.csrf_token }}
-                        {{ form.name }}
-                        {{ form.date_of_birth }}
+                        {{ form.name.label }} {{ form.name }}
+                        {{ form.date_of_birth.label }} {{ form.date_of_birth }}
                         {{ form.submit }}
-                        <input type="submit" value="Save New Pet" class="page-link">
                       </form>
                     </p>
                 </div>

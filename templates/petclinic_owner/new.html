@@ -17,13 +17,13 @@
                     <p>
                       <form method="POST" enctype="multipart/form-data">
                         {{ form.csrf_token }}
-                        {{ form.first_name }}
-                        {{ form.last_name }}
-                        {{ form.street_address }}
-                        {{ form.zip_code }}
-                        {{ form.city }}
-                        {{ form.telephone }}
-                        {{ form.email }}
+                        {{ form.first_name.label }} {{ form.first_name }}
+                        {{ form.last_name.label }} {{ form.last_name }}
+                        {{ form.street_address.label }} {{ form.street_address }}
+                        {{ form.zip_code.label }} {{ form.zip_code }}
+                        {{ form.city.label }} {{ form.city }}
+                        {{ form.telephone.label }} {{ form.telephone }}
+                        {{ form.email.label }} {{ form.email }}
                         {{ form.submit }}
                       </form>
                     </p>

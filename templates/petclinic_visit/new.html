@@ -17,8 +17,8 @@
                     <p>
                       <form method="POST" enctype="multipart/form-data">
                         {{ form.csrf_token }}
-                        {{ form.datum }}
-                        {{ form.information }}
+                        {{ form.datum.label }} {{ form.datum }}
+                        {{ form.information.label }} {{ form.information }}
                         {{ form.submit }}
                       </form>
                     </p>
