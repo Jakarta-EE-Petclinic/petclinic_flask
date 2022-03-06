@@ -79,6 +79,111 @@ class ApplicationUrls:
         )
 
     @staticmethod
+    @app.route("/notification")
+    @login_required
+    def url_all_notification(page=1):
+        page_info = WebPageContent("All", "Notifications")
+        page_data = Notification.notifications_get(page)
+        return render_template(
+            "app_notification/notification/app_all_notification.html",
+            page_data=page_data,
+            page_info=page_info)
+
+    @staticmethod
+    @app.route("/notification/read/page/<int:page>")
+    @app.route("/notification/read")
+    @login_required
+    def url_all_notification_mark_read(page=1):
+        page_data = Notification.notifications_get(page)
+        for o in page_data.items:
+            o.read()
+            db.session.add(o)
+        db.session.commit()
+        return redirect(url_for("url_all_notification"))
+
+    @staticmethod
+    @app.route("/login", methods=["GET"])
+    def login_form():
+        page_info = WebPageContent("app_user", "Login")
+        if current_user.is_authenticated:
+            return redirect(url_for("profile"))
+        form = LoginForm()
+        return flask.render_template(
+            "app_user/login.html",
+            form=form,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/login", methods=["POST"])
+    def login():
+        page_info = WebPageContent("USR", "Login")
+        if current_user.is_authenticated:
+            return redirect(url_for("profile"))
+        form = LoginForm()
+        if form.validate_on_submit():
+            user = User.query.filter_by(email=form.email.data).first()
+            if user is None or not user.check_password(form.password.data):
+                flash("Invalid username or password")
+                return redirect(url_for("login"))
+            login_user(user, remember=form.remember_me.data)
+            return redirect(url_for("profile"))
+        return flask.render_template("app_user/login.html", form=form, page_info=page_info)
+
+    @staticmethod
+    @app.route("/logout")
+    @login_required
+    def logout():
+        logout_user()
+        return redirect(url_for("login"))
+
+    @staticmethod
+    @app.route("/profile")
+    @login_required
+    def profile():
+        page_info = WebPageContent("USR", "profile")
+        return flask.render_template("app_user/profile.html", page_info=page_info)
+
+    @staticmethod
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.get_by_id(user_id)
+
+    @staticmethod
+    @login_manager.unauthorized_handler
+    def unauthorized():
+        flash("not authorized")
+        return redirect(url_for("login"))
+
+    @staticmethod
+    @app.route("/info/page/<int:page>")
+    @app.route("/info")
+    def url_user_info(page=1):
+        page_info = WebPageContent("USR", "Info")
+        try:
+            page_data = User.get_all_as_page(page)
+        except OperationalError:
+            flash("No data in the database.")
+            page_data = None
+        return render_template(
+            "app_user/user_info.html", page_data=page_data, page_info=page_info
+        )
+
+    @staticmethod
+    @app_user.route("/tasks")
+    def url_user_tasks():
+        page_info = WebPageContent("USR", "Tasks")
+        return render_template("app_user/user_tasks.html", page_info=page_info)
+
+
+app_web_urls = ApplicationUrls()
+
+
+class DomainModelUrls:
+    def __init__(self):
+        app.logger.info(" DomainModelUrls [init]")
+
+    @staticmethod
     @app.route("/owner")
     def url_owner_index(page=1):
         page_info = WebPageContent("petclinic_owner", "index")
@@ -257,118 +362,5 @@ class ApplicationUrls:
             page_info=page_info
         )
 
-    @staticmethod
-    @app.route("/notification")
-    @login_required
-    def url_all_notification(page=1):
-        page_info = WebPageContent("All", "Notifications")
-        page_data = Notification.notifications_get(page)
-        return render_template(
-            "app_notification/notification/app_all_notification.html",
-            page_data=page_data,
-            page_info=page_info)
 
-    @staticmethod
-    @app.route("/notification/read/page/<int:page>")
-    @app.route("/notification/read")
-    @login_required
-    def url_all_notification_mark_read(page=1):
-        page_data = Notification.notifications_get(page)
-        for o in page_data.items:
-            o.read()
-            db.session.add(o)
-        db.session.commit()
-        return redirect(url_for("url_all_notification"))
-
-    @staticmethod
-    @app.route("/login", methods=["GET"])
-    def login_form():
-        page_info = WebPageContent("app_user", "Login")
-        if current_user.is_authenticated:
-            return redirect(url_for("profile"))
-        form = LoginForm()
-        return flask.render_template(
-            "app_user/login.html",
-            form=form,
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app.route("/login", methods=["POST"])
-    def login():
-        page_info = WebPageContent("USR", "Login")
-        if current_user.is_authenticated:
-            return redirect(url_for("profile"))
-        form = LoginForm()
-        if form.validate_on_submit():
-            user = User.query.filter_by(email=form.email.data).first()
-            if user is None or not user.check_password(form.password.data):
-                flash("Invalid username or password")
-                return redirect(url_for("login"))
-            login_user(user, remember=form.remember_me.data)
-            return redirect(url_for("profile"))
-        return flask.render_template("app_user/login.html", form=form, page_info=page_info)
-
-    @staticmethod
-    @app.route("/logout")
-    @login_required
-    def logout():
-        logout_user()
-        return redirect(url_for("login"))
-
-    @staticmethod
-    @app.route("/profile")
-    @login_required
-    def profile():
-        page_info = WebPageContent("USR", "profile")
-        return flask.render_template("app_user/profile.html", page_info=page_info)
-
-    @staticmethod
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.get_by_id(user_id)
-
-    @staticmethod
-    @login_manager.unauthorized_handler
-    def unauthorized():
-        flash("not authorized")
-        return redirect(url_for("login"))
-
-    @staticmethod
-    @app.route("/info/page/<int:page>")
-    @app.route("/info")
-    def url_user_info(page=1):
-        page_info = WebPageContent("USR", "Info")
-        try:
-            page_data = User.get_all_as_page(page)
-        except OperationalError:
-            flash("No data in the database.")
-            page_data = None
-        return render_template(
-            "app_user/user_info.html", page_data=page_data, page_info=page_info
-        )
-
-    @staticmethod
-    @app_user.route("/tasks")
-    def url_user_tasks():
-        page_info = WebPageContent("USR", "Tasks")
-        return render_template("app_user/user_tasks.html", page_info=page_info)
-
-
-app_web_urls = ApplicationUrls()
-
-# ------------------------------------------------------------------------------------
-# URLs Login and Logout
-# ------------------------------------------------------------------------------------
-
-
-class AppUserUrls:
-    def __init__(self):
-        app.logger.info(" AppUserUrls [init]")
-
-    # ---------------------------------------------------------------------------------
-    #  Url Routes Frontend
-    # ---------------------------------------------------------------------------------
-
-
-app_user_urls = AppUserUrls()
+domain_model_urls = DomainModelUrls()

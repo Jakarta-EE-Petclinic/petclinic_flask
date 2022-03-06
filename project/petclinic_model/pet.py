@@ -76,8 +76,6 @@ class PetForm(ModelForm):
     class Meta:
         model = Pet
 
-    owner = ModelFormField(OwnerForm)
-    pettype = ModelFormField(PetTypeForm)
     owner_select = QuerySelectField(
         'owner_select', [InputRequired()],
         Owner.find_all,
