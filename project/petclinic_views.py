@@ -8,10 +8,10 @@ from sqlalchemy.exc import OperationalError
 
 from project.app_config.database import app, db, login_manager
 
-from project.app_user.user import LoginForm, User, UserService
+from project.app_web.user import LoginForm, User, UserService
 from project.app_web.web_model_transient import WebPageContent
 from project.app_web.admin_services import AdminService
-from project.app_notification.notification import Notification, NotificationService
+from project.app_web.notification import Notification, NotificationService
 
 from project.petclinic_model.owner import Owner, OwnerForm, OwnerService
 from project.petclinic_model.pet import Pet, PetForm, PetService
