@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import and_, Sequence
 
-from project.app_config.database import db
+from project.app_config.database import db, app
 from project.app_config.database import items_per_page
 
 
@@ -167,3 +167,14 @@ class Notification(db.Model):
         for pd in page_data.items:
             pass
 
+
+class NotificationService:
+    def __init__(self, database):
+        self.__database = database
+        app.logger.info(" NotificationService  [init]")
+
+    def notifications_count(self):
+        return Notification.notifications_count()
+
+    def notifications_find(self):
+        return Notification.notifications_find()
