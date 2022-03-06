@@ -23,6 +23,9 @@ class Owner(db.Model):
     def get_name(self):
         return self.first_name + " " + self.last_name + ", " + self.city
 
+    def __str__(self):
+        return self.get_name()
+
     @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()

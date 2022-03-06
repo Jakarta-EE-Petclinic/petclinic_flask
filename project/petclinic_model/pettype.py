@@ -14,6 +14,9 @@ class PetType(db.Model):
                    primary_key=True)
     name = db.Column(db.String(255), nullable=False)
 
+    def __str__(self):
+        return self.name
+
     @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()

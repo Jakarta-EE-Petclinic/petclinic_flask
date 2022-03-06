@@ -4,6 +4,8 @@
                         <tr>
                             <th scope="col">name</th>
                             <th scope="col">date_of_birth</th>
+                            <th scope="col">pettype</th>
+                            <th scope="col">owner</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -11,6 +13,8 @@
                         <tr>
                             <td>{{ o.name }}</td>
                             <td>{{ o.date_of_birth }}</td>
+                            <td>{{ o.pettype }}</td>
+                            <td>{{ o.owner }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -18,6 +22,8 @@
                         <tr>
                             <th scope="col">name</th>
                             <th scope="col">date_of_birth</th>
+                            <th scope="col">pettype</th>
+                            <th scope="col">owner</th>
                         </tr>
                     </tfoot>
                 </table>
