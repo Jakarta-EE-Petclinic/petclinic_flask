@@ -1,25 +1,11 @@
 from sqlalchemy import Sequence
 
-from project.app_config.database import db, items_per_page
-from flask_wtf import FlaskForm
+from project.app_config.database import db, items_per_page, ModelForm
 from wtforms import StringField, DateField, SubmitField
 from wtforms.validators import InputRequired
 
 from project.petclinic_pettype.pettype import PetType
 from project.petclinic_owner.owner import Owner
-
-
-class PetForm(FlaskForm):
-    name = StringField(
-        'Name',
-        validators=[InputRequired()]
-    )
-    date_of_birth = DateField(
-        'Date of Birth',
-        validators=[InputRequired()],
-        format='%Y-%m-%d'
-    )
-    submit = SubmitField('Save New Pet')
 
 
 class Pet(db.Model):
@@ -84,3 +70,20 @@ class Pet(db.Model):
     @classmethod
     def find_by_id(cls, other_id):
         return cls.__query_all().filter(cls.id == other_id).one_or_none()
+
+
+class PetForm(ModelForm):
+    class Meta:
+        model = Pet
+
+    name = StringField(
+        'Name',
+        validators=[InputRequired()]
+    )
+    date_of_birth = DateField(
+        'Date of Birth',
+        validators=[InputRequired()],
+        format='%Y-%m-%d'
+    )
+    submit = SubmitField('Save New Pet')
+

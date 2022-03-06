@@ -1,20 +1,8 @@
 from sqlalchemy import Sequence
 
-from project.app_config.database import db, items_per_page
-from flask_wtf import FlaskForm
+from project.app_config.database import db, items_per_page, ModelForm
 from wtforms import StringField, TelField, EmailField, SubmitField
 from wtforms.validators import InputRequired, Email
-
-
-class OwnerForm(FlaskForm):
-    first_name = StringField('First Name', validators=[InputRequired()])
-    last_name = StringField('Last Name', validators=[InputRequired()])
-    street_address = StringField('Address', validators=[InputRequired()])
-    zip_code = StringField('ZIP Code', validators=[InputRequired()])
-    city = StringField('City', validators=[InputRequired()])
-    telephone = TelField('Telephone', validators=[InputRequired()])
-    email = EmailField('Email', validators=[InputRequired(), Email()])
-    submit = SubmitField('Save New Owner', validators=[InputRequired()])
 
 
 class Owner(db.Model):
@@ -66,3 +54,17 @@ class Owner(db.Model):
     @classmethod
     def find_by_id(cls, other_id):
         return cls.__query_all().filter(cls.id == other_id).one_or_none()
+
+
+class OwnerForm(ModelForm):
+    class Meta:
+        model = Owner
+
+    first_name = StringField('First Name', validators=[InputRequired()])
+    last_name = StringField('Last Name', validators=[InputRequired()])
+    street_address = StringField('Address', validators=[InputRequired()])
+    zip_code = StringField('ZIP Code', validators=[InputRequired()])
+    city = StringField('City', validators=[InputRequired()])
+    telephone = TelField('Telephone', validators=[InputRequired()])
+    email = EmailField('Email', validators=[InputRequired(), Email()])
+    submit = SubmitField('Save New Owner', validators=[InputRequired()])

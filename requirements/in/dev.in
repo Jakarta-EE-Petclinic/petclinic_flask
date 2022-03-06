@@ -14,7 +14,8 @@ Flask-Uploads
 Flask-Babel
 SQLAlchemy
 sqlalchemy-mixins
-WTForms-SQLAlchemy
+SQLAlchemy-Defaults
+WTForms-Alchemy
 ibm_db
 psycopg2
 mysql-connector-python

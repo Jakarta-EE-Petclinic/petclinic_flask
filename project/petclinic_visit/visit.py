@@ -1,17 +1,11 @@
 from sqlalchemy import Sequence
 
-from project.app_config.database import db, items_per_page
+from project.app_config.database import db, items_per_page, ModelForm
 from flask_wtf import FlaskForm
 from wtforms import DateField, TextAreaField, SubmitField
 from wtforms.validators import InputRequired
 
 from project.petclinic_pet.pet import Pet
-
-
-class VisitForm(FlaskForm):
-    datum = DateField('Date of Visit', format='%Y-%m-%d', validators=[InputRequired()])
-    information = TextAreaField('information', validators=[InputRequired()])
-    submit = SubmitField('Save New Visit')
 
 
 class Visit(db.Model):
@@ -67,3 +61,12 @@ class Visit(db.Model):
     @classmethod
     def find_by_id(cls, other_id):
         return cls.__query_all().filter(cls.id == other_id).one_or_none()
+
+
+class VisitForm(ModelForm):
+    class Meta:
+        model = Visit
+
+    datum = DateField('Date of Visit', format='%Y-%m-%d', validators=[InputRequired()])
+    information = TextAreaField('information', validators=[InputRequired()])
+    submit = SubmitField('Save New Visit')

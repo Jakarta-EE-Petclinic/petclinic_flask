@@ -11,6 +11,17 @@ from flask_sqlalchemy import SQLAlchemy
 from project.app_config import config
 from project.app_config import pytestconfig
 from flask_wtf.csrf import CSRFProtect
+from flask_wtf import FlaskForm
+from wtforms_alchemy import model_form_factory
+
+BaseModelForm = model_form_factory(FlaskForm)
+
+
+class ModelForm(BaseModelForm):
+    @classmethod
+    def get_session(cls):
+        return db.session
+
 
 class PetclinicApplication:
     def __init__(self, testing=False):

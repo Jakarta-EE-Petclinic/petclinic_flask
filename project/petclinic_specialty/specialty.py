@@ -1,15 +1,9 @@
 from sqlalchemy import Sequence
-from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired
 
 
-from project.app_config.database import db, items_per_page
-
-
-class SpecialtyForm(FlaskForm):
-    name = StringField('Name', validators=[InputRequired()])
-    submit = SubmitField('Save New Specialty')
+from project.app_config.database import db, items_per_page, ModelForm
 
 
 class Specialty(db.Model):
@@ -55,3 +49,11 @@ class Specialty(db.Model):
     @classmethod
     def find_by_id(cls, other_id):
         return cls.__query_all().filter(cls.id == other_id).one_or_none()
+
+
+class SpecialtyForm(ModelForm):
+    class Meta:
+        model = Specialty
+
+    name = StringField('Name', validators=[InputRequired()])
+    submit = SubmitField('Save New Specialty')
