@@ -1,8 +1,6 @@
 from sqlalchemy import Sequence
 
-from project.app_config.database import db, items_per_page, ModelForm
-from wtforms import StringField, TelField, EmailField, SubmitField
-from wtforms.validators import InputRequired, Email
+from project.app_config.database import db, items_per_page, ModelForm, app
 
 
 class Owner(db.Model):
@@ -60,11 +58,8 @@ class OwnerForm(ModelForm):
     class Meta:
         model = Owner
 
-    first_name = StringField('First Name', validators=[InputRequired()])
-    last_name = StringField('Last Name', validators=[InputRequired()])
-    street_address = StringField('Address', validators=[InputRequired()])
-    zip_code = StringField('ZIP Code', validators=[InputRequired()])
-    city = StringField('City', validators=[InputRequired()])
-    telephone = TelField('Telephone', validators=[InputRequired()])
-    email = EmailField('Email', validators=[InputRequired(), Email()])
-    submit = SubmitField('Save New Owner', validators=[InputRequired()])
+
+class OwnerService:
+    def __init__(self, database):
+        self.__database = database
+        app.logger.info("  OwnerService [init]")

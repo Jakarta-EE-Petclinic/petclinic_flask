@@ -1,9 +1,7 @@
 from sqlalchemy import Sequence
-from wtforms import StringField, SubmitField
-from wtforms.validators import InputRequired
 
 
-from project.app_config.database import db, items_per_page, ModelForm
+from project.app_config.database import db, items_per_page, ModelForm, app
 
 
 class Specialty(db.Model):
@@ -55,5 +53,8 @@ class SpecialtyForm(ModelForm):
     class Meta:
         model = Specialty
 
-    name = StringField('Name', validators=[InputRequired()])
-    submit = SubmitField('Save New Specialty')
+
+class SpecialtyService:
+    def __init__(self, database):
+        self.__database = database
+        app.logger.info(" SpecialtyService [init]")

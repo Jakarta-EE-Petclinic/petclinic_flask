@@ -1,11 +1,8 @@
 from sqlalchemy import Sequence
 
-from project.app_config.database import db, items_per_page, ModelForm
-from wtforms import StringField, DateField, SubmitField
-from wtforms.validators import InputRequired
-
-from project.petclinic_pettype.pettype import PetType
-from project.petclinic_owner.owner import Owner
+from project.app_config.database import db, items_per_page, ModelForm, app
+from project.petclinic_owner.owner import Owner, OwnerForm
+from project.petclinic_pettype.pettype import PetType, PetTypeForm
 
 
 class Pet(db.Model):
@@ -25,8 +22,7 @@ class Pet(db.Model):
         "Owner",
         lazy="joined",
         cascade="save-update",
-        order_by="asc(Owner.last_name)",
-        backref=db.backref('pets', lazy=True)
+        order_by="asc(Owner.last_name)"
     )
     pettype_id = db.Column(
         db.Integer, db.ForeignKey("petclinic_pettype.id"), nullable=False
@@ -77,14 +73,8 @@ class PetForm(ModelForm):
     class Meta:
         model = Pet
 
-    name = StringField(
-        'Name',
-        validators=[InputRequired()]
-    )
-    date_of_birth = DateField(
-        'Date of Birth',
-        validators=[InputRequired()],
-        format='%Y-%m-%d'
-    )
-    submit = SubmitField('Save New Pet')
 
+class PetService:
+    def __init__(self, database):
+        self.__database = database
+        app.logger.info(" PetService [init]")

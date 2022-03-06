@@ -1,8 +1,6 @@
 from sqlalchemy import Sequence
-from wtforms import StringField, SubmitField
-from wtforms.validators import InputRequired
 
-from project.app_config.database import db, items_per_page, ModelForm
+from project.app_config.database import db, items_per_page, ModelForm, app
 
 
 class PetType(db.Model):
@@ -54,5 +52,8 @@ class PetTypeForm(ModelForm):
     class Meta:
         model = PetType
 
-    name = StringField('Name', validators=[InputRequired()])
-    submit = SubmitField('Save New PetType')
+
+class PetTypeService:
+    def __init__(self, database):
+        self.__database = database
+        app.logger.info(" PetTypeService [init]")

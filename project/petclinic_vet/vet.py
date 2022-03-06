@@ -1,8 +1,6 @@
 from sqlalchemy import Sequence
 
-from project.app_config.database import db, items_per_page, ModelForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import InputRequired
+from project.app_config.database import db, items_per_page, ModelForm, app
 
 from project.petclinic_specialty.specialty import Specialty
 
@@ -79,6 +77,8 @@ class VetForm(ModelForm):
     class Meta:
         model = Vet
 
-    first_name = StringField('First Name', validators=[InputRequired()])
-    last_name = StringField('Last Name', validators=[InputRequired()])
-    submit = SubmitField('Save New Vet')
+
+class VetService:
+    def __init__(self, database):
+        self.__database = database
+        app.logger.info(" VetService [init]")

@@ -1,9 +1,6 @@
 from sqlalchemy import Sequence
 
-from project.app_config.database import db, items_per_page, ModelForm
-from flask_wtf import FlaskForm
-from wtforms import DateField, TextAreaField, SubmitField
-from wtforms.validators import InputRequired
+from project.app_config.database import db, items_per_page, ModelForm, app
 
 from project.petclinic_pet.pet import Pet
 
@@ -68,6 +65,8 @@ class VisitForm(ModelForm):
     class Meta:
         model = Visit
 
-    datum = DateField('Date of Visit', format='%Y-%m-%d', validators=[InputRequired()])
-    information = TextAreaField('information', validators=[InputRequired()])
-    submit = SubmitField('Save New Visit')
+
+class VisitService:
+    def __init__(self, database):
+        self.__database = database
+        app.logger.info(" VisitService [init]")
