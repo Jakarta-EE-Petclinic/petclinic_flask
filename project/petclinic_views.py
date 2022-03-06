@@ -189,7 +189,7 @@ class DomainModelUrls:
         page_info = WebPageContent("petclinic_owner", "index")
         page_data = Owner.get_all(page)
         return render_template(
-            "petclinic_model/petclinic_owner/index.html",
+            "petclinic_model/owner/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -212,7 +212,7 @@ class DomainModelUrls:
             return redirect(url_for('url_owner_index'))
         page_info = WebPageContent("petclinic_owner", "new")
         return render_template(
-            "petclinic_model/petclinic_owner/new.html",
+            "petclinic_model/owner/new.html",
             form=form,
             page_info=page_info
         )
