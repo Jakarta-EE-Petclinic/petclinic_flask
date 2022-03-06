@@ -1,10 +1,12 @@
 from sqlalchemy import Sequence
 from wtforms import SubmitField
-from wtforms_alchemy import ModelFormField
+from wtforms.validators import InputRequired
+from wtforms_alchemy import ModelFormField, QuerySelectField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 from project.petclinic_model.pettype import PetType, PetTypeForm
 from project.petclinic_model.owner import Owner, OwnerForm
+
 
 class Pet(db.Model):
     __tablename__ = "petclinic_pet"
@@ -76,6 +78,18 @@ class PetForm(ModelForm):
 
     owner = ModelFormField(OwnerForm)
     pettype = ModelFormField(PetTypeForm)
+    owner_select = QuerySelectField(
+        'owner_select', [InputRequired()],
+        Owner.find_all,
+        lambda x: x.id, lambda x: x.get_name(),
+        True, 'Bitte waehlen Sie einen Owner aus',
+    )
+    pettype_select = QuerySelectField(
+        'pettype_select', [InputRequired()],
+        PetType.find_all,
+        lambda x: x.id, lambda x: x.name,
+        True, 'Bitte waehlen Sie einen PetType aus',
+    )
     submit = SubmitField('Save New Pet')
 
 

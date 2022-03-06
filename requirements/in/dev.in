@@ -16,6 +16,7 @@ SQLAlchemy
 sqlalchemy-mixins
 SQLAlchemy-Defaults
 WTForms-Alchemy
+# wtforms-validators
 ibm_db
 psycopg2
 mysql-connector-python

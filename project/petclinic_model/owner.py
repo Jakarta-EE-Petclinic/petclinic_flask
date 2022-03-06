@@ -20,6 +20,9 @@ class Owner(db.Model):
     telephone = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False)
 
+    def get_name(self):
+        return self.first_name + " " + self.last_name + ", " + self.city
+
     @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()

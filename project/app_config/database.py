@@ -18,9 +18,16 @@ BaseModelForm = model_form_factory(FlaskForm)
 
 
 class ModelForm(BaseModelForm):
+
+    def __init__(self, request):
+        self.validate_method = (request.method == 'POST')
+
     @classmethod
     def get_session(cls):
         return db.session
+
+    def validate_on_submit(self):
+        return self.validate_method
 
 
 class PetclinicApplication:

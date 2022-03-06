@@ -1,5 +1,5 @@
 import flask
-from flask import Blueprint, Request, flash
+from flask import Blueprint, request, flash
 from flask import redirect
 from flask import render_template
 from flask import url_for
@@ -92,7 +92,7 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/owner/new", methods=['GET', 'POST'])
     def url_owner_new():
-        form = OwnerForm()
+        form = OwnerForm(request)
         if form.validate_on_submit():
             o = Owner()
             o.first_name = form.first_name.data
@@ -125,14 +125,14 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/pet/new", methods=['GET', 'POST'])
-    def url_pet_new(request: Request):
-        form = PetForm()
+    def url_pet_new():
+        form = PetForm(request)
         if form.validate_on_submit():
             o = Pet()
-            form = PetForm(request.POST)
-            form.populate_obj(o)
             o.name = form.name.data
             o.date_of_birth = form.date_of_birth.data
+            o.owner = form.owner_select.data
+            o.pettype = form.pettype_select.data
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_pet_index'))
@@ -157,7 +157,7 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/pettype/new", methods=['GET', 'POST'])
     def url_pettype_new():
-        form = PetTypeForm()
+        form = PetTypeForm(request)
         if form.validate_on_submit():
             o = PetType()
             o.name = form.name.data
@@ -185,7 +185,7 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/visit/new", methods=['GET', 'POST'])
     def url_visit_new():
-        form = VisitForm()
+        form = VisitForm(request)
         if form.validate_on_submit():
             o = Visit()
             o.datum = form.datum.data
@@ -214,7 +214,7 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/vet/new", methods=['GET', 'POST'])
     def url_vet_new():
-        form = VetForm()
+        form = VetForm(request)
         if form.validate_on_submit():
             o = Vet()
             o.first_name = form.first_name.data
@@ -243,7 +243,7 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/specialty/new", methods=['GET', 'POST'])
     def url_specialty_new():
-        form = SpecialtyForm()
+        form = SpecialtyForm(request)
         if form.validate_on_submit():
             o = Specialty()
             o.name = form.name.data
