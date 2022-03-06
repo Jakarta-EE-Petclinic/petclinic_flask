@@ -197,8 +197,8 @@ class DomainModelUrls:
     @staticmethod
     @app.route("/owner/new", methods=['GET', 'POST'])
     def url_owner_new():
-        form = OwnerForm(request)
-        if form.validate_on_submit():
+        form = OwnerForm()
+        if request.method == 'POST' and form.validate_on_submit():
             o = Owner()
             o.first_name = form.first_name.data
             o.last_name = form.last_name.data
@@ -223,7 +223,7 @@ class DomainModelUrls:
         page_info = WebPageContent("petclinic_pet", "index")
         page_data = Pet.get_all(page)
         return render_template(
-            "petclinic_model/petclinic_pet/index.html",
+            "petclinic_model/pet/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -231,11 +231,11 @@ class DomainModelUrls:
     @staticmethod
     @app.route("/pet/new", methods=['GET', 'POST'])
     def url_pet_new():
-        form = PetForm(request)
-        if form.validate_on_submit():
+        form = PetForm()
+        if request.method == 'POST' and form.validate_on_submit():
             o = Pet()
-            o.name = form.name.data
-            o.date_of_birth = form.date_of_birth.data
+            o.name = form.meta.name.data
+            o.date_of_birth = form.meta.date_of_birth.data
             o.owner = form.owner_select.data
             o.pettype = form.pettype_select.data
             db.session.add(o)
@@ -243,7 +243,7 @@ class DomainModelUrls:
             return redirect(url_for('url_pet_index'))
         page_info = WebPageContent("petclinic_pet", "new")
         return render_template(
-            "petclinic_model/petclinic_pet/new.html",
+            "petclinic_model/pet/new.html",
             form=form,
             page_info=page_info
         )
@@ -262,8 +262,8 @@ class DomainModelUrls:
     @staticmethod
     @app.route("/pettype/new", methods=['GET', 'POST'])
     def url_pettype_new():
-        form = PetTypeForm(request)
-        if form.validate_on_submit():
+        form = PetTypeForm()
+        if request.method == 'POST' and form.validate_on_submit():
             o = PetType()
             o.name = form.name.data
             db.session.add(o)
@@ -290,8 +290,8 @@ class DomainModelUrls:
     @staticmethod
     @app.route("/visit/new", methods=['GET', 'POST'])
     def url_visit_new():
-        form = VisitForm(request)
-        if form.validate_on_submit():
+        form = VisitForm()
+        if request.method == 'POST' and form.validate_on_submit():
             o = Visit()
             o.datum = form.datum.data
             o.information = form.information.data
@@ -319,8 +319,8 @@ class DomainModelUrls:
     @staticmethod
     @app.route("/vet/new", methods=['GET', 'POST'])
     def url_vet_new():
-        form = VetForm(request)
-        if form.validate_on_submit():
+        form = VetForm()
+        if request.method == 'POST' and form.validate_on_submit():
             o = Vet()
             o.first_name = form.first_name.data
             o.last_name = form.last_name.data
@@ -348,8 +348,8 @@ class DomainModelUrls:
     @staticmethod
     @app.route("/specialty/new", methods=['GET', 'POST'])
     def url_specialty_new():
-        form = SpecialtyForm(request)
-        if form.validate_on_submit():
+        form = SpecialtyForm()
+        if request.method == 'POST' and form.validate_on_submit():
             o = Specialty()
             o.name = form.name.data
             db.session.add(o)
