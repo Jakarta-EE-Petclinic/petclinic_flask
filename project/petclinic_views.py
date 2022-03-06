@@ -189,7 +189,7 @@ class DomainModelUrls:
         page_info = WebPageContent("petclinic_owner", "index")
         page_data = Owner.get_all(page)
         return render_template(
-            "petclinic_owner/index.html",
+            "petclinic_model/petclinic_owner/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -212,7 +212,7 @@ class DomainModelUrls:
             return redirect(url_for('url_owner_index'))
         page_info = WebPageContent("petclinic_owner", "new")
         return render_template(
-            "petclinic_owner/new.html",
+            "petclinic_model/petclinic_owner/new.html",
             form=form,
             page_info=page_info
         )
@@ -254,7 +254,7 @@ class DomainModelUrls:
         page_info = WebPageContent("petclinic_pettype", "index")
         page_data = PetType.get_all(page)
         return render_template(
-            "petclinic_pettype/index.html",
+            "petclinic_model/petclinic_pettype/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -271,7 +271,7 @@ class DomainModelUrls:
             return redirect(url_for('url_pettype_index'))
         page_info = WebPageContent("petclinic_pettype", "new")
         return render_template(
-            "petclinic_pettype/new.html",
+            "petclinic_model/petclinic_pettype/new.html",
             form=form,
             page_info=page_info
         )
@@ -282,7 +282,7 @@ class DomainModelUrls:
         page_info = WebPageContent("petclinic_visit", "index")
         page_data = Visit.get_all(page)
         return render_template(
-            "petclinic_visit/index.html",
+            "petclinic_model/petclinic_visit/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -300,7 +300,7 @@ class DomainModelUrls:
             return redirect(url_for('url_visit_index'))
         page_info = WebPageContent("petclinic_visit", "new")
         return render_template(
-            "petclinic_visit/new.html",
+            "petclinic_model/petclinic_visit/new.html",
             form=form,
             page_info=page_info
         )
@@ -311,7 +311,7 @@ class DomainModelUrls:
         page_info = WebPageContent("petclinic_vet", "index")
         page_data = Vet.get_all(page)
         return render_template(
-            "petclinic_vet/index.html",
+            "petclinic_model/petclinic_vet/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -329,7 +329,7 @@ class DomainModelUrls:
             return redirect(url_for('url_vet_index'))
         page_info = WebPageContent("petclinic_vet", "new")
         return render_template(
-            "petclinic_vet/new.html",
+            "petclinic_model/petclinic_vet/new.html",
             form=form,
             page_info=page_info
         )
@@ -340,7 +340,7 @@ class DomainModelUrls:
         page_info = WebPageContent("petclinic_specialty", "index")
         page_data = Specialty.get_all(page)
         return render_template(
-            "petclinic_specialty/index.html",
+            "petclinic_model/petclinic_specialty/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -357,7 +357,7 @@ class DomainModelUrls:
             return redirect(url_for('url_specialty_index'))
         page_info = WebPageContent("petclinic_specialty", "new")
         return render_template(
-            "petclinic_specialty/new.html",
+            "petclinic_model/petclinic_specialty/new.html",
             form=form,
             page_info=page_info
         )
