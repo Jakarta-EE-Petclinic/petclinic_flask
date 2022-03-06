@@ -5,6 +5,24 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired
 
+from project.petclinic_specialty.specialty import Specialty
+
+specialities_table = db.Table(
+    'petclinic_vet_specialities',
+    db.Column(
+        'vet_id',
+        db.Integer,
+        db.ForeignKey('petclinic_vet.id'),
+        primary_key=True
+    ),
+    db.Column(
+        'specialty_id',
+        db.Integer,
+        db.ForeignKey('petclinic_specialty.id'),
+        primary_key=True
+    )
+)
+
 
 class VetForm(FlaskForm):
     first_name = StringField('First Name', validators=[InputRequired()])
@@ -16,12 +34,18 @@ class Vet(db.Model):
     __tablename__ = "petclinic_vet"
 
     all_entity_id_seq = Sequence('id_seq_petclinic_vet')
-    id = db.Column(db.Integer,
-                   all_entity_id_seq,
-                   server_default=all_entity_id_seq.next_value(),
-                   primary_key=True)
+    id = db.Column(
+        db.Integer,
+        all_entity_id_seq,
+        server_default=all_entity_id_seq.next_value(),
+        primary_key=True
+    )
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
+    specialities = db.relationship(
+        'Specialty', secondary=specialities_table, lazy='subquery',
+        backref=db.backref('vets', lazy=True)
+    )
 
     @classmethod
     def remove_all(cls):

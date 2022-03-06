@@ -19,7 +19,7 @@ class Notification(db.Model):
         ),
     )
 
-    id_seq = Sequence('task_id_seq')
+    id_seq = Sequence('id_seq_task')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

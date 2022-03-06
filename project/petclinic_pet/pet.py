@@ -5,10 +5,20 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, SubmitField
 from wtforms.validators import InputRequired
 
+from project.petclinic_pettype.pettype import PetType
+from project.petclinic_owner.owner import Owner
+
 
 class PetForm(FlaskForm):
-    name = StringField('Name', validators=[InputRequired()])
-    date_of_birth = DateField('Date of Birth', validators=[InputRequired()], format='%Y-%m-%d')
+    name = StringField(
+        'Name',
+        validators=[InputRequired()]
+    )
+    date_of_birth = DateField(
+        'Date of Birth',
+        validators=[InputRequired()],
+        format='%Y-%m-%d'
+    )
     submit = SubmitField('Save New Pet')
 
 
@@ -22,6 +32,24 @@ class Pet(db.Model):
                    primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     date_of_birth = db.Column(db.Date, nullable=False)
+    owner_id = db.Column(
+        db.Integer, db.ForeignKey("petclinic_owner.id"), nullable=False
+    )
+    owner = db.relationship(
+        "Owner",
+        lazy="joined",
+        cascade="save-update",
+        order_by="asc(Owner.last_name)",
+    )
+    pettype_id = db.Column(
+        db.Integer, db.ForeignKey("petclinic_pettype.id"), nullable=False
+    )
+    pettype = db.relationship(
+        "PetType",
+        lazy="joined",
+        cascade="save-update",
+        order_by="asc(PetType.name)",
+    )
 
     @classmethod
     def remove_all(cls):

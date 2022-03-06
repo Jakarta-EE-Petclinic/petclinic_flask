@@ -5,6 +5,8 @@ from flask_wtf import FlaskForm
 from wtforms import DateField, TextAreaField, SubmitField
 from wtforms.validators import InputRequired
 
+from project.petclinic_pet.pet import Pet
+
 
 class VisitForm(FlaskForm):
     datum = DateField('Date of Visit', format='%Y-%m-%d', validators=[InputRequired()])
@@ -22,6 +24,15 @@ class Visit(db.Model):
                    primary_key=True)
     datum = db.Column(db.Date, nullable=False)
     information = db.Column(db.String(1024), nullable=False)
+    pet_id = db.Column(
+        db.Integer, db.ForeignKey("petclinic_pet.id"), nullable=False
+    )
+    pet = db.relationship(
+        "Pet",
+        lazy="joined",
+        cascade="save-update",
+        order_by="asc(Pet.date_of_birth)",
+    )
 
     @classmethod
     def remove_all(cls):
