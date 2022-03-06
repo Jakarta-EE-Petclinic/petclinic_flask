@@ -26,6 +26,7 @@ class Pet(db.Model):
         lazy="joined",
         cascade="save-update",
         order_by="asc(Owner.last_name)",
+        backref=db.backref('pets', lazy=True)
     )
     pettype_id = db.Column(
         db.Integer, db.ForeignKey("petclinic_pettype.id"), nullable=False
@@ -34,7 +35,7 @@ class Pet(db.Model):
         "PetType",
         lazy="joined",
         cascade="save-update",
-        order_by="asc(PetType.name)",
+        order_by="asc(PetType.name)"
     )
 
     @classmethod

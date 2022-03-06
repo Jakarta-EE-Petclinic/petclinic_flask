@@ -26,6 +26,7 @@ class Visit(db.Model):
         lazy="joined",
         cascade="save-update",
         order_by="asc(Pet.date_of_birth)",
+        backref=db.backref('visits', lazy=True)
     )
 
     @classmethod
