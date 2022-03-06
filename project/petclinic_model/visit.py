@@ -2,8 +2,6 @@ from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 
-from project.petclinic_pet.pet import Pet
-
 
 class Visit(db.Model):
     __tablename__ = "petclinic_visit"

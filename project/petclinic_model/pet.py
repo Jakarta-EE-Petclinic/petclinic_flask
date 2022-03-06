@@ -1,8 +1,6 @@
 from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page, ModelForm, app
-from project.petclinic_owner.owner import Owner, OwnerForm
-from project.petclinic_pettype.pettype import PetType, PetTypeForm
 
 
 class Pet(db.Model):

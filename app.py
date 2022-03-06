@@ -1,16 +1,5 @@
-import click
-
-from project.petclinic_owner.owner import Owner
-from project.petclinic_pettype.pettype import PetType
-from project.petclinic_pet.pet import Pet
-from project.petclinic_visit.visit import Visit
-from project.petclinic_specialty.specialty import Specialty
-from project.petclinic_vet.vet import Vet
-
-from project.petclinic_views import items_per_page, db, app, BaseModelForm
-from project.petclinic_views import owner_service, pet_service, pettype_service
-from project.petclinic_views import visit_service, vet_service, specialty_service
-from project.petclinic_views import admin_service, app_web, user_service
+from project.petclinic_views import db, app
+from project.petclinic_views import admin_service, user_service
 
 
 def create_app():

@@ -1,5 +1,3 @@
-import logging
-
 import flask
 from flask import Blueprint, flash
 from flask import redirect
@@ -8,8 +6,7 @@ from flask import url_for
 from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
 
-from project.app_config.database import app, db, login_manager, items_per_page
-from project.app_config.database import BaseModelForm
+from project.app_config.database import app, db, login_manager
 
 from project.app_user.user import LoginForm, User
 from project.app_user.user_service import UserService
@@ -18,13 +15,13 @@ from project.app_web.admin_services import AdminService
 from project.app_notification.notification import Notification
 from project.app_notification.notification_service import NotificationService
 
-from project.petclinic_owner.owner import Owner, OwnerForm, OwnerService
-from project.petclinic_pet.pet import Pet, PetForm, PetService
-from project.petclinic_pettype.pettype import PetType, PetTypeForm, PetTypeService
-from project.petclinic_specialty.specialty import Specialty, SpecialtyForm, \
+from project.petclinic_model.owner import Owner, OwnerForm, OwnerService
+from project.petclinic_model.pet import Pet, PetForm, PetService
+from project.petclinic_model.pettype import PetType, PetTypeForm, PetTypeService
+from project.petclinic_model.specialty import Specialty, SpecialtyForm, \
     SpecialtyService
-from project.petclinic_vet.vet import Vet, VetForm, VetService
-from project.petclinic_visit.visit import Visit, VisitForm, VisitService
+from project.petclinic_model.vet import Vet, VetForm, VetService
+from project.petclinic_model.visit import Visit, VisitForm, VisitService
 
 owner_service = OwnerService(db)
 pet_service = PetService(db)

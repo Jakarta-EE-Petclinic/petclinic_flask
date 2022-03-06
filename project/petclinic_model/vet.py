@@ -2,8 +2,6 @@ from sqlalchemy import Sequence
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 
-from project.petclinic_specialty.specialty import Specialty
-
 specialities_table = db.Table(
     'petclinic_vet_specialities',
     db.Column(
