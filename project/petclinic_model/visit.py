@@ -1,4 +1,5 @@
 from sqlalchemy import Sequence
+from wtforms import SubmitField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 
@@ -62,6 +63,8 @@ class Visit(db.Model):
 class VisitForm(ModelForm):
     class Meta:
         model = Visit
+
+    submit = SubmitField('Save New Visit')
 
 
 class VisitService:

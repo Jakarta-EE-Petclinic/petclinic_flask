@@ -1,4 +1,5 @@
 from sqlalchemy import Sequence
+from wtforms import SubmitField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 
@@ -74,6 +75,8 @@ class Vet(db.Model):
 class VetForm(ModelForm):
     class Meta:
         model = Vet
+
+    submit = SubmitField('Save New Vet')
 
 
 class VetService:

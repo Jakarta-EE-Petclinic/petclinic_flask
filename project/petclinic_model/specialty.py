@@ -1,5 +1,5 @@
 from sqlalchemy import Sequence
-
+from wtforms import SubmitField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 
@@ -52,6 +52,8 @@ class Specialty(db.Model):
 class SpecialtyForm(ModelForm):
     class Meta:
         model = Specialty
+
+    submit = SubmitField('Save New Specialty')
 
 
 class SpecialtyService:

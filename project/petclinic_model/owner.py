@@ -1,4 +1,5 @@
 from sqlalchemy import Sequence
+from wtforms import SubmitField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 
@@ -57,6 +58,8 @@ class Owner(db.Model):
 class OwnerForm(ModelForm):
     class Meta:
         model = Owner
+
+    submit = SubmitField('Save New Owner')
 
 
 class OwnerService:

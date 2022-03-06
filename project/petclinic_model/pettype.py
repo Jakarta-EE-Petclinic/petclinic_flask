@@ -1,4 +1,5 @@
 from sqlalchemy import Sequence
+from wtforms import SubmitField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 
@@ -51,6 +52,8 @@ class PetType(db.Model):
 class PetTypeForm(ModelForm):
     class Meta:
         model = PetType
+
+    submit = SubmitField('Save New PetType')
 
 
 class PetTypeService:
