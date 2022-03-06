@@ -1,5 +1,5 @@
 import flask
-from flask import Blueprint, flash
+from flask import Blueprint, Request, flash
 from flask import redirect
 from flask import render_template
 from flask import url_for
@@ -125,10 +125,12 @@ class ApplicationUrls:
 
     @staticmethod
     @app.route("/pet/new", methods=['GET', 'POST'])
-    def url_pet_new():
+    def url_pet_new(request: Request):
         form = PetForm()
         if form.validate_on_submit():
             o = Pet()
+            form = PetForm(request.POST)
+            form.populate_obj(o)
             o.name = form.name.data
             o.date_of_birth = form.date_of_birth.data
             db.session.add(o)
