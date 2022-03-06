@@ -234,8 +234,8 @@ class DomainModelUrls:
         form = PetForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = Pet()
-            o.name = form.meta.name.data
-            o.date_of_birth = form.meta.date_of_birth.data
+            o.name = form.name.data
+            o.date_of_birth = form.date_of_birth.data
             o.owner = form.owner_select.data
             o.pettype = form.pettype_select.data
             db.session.add(o)
