@@ -1,7 +1,10 @@
 from sqlalchemy import Sequence
 from wtforms import SubmitField
+from wtforms.validators import InputRequired
+from wtforms_alchemy import QuerySelectField, QuerySelectMultipleField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
+from project.petclinic_model.specialty import Specialty
 
 specialities_table = db.Table(
     'petclinic_vet_specialities',
@@ -76,6 +79,13 @@ class VetForm(ModelForm):
     class Meta:
         model = Vet
 
+    specialty_select = QuerySelectMultipleField(
+        label='specialty_select',
+        validators=[InputRequired('Bitte waehlen Sie ein Specialty aus')],
+        default=[],
+        query_factory=Specialty.find_all,
+        get_pk=lambda x: x.id, get_label=lambda x: x.__str__()
+    )
     submit = SubmitField('Save New Vet')
 
 
