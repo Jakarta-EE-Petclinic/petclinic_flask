@@ -15,13 +15,24 @@
                       with SQLAlchemy, Celery et al.
                     </p>
                     <p>
-                      <form method="POST" enctype="multipart/form-data">
-                        {{ form.csrf_token }}
-                        {{ form.first_name.label }} {{ form.first_name }}
-                        {{ form.last_name.label }} {{ form.last_name }}
-                        {{ form.specialty_select.label }} {{ form.specialty_select }}
-                        {{ form.submit }}
-                      </form>
+                      <div class="tw-box my-4">
+                        <form method="POST" enctype="multipart/form-data">
+                          {{ form.csrf_token }}
+                          <div class="mb-3">
+                            {{ form.first_name.label(class_="form-label") }}
+                            {{ form.first_name(class_="form-control") }}
+                          </div>
+                          <div class="mb-3">
+                            {{ form.last_name.label(class_="form-label") }}
+                            {{ form.last_name(class_="form-control") }}
+                          </div>
+                          <div class="mb-3">
+                            {{ form.specialty_select.label(class_="form-label") }}
+                            {{ form.specialty_select(class_="form-control") }}
+                          </div>
+                          {{ form.submit(class_="btn btn-primary") }}
+                        </form>
+                      </div>
                     </p>
                 </div>
             </div>

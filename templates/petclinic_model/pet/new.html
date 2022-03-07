@@ -15,14 +15,28 @@
                       with SQLAlchemy, Celery et al.
                     </p>
                     <p>
+                      <div class="tw-box my-4">
                       <form method="POST" enctype="multipart/form-data">
                         {{ form.csrf_token }}
-                        {{ form.name.label }} {{ form.name }}
-                        {{ form.date_of_birth.label }} {{ form.date_of_birth }}
-                        {{ form.owner_select.label }} {{ form.owner_select }}
-                        {{ form.pettype_select.label }} {{ form.pettype_select }}
-                        {{ form.submit }}
+                          <div class="mb-3">
+                            {{ form.name.label(class_="form-label") }}
+                            {{ form.name(class_="form-control") }}
+                          </div>
+                          <div class="mb-3">
+                            {{ form.date_of_birth.label(class_="form-label") }}
+                            {{ form.date_of_birth(class_="form-control") }}
+                          </div>
+                          <div class="mb-3">
+                            {{ form.owner_select.label(class_="form-label") }}
+                            {{ form.owner_select(class_="form-select") }}
+                          </div>
+                          <div class="mb-3">
+                            {{ form.pettype_select.label(class_="form-label") }}
+                            {{ form.pettype_select(class_="form-select") }}
+                          </div>
+                        {{ form.submit(class_="btn btn-primary") }}
                       </form>
+                      </div>
                     </p>
                 </div>
             </div>

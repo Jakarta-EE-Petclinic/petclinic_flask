@@ -80,7 +80,8 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/notification")
     @login_required
-    def url_all_notification(page=1):
+    def url_all_notification():
+        page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("All", "Notifications")
         page_data = Notification.notifications_get(page)
         return render_template(
@@ -184,7 +185,8 @@ class DomainModelUrls:
 
     @staticmethod
     @app.route("/owner")
-    def url_owner_index(page=1):
+    def url_owner_index():
+        page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_owner", "index")
         page_data = Owner.get_all(page)
         return render_template(
@@ -218,7 +220,8 @@ class DomainModelUrls:
 
     @staticmethod
     @app.route("/pet")
-    def url_pet_index(page=1):
+    def url_pet_index():
+        page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_pet", "index")
         page_data = Pet.get_all(page)
         return render_template(
@@ -249,7 +252,8 @@ class DomainModelUrls:
 
     @staticmethod
     @app.route("/pettype")
-    def url_pettype_index(page=1):
+    def url_pettype_index():
+        page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_pettype", "index")
         page_data = PetType.get_all(page)
         return render_template(
@@ -277,7 +281,8 @@ class DomainModelUrls:
 
     @staticmethod
     @app.route("/visit")
-    def url_visit_index(page=1):
+    def url_visit_index():
+        page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_visit", "index")
         page_data = Visit.get_all(page)
         return render_template(
@@ -307,7 +312,8 @@ class DomainModelUrls:
 
     @staticmethod
     @app.route("/vet")
-    def url_vet_index(page=1):
+    def url_vet_index():
+        page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_vet", "index")
         page_data = Vet.get_all(page)
         return render_template(
@@ -339,7 +345,8 @@ class DomainModelUrls:
 
     @staticmethod
     @app.route("/specialty")
-    def url_specialty_index(page=1):
+    def url_specialty_index():
+        page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_specialty", "index")
         page_data = Specialty.get_all(page)
         return render_template(

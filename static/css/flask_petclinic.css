@@ -1,6 +1,14 @@
 /* (c) 2021 Thomas Woehlke <https://github.com/thomaswoehlke> */
 
-col,
-btn-group-vertical {
+.col,
+.btn-group-vertical {
     padding: 1rem;
+}
+
+.tw-box {
+    position: relative;
+    padding: 1rem;
+    margin: 1rem 0.75rem 0;
+    border: ridge #abb6c2;
+    border-width: 0.5px;
 }

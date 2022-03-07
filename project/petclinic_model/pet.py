@@ -84,17 +84,17 @@ class PetForm(ModelForm):
 
     # owner = ModelFormField(OwnerForm)
     # pettype = ModelFormField(PetTypeForm)
-    owner_select = QuerySelectField(
-        'owner_select', [InputRequired('Bitte waehlen Sie einen Owner aus')],
-        Owner.find_all,
-        lambda x: x.id, lambda x: x.get_name(),
-        True, 'Bitte waehlen Sie einen Owner aus',
-    )
     pettype_select = QuerySelectField(
         'pettype_select', [InputRequired('Bitte waehlen Sie einen PetType aus')],
         PetType.find_all,
         lambda x: x.id, lambda x: x.name,
         True, 'Bitte waehlen Sie einen PetType aus',
+    )
+    owner_select = QuerySelectField(
+        'owner_select', [InputRequired('Bitte waehlen Sie einen Owner aus')],
+        Owner.find_all,
+        lambda x: x.id, lambda x: x.__str__(),
+        True, 'Bitte waehlen Sie einen Owner aus',
     )
     submit = SubmitField('Save New Pet')
 
