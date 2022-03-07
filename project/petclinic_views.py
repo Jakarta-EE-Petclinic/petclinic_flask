@@ -323,6 +323,7 @@ class DomainModelUrls:
             o = Vet()
             o.first_name = form.first_name.data
             o.last_name = form.last_name.data
+            o.specialities = form.specialty_select.data
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_vet_index'))
