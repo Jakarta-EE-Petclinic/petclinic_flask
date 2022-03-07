@@ -4,6 +4,7 @@
                         <tr>
                             <th scope="col">first_name</th>
                             <th scope="col">last_name</th>
+                            <th scope="col">specialities</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -11,6 +12,12 @@
                         <tr>
                             <td>{{ o.first_name }}</td>
                             <td>{{ o.last_name }}</td>
+                            <td>
+                                {% for s in o.specialities %}
+                                <span>{{ s.name }}</span>
+                                <span>&nbsp;</span>
+                                {% endfor %}
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -18,6 +25,7 @@
                         <tr>
                             <th scope="col">first_name</th>
                             <th scope="col">last_name</th>
+                            <th scope="col">specialities</th>
                         </tr>
                     </tfoot>
                 </table>

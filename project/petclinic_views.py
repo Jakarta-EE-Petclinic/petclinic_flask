@@ -5,6 +5,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
+from sqlalchemy.orm.collections import InstrumentedList
 
 from project.app_config.database import app, db, login_manager
 
@@ -323,7 +324,9 @@ class DomainModelUrls:
             o = Vet()
             o.first_name = form.first_name.data
             o.last_name = form.last_name.data
-            o.specialities = form.specialty_select.data
+            o.specialities.clear()
+            for s in form.specialty_select.data:
+                o.specialities.append(s)
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_vet_index'))
