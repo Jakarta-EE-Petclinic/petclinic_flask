@@ -293,6 +293,7 @@ class DomainModelUrls:
             o = Visit()
             o.datum = form.datum.data
             o.information = form.information.data
+            o.pet = form.pet_select.data
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_visit_index'))

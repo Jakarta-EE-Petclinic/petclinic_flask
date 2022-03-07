@@ -1,7 +1,10 @@
 from sqlalchemy import Sequence
 from wtforms import SubmitField
+from wtforms.validators import InputRequired
+from wtforms_alchemy import QuerySelectField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
+from project.petclinic_model.pet import Pet
 
 
 class Visit(db.Model):
@@ -64,6 +67,12 @@ class VisitForm(ModelForm):
     class Meta:
         model = Visit
 
+    pet_select = QuerySelectField(
+        'pet_select', [InputRequired('Bitte waehlen Sie ein Pet aus')],
+        Pet.find_all,
+        lambda x: x.id, lambda x: x.__str__(),
+        True, 'Bitte waehlen Sie einen PetType aus',
+    )
     submit = SubmitField('Save New Visit')
 
 

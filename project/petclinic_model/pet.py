@@ -37,6 +37,12 @@ class Pet(db.Model):
         order_by="asc(PetType.name)"
     )
 
+    def __str__(self):
+        return self.name + " - " + \
+               self.date_of_birth.isoformat() + " - " + \
+               self.pettype.__str__() + ", " + \
+               self.owner.__str__()
+
     @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()
