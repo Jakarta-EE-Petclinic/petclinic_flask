@@ -20,6 +20,8 @@ backports-entry-points-selectable==1.1.1
     # via virtualenv
 build==0.7.0
     # via -r requirements/in/build.in
+cachecontrol[filecache]==0.12.10
+    # via pip-audit
 certifi==2021.10.8
     # via
     #   pipenv
@@ -34,6 +36,8 @@ click==8.0.3
     #   pip-tools
 cycler==0.11.0
     # via matplotlib
+cyclonedx-python-lib==1.3.0
+    # via pip-audit
 distlib==0.3.4
     # via virtualenv
 docutils==0.16
@@ -52,6 +56,8 @@ fonttools==4.28.3
     # via matplotlib
 greenlet==1.1.2
     # via sqlalchemy
+html5lib==1.1
+    # via pip-audit
 identify==2.4.0
     # via pre-commit
 idna==3.3
@@ -69,6 +75,8 @@ jsonschema==3.2.0
     # via sphinxcontrib-needs
 kiwisolver==1.3.2
     # via matplotlib
+lockfile==0.12.2
+    # via cachecontrol
 markdown-it-py==1.1.0
     # via
     #   mdit-py-plugins
@@ -79,17 +87,22 @@ matplotlib==3.5.0
     # via sphinxcontrib-needs
 mdit-py-plugins==0.2.8
     # via myst-parser
+msgpack==1.0.3
+    # via cachecontrol
 myst-parser==0.15.2
     # via -r requirements/in/docs.in
 nodeenv==1.6.0
     # via pre-commit
 numpy==1.21.4
     # via matplotlib
+packageurl-python==0.9.9
+    # via cyclonedx-python-lib
 packaging==21.3
     # via
     #   build
     #   matplotlib
     #   pallets-sphinx-themes
+    #   pip-audit
     #   setuptools-scm
     #   sphinx
     #   tox
@@ -105,6 +118,10 @@ pillow==9.0.0
     # via
     #   -r requirements/in/build.in
     #   matplotlib
+pip-api==0.0.28
+    # via pip-audit
+pip-audit==2.0.0
+    # via -r requirements/in/build.in
 pip-tools==6.4.0
     # via -r requirements/in/build.in
 pipenv==2022.1.8
@@ -115,6 +132,8 @@ pluggy==1.0.0
     # via tox
 pre-commit==2.16.0
     # via -r requirements/in/build.in
+progress==1.6
+    # via pip-audit
 py==1.11.0
     # via tox
 pyaml==21.10.1
@@ -148,6 +167,7 @@ pyyaml==6.0
     #   pyaml
 requests==2.26.0
     # via
+    #   cachecontrol
     #   pytoolbox
     #   requests-file
     #   sphinx
@@ -155,10 +175,13 @@ requests==2.26.0
     #   sphinxcontrib-needs
 requests-file==1.5.1
     # via sphinxcontrib-needs
+resolvelib==0.8.1
+    # via pip-audit
 setuptools-scm==6.3.2
     # via matplotlib
 six==1.16.0
     # via
+    #   html5lib
     #   jsonschema
     #   python-dateutil
     #   requests-file
@@ -226,6 +249,7 @@ sqlalchemy-sphinx==0.9.0
 toml==0.10.2
     # via
     #   -r requirements/in/build.in
+    #   cyclonedx-python-lib
     #   pre-commit
     #   tox
 tomli==1.2.2
@@ -235,6 +259,10 @@ tomli==1.2.2
     #   setuptools-scm
 tox==3.24.4
     # via -r requirements/in/build.in
+types-setuptools==57.4.9
+    # via cyclonedx-python-lib
+types-toml==0.10.4
+    # via cyclonedx-python-lib
 urllib3==1.26.7
     # via
     #   -r requirements/in/build.in
@@ -247,6 +275,8 @@ virtualenv==20.10.0
     #   tox
 virtualenv-clone==0.5.7
     # via pipenv
+webencodings==0.5.1
+    # via html5lib
 werkzeug==2.0.2
     # via flask
 wheel==0.37.0
