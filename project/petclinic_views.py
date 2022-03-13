@@ -90,16 +90,16 @@ class ApplicationUrls:
             page_info=page_info)
 
     @staticmethod
-    @app.route("/notification/read/page/<int:page>")
     @app.route("/notification/read")
     @login_required
-    def url_all_notification_mark_read(page=1):
+    def url_all_notification_mark_read():
+        page = request.args.get('page', 1, type=int)
         page_data = Notification.notifications_get(page)
         for o in page_data.items:
             o.read()
             db.session.add(o)
         db.session.commit()
-        return redirect(url_for("url_all_notification"))
+        return redirect(url_for("url_all_notification", page=page))
 
     @staticmethod
     @app.route("/login", methods=["GET"])
