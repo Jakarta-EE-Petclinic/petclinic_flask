@@ -58,11 +58,28 @@ class Owner(db.Model):
         return cls.__query_all().filter(cls.id == other_id).one_or_none()
 
 
-class OwnerForm(ModelForm):
+class OwnerNewForm(ModelForm):
     class Meta:
         model = Owner
 
+    cancel = SubmitField('Cancel')
     submit = SubmitField('Save New Owner')
+
+
+class OwnerShowForm(ModelForm):
+    class Meta:
+        model = Owner
+
+    cancel = SubmitField('Cancel')
+    submit = SubmitField('Edit this Owner')
+
+
+class OwnerEditForm(ModelForm):
+    class Meta:
+        model = Owner
+
+    cancel = SubmitField('Cancel')
+    submit = SubmitField('Save this Owner')
 
 
 class OwnerService:

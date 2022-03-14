@@ -14,7 +14,8 @@ from project.app_web.model_transient import WebPageContent
 from project.app_web.services import AdminService
 from project.app_web.notification import Notification, NotificationService
 
-from project.petclinic_model.owner import Owner, OwnerForm, OwnerService
+from project.petclinic_model.owner import Owner, OwnerNewForm, OwnerShowForm, \
+    OwnerEditForm, OwnerService
 from project.petclinic_model.pet import Pet, PetForm, PetService
 from project.petclinic_model.pettype import PetType, PetTypeForm, PetTypeService
 from project.petclinic_model.specialty import Specialty, SpecialtyForm, \
@@ -198,7 +199,7 @@ class DomainModelOwnerUrls:
     @staticmethod
     @app.route("/owner/new", methods=['GET', 'POST'])
     def url_owner_new():
-        form = OwnerForm()
+        form = OwnerNewForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = Owner()
             o.first_name = form.first_name.data
@@ -222,18 +223,28 @@ class DomainModelOwnerUrls:
     @app.route("/owner/<int:owner_id>")
     def url_owner_shows(owner_id: int):
         page_info = WebPageContent("petclinic_owner", "show")
-        owner = Owner.find_by_id(owner_id)
+        form = OwnerShowForm()
+        o = Owner.find_by_id(owner_id)
+        form.first_name.data = o.first_name
+        form.last_name.data = o.last_name
+        form.street_address.data = o.street_address
+        form.zip_code.data = o.zip_code
+        form.city.data = o.city
+        form.telephone.data = o.telephone
+        form.email.data = o.email
         return render_template(
             "petclinic_model/owner/show.html",
-            owner=owner,
+            owner=o,
+            form=form,
+            owner_id=owner_id,
             page_info=page_info
         )
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/edit", methods=['GET', 'POST'])
     def url_owner_edit(owner_id: int):
-        page_info = WebPageContent("petclinic_owner", "show")
-        form = OwnerForm()
+        page_info = WebPageContent("petclinic_owner", "edit")
+        form = OwnerEditForm()
         o = Owner.find_by_id(owner_id)
         if request.method == 'POST' and form.validate_on_submit():
             o.first_name = form.first_name.data
@@ -245,7 +256,7 @@ class DomainModelOwnerUrls:
             o.email = form.email.data
             db.session.add(o)
             db.session.commit()
-            return redirect(url_for('url_owner_show'))
+            return redirect(url_for('url_owner_shows', owner_id=owner_id))
         else:
             form.first_name.data = o.first_name
             form.last_name.data = o.last_name
@@ -254,11 +265,12 @@ class DomainModelOwnerUrls:
             form.city.data = o.city
             form.telephone.data = o.telephone
             form.email.data = o.email
-        return render_template(
-            "petclinic_model/owner/edit.html",
-            form=form,
-            page_info=page_info
-        )
+            return render_template(
+                "petclinic_model/owner/edit.html",
+                owner_id=owner_id,
+                form=form,
+                page_info=page_info
+            )
 
 
 domain_model_owner_urls = DomainModelOwnerUrls()

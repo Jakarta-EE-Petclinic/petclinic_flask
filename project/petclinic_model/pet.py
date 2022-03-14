@@ -5,7 +5,7 @@ from wtforms_alchemy import ModelFormField, QuerySelectField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 from project.petclinic_model.pettype import PetType, PetTypeForm
-from project.petclinic_model.owner import Owner, OwnerForm
+from project.petclinic_model.owner import Owner, OwnerNewForm
 
 
 class Pet(db.Model):
@@ -82,7 +82,7 @@ class PetForm(ModelForm):
     class Meta:
         model = Pet
 
-    # owner = ModelFormField(OwnerForm)
+    # owner = ModelFormField(OwnerNewForm)
     # pettype = ModelFormField(PetTypeForm)
     pettype_select = QuerySelectField(
         'pettype_select', [InputRequired('Bitte waehlen Sie einen PetType aus')],
