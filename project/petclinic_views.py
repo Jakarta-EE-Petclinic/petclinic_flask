@@ -179,9 +179,9 @@ class ApplicationUrls:
 app_web_urls = ApplicationUrls()
 
 
-class DomainModelUrls:
+class DomainModelOwnerUrls:
     def __init__(self):
-        app.logger.info(" DomainModelUrls [init]")
+        app.logger.info(" DomainModelOwnerUrls [init]")
 
     @staticmethod
     @app.route("/owner")
@@ -219,6 +219,56 @@ class DomainModelUrls:
         )
 
     @staticmethod
+    @app.route("/owner/<int:owner_id>")
+    def url_owner_shows(owner_id: int):
+        page_info = WebPageContent("petclinic_owner", "show")
+        owner = Owner.find_by_id(owner_id)
+        return render_template(
+            "petclinic_model/owner/show.html",
+            owner=owner,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/owner/<int:owner_id>/edit", methods=['GET', 'POST'])
+    def url_owner_edit(owner_id: int):
+        page_info = WebPageContent("petclinic_owner", "show")
+        form = OwnerForm()
+        o = Owner.find_by_id(owner_id)
+        if request.method == 'POST' and form.validate_on_submit():
+            o.first_name = form.first_name.data
+            o.last_name = form.last_name.data
+            o.street_address = form.street_address.data
+            o.zip_code = form.zip_code.data
+            o.city = form.city.data
+            o.telephone = form.telephone.data
+            o.email = form.email.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_owner_show'))
+        else:
+            form.first_name.data = o.first_name
+            form.last_name.data = o.last_name
+            form.street_address.data = o.street_address
+            form.zip_code.data = o.zip_code
+            form.city.data = o.city
+            form.telephone.data = o.telephone
+            form.email.data = o.email
+        return render_template(
+            "petclinic_model/owner/edit.html",
+            form=form,
+            page_info=page_info
+        )
+
+
+domain_model_owner_urls = DomainModelOwnerUrls()
+
+
+class DomainModelPetUrls:
+    def __init__(self):
+        app.logger.info(" DomainModelUrls [init]")
+
+    @staticmethod
     @app.route("/pet")
     def url_pet_index():
         page = request.args.get('page', 1, type=int)
@@ -250,34 +300,13 @@ class DomainModelUrls:
             page_info=page_info
         )
 
-    @staticmethod
-    @app.route("/pettype")
-    def url_pettype_index():
-        page = request.args.get('page', 1, type=int)
-        page_info = WebPageContent("petclinic_pettype", "index")
-        page_data = PetType.get_all(page)
-        return render_template(
-            "petclinic_model/pettype/index.html",
-            page_data=page_data,
-            page_info=page_info
-        )
 
-    @staticmethod
-    @app.route("/pettype/new", methods=['GET', 'POST'])
-    def url_pettype_new():
-        form = PetTypeForm()
-        if request.method == 'POST' and form.validate_on_submit():
-            o = PetType()
-            o.name = form.name.data
-            db.session.add(o)
-            db.session.commit()
-            return redirect(url_for('url_pettype_index'))
-        page_info = WebPageContent("petclinic_pettype", "new")
-        return render_template(
-            "petclinic_model/pettype/new.html",
-            form=form,
-            page_info=page_info
-        )
+domain_model_pet_urls = DomainModelPetUrls()
+
+
+class DomainModelVisitUrls:
+    def __init__(self):
+        app.logger.info(" DomainModelVisitUrls [init]")
 
     @staticmethod
     @app.route("/visit")
@@ -309,6 +338,51 @@ class DomainModelUrls:
             form=form,
             page_info=page_info
         )
+
+
+domain_model_visit_urls = DomainModelVisitUrls()
+
+
+class DomainModelPetTypeUrls:
+    def __init__(self):
+        app.logger.info(" DomainModelPetTypeUrls [init]")
+
+    @staticmethod
+    @app.route("/pettype")
+    def url_pettype_index():
+        page = request.args.get('page', 1, type=int)
+        page_info = WebPageContent("petclinic_pettype", "index")
+        page_data = PetType.get_all(page)
+        return render_template(
+            "petclinic_model/pettype/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app.route("/pettype/new", methods=['GET', 'POST'])
+    def url_pettype_new():
+        form = PetTypeForm()
+        if request.method == 'POST' and form.validate_on_submit():
+            o = PetType()
+            o.name = form.name.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_pettype_index'))
+        page_info = WebPageContent("petclinic_pettype", "new")
+        return render_template(
+            "petclinic_model/pettype/new.html",
+            form=form,
+            page_info=page_info
+        )
+
+
+domain_model_pettype_urls = DomainModelPetTypeUrls()
+
+
+class DomainModelVetUrls:
+    def __init__(self):
+        app.logger.info(" DomainModelVetUrls [init]")
 
     @staticmethod
     @app.route("/vet")
@@ -343,6 +417,14 @@ class DomainModelUrls:
             page_info=page_info
         )
 
+
+domain_model_vet_urls = DomainModelVetUrls()
+
+
+class DomainModelSpecialtyUrls:
+    def __init__(self):
+        app.logger.info(" DomainModelVetUrls [init]")
+
     @staticmethod
     @app.route("/specialty")
     def url_specialty_index():
@@ -373,4 +455,4 @@ class DomainModelUrls:
         )
 
 
-domain_model_urls = DomainModelUrls()
+domain_model_specialty_urls = DomainModelSpecialtyUrls()
