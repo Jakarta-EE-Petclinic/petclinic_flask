@@ -212,12 +212,13 @@ class DomainModelOwnerUrls:
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_owner_index'))
-        page_info = WebPageContent("petclinic_owner", "new")
-        return render_template(
-            "petclinic_model/owner/new.html",
-            form=form,
-            page_info=page_info
-        )
+        else:
+            page_info = WebPageContent("petclinic_owner", "new")
+            return render_template(
+                "petclinic_model/owner/new.html",
+                form=form,
+                page_info=page_info
+            )
 
     @staticmethod
     @app.route("/owner/<int:owner_id>")
@@ -278,7 +279,7 @@ domain_model_owner_urls = DomainModelOwnerUrls()
 
 class DomainModelPetUrls:
     def __init__(self):
-        app.logger.info(" DomainModelUrls [init]")
+        app.logger.info(" DomainModelPetUrls [init]")
 
     @staticmethod
     @app.route("/pet")
@@ -305,12 +306,13 @@ class DomainModelPetUrls:
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_pet_index'))
-        page_info = WebPageContent("petclinic_pet", "new")
-        return render_template(
-            "petclinic_model/pet/new.html",
-            form=form,
-            page_info=page_info
-        )
+        else:
+            page_info = WebPageContent("petclinic_pet", "new")
+            return render_template(
+                "petclinic_model/pet/new.html",
+                form=form,
+                page_info=page_info
+            )
 
 
 domain_model_pet_urls = DomainModelPetUrls()
@@ -344,12 +346,13 @@ class DomainModelVisitUrls:
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_visit_index'))
-        page_info = WebPageContent("petclinic_visit", "new")
-        return render_template(
-            "petclinic_model/visit/new.html",
-            form=form,
-            page_info=page_info
-        )
+        else:
+            page_info = WebPageContent("petclinic_visit", "new")
+            return render_template(
+                "petclinic_model/visit/new.html",
+                form=form,
+                page_info=page_info
+            )
 
 
 domain_model_visit_urls = DomainModelVisitUrls()
@@ -381,12 +384,13 @@ class DomainModelPetTypeUrls:
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_pettype_index'))
-        page_info = WebPageContent("petclinic_pettype", "new")
-        return render_template(
-            "petclinic_model/pettype/new.html",
-            form=form,
-            page_info=page_info
-        )
+        else:
+            page_info = WebPageContent("petclinic_pettype", "new")
+            return render_template(
+                "petclinic_model/pettype/new.html",
+                form=form,
+                page_info=page_info
+            )
 
 
 domain_model_pettype_urls = DomainModelPetTypeUrls()
@@ -422,12 +426,13 @@ class DomainModelVetUrls:
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_vet_index'))
-        page_info = WebPageContent("petclinic_vet", "new")
-        return render_template(
-            "petclinic_model/vet/new.html",
-            form=form,
-            page_info=page_info
-        )
+        else:
+            page_info = WebPageContent("petclinic_vet", "new")
+            return render_template(
+                "petclinic_model/vet/new.html",
+                form=form,
+                page_info=page_info
+            )
 
 
 domain_model_vet_urls = DomainModelVetUrls()
@@ -435,7 +440,7 @@ domain_model_vet_urls = DomainModelVetUrls()
 
 class DomainModelSpecialtyUrls:
     def __init__(self):
-        app.logger.info(" DomainModelVetUrls [init]")
+        app.logger.info(" DomainModelSpecialtyUrls [init]")
 
     @staticmethod
     @app.route("/specialty")
@@ -459,12 +464,13 @@ class DomainModelSpecialtyUrls:
             db.session.add(o)
             db.session.commit()
             return redirect(url_for('url_specialty_index'))
-        page_info = WebPageContent("petclinic_specialty", "new")
-        return render_template(
-            "petclinic_model/specialty/new.html",
-            form=form,
-            page_info=page_info
-        )
+        else:
+            page_info = WebPageContent("petclinic_specialty", "new")
+            return render_template(
+                "petclinic_model/specialty/new.html",
+                form=form,
+                page_info=page_info
+            )
 
 
 domain_model_specialty_urls = DomainModelSpecialtyUrls()
