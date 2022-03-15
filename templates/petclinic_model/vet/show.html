@@ -7,7 +7,11 @@
         <div class="row">
             <div class="col">
                     <p>
-                      <div class="tw-box my-4">
+                      Python Flask Version of Spring Petclinic
+                      with SQLAlchemy, Celery et al.
+                    </p>
+                    <p>
+                      <div class="tw-box">
                         <form method="POST" enctype="multipart/form-data">
                           {{ form.csrf_token }}
                           <div class="mb-3">
@@ -22,6 +26,7 @@
                             {{ form.specialty_select.label(class_="form-label") }}
                             {{ form.specialty_select(class_="form-control") }}
                           </div>
+                          <a href="{{ url_for('url_vet_index', page=1) }}" class="btn btn-primary">Cancel</a>
                           {{ form.submit(class_="btn btn-primary") }}
                         </form>
                       </div>

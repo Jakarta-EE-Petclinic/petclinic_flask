@@ -11,7 +11,7 @@
                       with SQLAlchemy, Celery et al.
                     </p>
                     <p>
-                      <div class="tw-box my-4">
+                      <div class="tw-box">
                       <form method="POST" enctype="multipart/form-data">
                         {{ form.csrf_token }}
                           <div class="mb-3">
@@ -42,6 +42,7 @@
                             {{ form.email.label(class_="form-label") }}
                             {{ form.email(class_="form-control") }}
                           </div>
+                        <a href="{{ url_for('url_owner_index', page=1) }}" class="btn btn-primary">Cancel</a>
                         {{ form.submit(class_="btn btn-primary") }}
                       </form>
                       </div>

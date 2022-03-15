@@ -6,39 +6,34 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="jumbotron">
-                    <h1 class="display-4">{{ page_info.title }}</h1>
-                    <p class="lead">{{ page_info.subtitle }}</p>
-                    <hr class="my-4">
-                    <p>
-                      Python Flask Version of Spring Petclinic
-                      with SQLAlchemy, Celery et al.
-                    </p>
-                    <p>
-                      <div class="tw-box my-4">
-                      <form method="POST" enctype="multipart/form-data">
-                        {{ form.csrf_token }}
-                          <div class="mb-3">
-                            {{ form.name.label(class_="form-label") }}
-                            {{ form.name(class_="form-control") }}
-                          </div>
-                          <div class="mb-3">
-                            {{ form.date_of_birth.label(class_="form-label") }}
-                            {{ form.date_of_birth(class_="form-control") }}
-                          </div>
-                          <div class="mb-3">
-                            {{ form.owner_select.label(class_="form-label") }}
-                            {{ form.owner_select(class_="form-select") }}
-                          </div>
-                          <div class="mb-3">
-                            {{ form.pettype_select.label(class_="form-label") }}
-                            {{ form.pettype_select(class_="form-select") }}
-                          </div>
-                        {{ form.submit(class_="btn btn-primary") }}
-                      </form>
+                <p>
+                  Python Flask Version of Spring Petclinic
+                  with SQLAlchemy, Celery et al.
+                </p>
+                <p>
+                  <div class="tw-box">
+                  <form method="POST" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                      <div class="mb-3">
+                        {{ form.name.label(class_="form-label") }}
+                        {{ form.name(class_="form-control") }}
                       </div>
-                    </p>
-                </div>
+                      <div class="mb-3">
+                        {{ form.date_of_birth.label(class_="form-label") }}
+                        {{ form.date_of_birth(class_="form-control") }}
+                      </div>
+                      <div class="mb-3">
+                        {{ form.owner_select.label(class_="form-label") }}
+                        {{ form.owner_select(class_="form-select") }}
+                      </div>
+                      <div class="mb-3">
+                        {{ form.pettype_select.label(class_="form-label") }}
+                        {{ form.pettype_select(class_="form-select") }}
+                      </div>
+                    {{ form.submit(class_="btn btn-primary") }}
+                  </form>
+                  </div>
+                </p>
             </div>
         </div>
     </div>

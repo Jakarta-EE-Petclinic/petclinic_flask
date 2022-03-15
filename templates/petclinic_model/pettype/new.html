@@ -6,22 +6,23 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                    <p>
-                      Python Flask Version of Spring Petclinic
-                      with SQLAlchemy, Celery et al.
-                    </p>
-                    <p>
-                      <div class="tw-box my-4">
-                        <form method="POST" enctype="multipart/form-data">
-                          {{ form.csrf_token }}
-                          <div class="mb-3">
-                            {{ form.name.label(class_="form-label") }}
-                            {{ form.name(class_="form-control") }}
-                          </div>
-                          {{ form.submit(class_="btn btn-primary") }}
-                        </form>
+                <p>
+                  Python Flask Version of Spring Petclinic
+                  with SQLAlchemy, Celery et al.
+                </p>
+                <p>
+                  <div class="tw-box">
+                    <form method="POST" enctype="multipart/form-data">
+                      {{ form.csrf_token }}
+                      <div class="mb-3">
+                        {{ form.name.label(class_="form-label") }}
+                        {{ form.name(class_="form-control") }}
                       </div>
-                    </p>
+                      <a href="{{ url_for('url_pettype_index', page=1) }}" class="btn btn-primary">Cancel</a>
+                      {{ form.submit(class_="btn btn-primary") }}
+                    </form>
+                  </div>
+                </p>
             </div>
         </div>
     </div>
