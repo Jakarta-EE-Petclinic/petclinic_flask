@@ -69,12 +69,12 @@ html_theme_options = {"index_sidebar_logo": True}
 html_context = {
     "project_links": [
         ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
-        ProjectLink("PyPI Releases", "https://pypi.org/project/Flask_covid19/"),
-        ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
+        ProjectLink("PyPI Releases", "https://pypi.org/project/petclinic_flask/"),
+        ProjectLink("Source Code", "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/"),
         ProjectLink(
-            "Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"
+            "Issue Tracker", "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/issues/"
         ),
-        ProjectLink("Website", "https://palletsprojects.com/p/flask_covid19/"),
+        ProjectLink("Website", "https://palletsprojects.com/p/petclinic_flask/"),
         ProjectLink("Twitter", "https://twitter.com/ThomasWoehlke"),
         ProjectLink("Chat", "https://discord.gg/ThomasWoehlke"),
     ]
@@ -123,7 +123,7 @@ latex_documents = [(master_doc, f"Flask-{version}.tex", html_title, author, "man
 def github_link(name, rawtext, text, lineno, inliner, options=None, content=None):
     app = inliner.document.settings.env.app
     release = app.config.release
-    base_url = "https://github.com/thomaswoehlke/flask_covid19/tree/"
+    base_url = "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/tree/"
 
     if text.endswith(">"):
         words, text = text[:-1].rsplit("<", 1)
