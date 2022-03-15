@@ -112,6 +112,7 @@ sphinx-copybutton==0.3.3
 sphinx-data-viewer==0.1.2
 sphinx-issues==1.2.0
 sphinx-panels==0.6.0
+sphinx-sqlalchemy==0.1.1
 sphinx-tabs==3.2.0
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-devhelp==1.0.2
@@ -130,7 +131,6 @@ sqlacodegen==2.3.0
 SQLAlchemy==1.4.27
 SQLAlchemy-Defaults==0.4.4
 sqlalchemy-mixins==1.5
-sqlalchemy-sphinx==0.9.0
 SQLAlchemy-Utils==0.38.2
 toml==0.10.2
 tomli==1.2.2
