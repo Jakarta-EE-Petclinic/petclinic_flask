@@ -8,10 +8,10 @@ Flask-Cors
 Flask-BS4>=5.1.3.0
 Flask-Admin
 Flask-Login
-flask-login-dictabase-blueprint
-flask-WTF
+Flask-WTF
 Flask-Uploads
 Flask-Babel
+flask-login-dictabase-blueprint
 SQLAlchemy
 sqlalchemy-mixins
 SQLAlchemy-Defaults
