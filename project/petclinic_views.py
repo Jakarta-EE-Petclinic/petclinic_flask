@@ -387,14 +387,14 @@ class DomainModelPetUrls:
             )
 
     @staticmethod
-    @app.route("/pet/<>", methods=['GET', 'POST'])
+    @app.route("/pet/<pet_id>", methods=['GET', 'POST'])
     def url_pet_show():
         """usecase pet_new as uc5002"""
         pass
 
 
     @staticmethod
-    @app.route("/pet/<>/edit", methods=['GET', 'POST'])
+    @app.route("/pet/<pet_id>", methods=['GET', 'POST'])
     def url_pet_edit():
         """usecase pet_change as uc5003"""
         pass
@@ -464,9 +464,24 @@ class DomainModelPetTypeUrls:
     def __init__(self):
         app.logger.info(" DomainModelPetTypeUrls [init]")
 
+
+    @staticmethod
+    @app.route("/pettype/search")
+    def url_pettype_search():
+        """usecase pettype_search as uc4000"""
+        searchterm = request.args.get('searchterm', '', type=str)
+        page_info = WebPageContent("petclinic_owner", "search")
+        page_data = Owner.search(searchterm)
+        return render_template(
+            "petclinic_model/owner/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
     @staticmethod
     @app.route("/pettype")
     def url_pettype_index():
+        """usecase pettype_list as uc4001"""
         page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_pettype", "index")
         page_data = PetType.get_all(page)
@@ -479,6 +494,7 @@ class DomainModelPetTypeUrls:
     @staticmethod
     @app.route("/pettype/new", methods=['GET', 'POST'])
     def url_pettype_new():
+        """usecase pettype_new as uc4002"""
         form = PetTypeForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = PetType()
@@ -493,6 +509,24 @@ class DomainModelPetTypeUrls:
                 form=form,
                 page_info=page_info
             )
+
+    @staticmethod
+    @app.route("/pettype/show", methods=['GET', 'POST'])
+    def url_pettype_show():
+        """usecase pettype_change as uc4003"""
+        pass
+
+    @staticmethod
+    @app.route("/pettype/edit", methods=['GET', 'POST'])
+    def url_pettype_change():
+        """usecase pettype_change as uc4003"""
+        pass
+
+    @staticmethod
+    @app.route("/pettype/remove", methods=['GET', 'POST'])
+    def url_pettype_remove():
+        """usecase pettype_remove as uc4004"""
+        pass
 
 
 domain_model_pettype_urls = DomainModelPetTypeUrls()

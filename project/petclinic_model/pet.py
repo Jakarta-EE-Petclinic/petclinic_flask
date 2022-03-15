@@ -9,6 +9,10 @@ from project.petclinic_model.owner import Owner, OwnerNewForm
 
 
 class Pet(db.Model):
+    """
+    .. uml:: entities.uml
+    .. uml:: pet.uml
+    """
     __tablename__ = "petclinic_pet"
 
     all_entity_id_seq = Sequence('id_seq_petclinic_pet')
@@ -79,6 +83,10 @@ class Pet(db.Model):
 
 
 class PetForm(ModelForm):
+    """
+    .. uml:: entities.uml
+    .. uml:: pet.uml
+    """
     class Meta:
         model = Pet
 

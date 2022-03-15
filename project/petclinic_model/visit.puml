@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor AnonymousVisitor as av
+actor AuthentifiedVisitor as au
+actor SysAdmin as sa
+
+av <|-- au
+au <|-- sa
+
+package flask_petclinic {
+
+    package petclinic_visit {
+
+        usecase pet_list_visits as uc7000
+        usecase pet_add_visit_to_pet_and_vet as uc7001
+        usecase pet_change_visit_to_pet_and_vet as uc7002
+        usecase pet_remove_visit as uc7003
+
+        au --> uc7000
+        au --> uc7001
+        au --> uc7002
+        au --> uc7003
+    }
+
+}
+@enduml

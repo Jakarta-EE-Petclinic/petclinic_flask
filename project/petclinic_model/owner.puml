@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+
+actor AnonymousVisitor as av
+actor AuthentifiedVisitor as au
+actor SysAdmin as sa
+
+av <|-- au
+au <|-- sa
+
+package flask_petclinic {
+
+    package petclinic_owner {
+
+        usecase owner_search as uc6000
+        usecase owner_list as uc6001
+        usecase owner_change as uc6002
+        usecase owner_new as uc6003
+
+        usecase owner_add_new_pet as uc6004
+        usecase owner_change_pet as uc6005
+        usecase owner_remove_pet as uc6006
+        usecase owner_give_pet_to_another_owner as uc6007
+
+        au --> uc6000
+        au --> uc6001
+        au --> uc6002
+        au --> uc6003
+        au --> uc6004
+        au --> uc6005
+        au --> uc6006
+        au --> uc6007
+    }
+
+}
+@enduml

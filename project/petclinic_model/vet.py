@@ -24,6 +24,10 @@ specialities_table = db.Table(
 
 
 class Vet(db.Model):
+    """
+    .. uml:: entities.uml
+    .. uml:: vet.uml
+    """
     __tablename__ = "petclinic_vet"
 
     all_entity_id_seq = Sequence('id_seq_petclinic_vet')

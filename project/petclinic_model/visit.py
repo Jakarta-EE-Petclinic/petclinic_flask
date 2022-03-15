@@ -8,6 +8,10 @@ from project.petclinic_model.pet import Pet
 
 
 class Visit(db.Model):
+    """
+    .. uml:: entities.uml
+    .. uml:: visit.uml
+    """
     __tablename__ = "petclinic_visit"
 
     all_entity_id_seq = Sequence('all_entity_id_seq')
@@ -64,6 +68,10 @@ class Visit(db.Model):
 
 
 class VisitForm(ModelForm):
+    """
+    .. uml:: entities.uml
+    .. uml:: visit.uml
+    """
     class Meta:
         model = Visit
 

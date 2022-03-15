@@ -5,15 +5,10 @@ from project.app_config.database import db, items_per_page, ModelForm, app
 
 
 class Owner(db.Model):
-    """Use Cases petclinic_owner
-usecase owner_search as uc6000
-usecase owner_list as uc6001
-usecase owner_change as uc6002
-usecase owner_new as uc6003
-usecase owner_add_new_pet as uc6004
-usecase owner_change_pet as uc6005
-usecase owner_remove_pet as uc6006
-"""
+    """
+    .. uml:: entities.uml
+    .. uml:: owner.uml
+    """
     __tablename__ = "petclinic_owner"
 
     all_entity_id_seq = Sequence('id_seq_petclinic_owner')
@@ -68,6 +63,10 @@ usecase owner_remove_pet as uc6006
 
 
 class OwnerNewForm(ModelForm):
+    """
+    .. uml:: entities.uml
+    .. uml:: owner.uml
+    """
     class Meta:
         model = Owner
 
@@ -76,6 +75,10 @@ class OwnerNewForm(ModelForm):
 
 
 class OwnerShowForm(ModelForm):
+    """
+    .. uml:: entities.uml
+    .. uml:: owner.uml
+    """
     class Meta:
         model = Owner
 
@@ -84,6 +87,10 @@ class OwnerShowForm(ModelForm):
 
 
 class OwnerEditForm(ModelForm):
+    """
+    .. uml:: entities.uml
+    .. uml:: owner.uml
+    """
     class Meta:
         model = Owner
 

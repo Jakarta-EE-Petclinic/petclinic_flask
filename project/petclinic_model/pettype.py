@@ -5,6 +5,10 @@ from project.app_config.database import db, items_per_page, ModelForm, app
 
 
 class PetType(db.Model):
+    """
+    .. uml:: entities.uml
+    .. uml:: pettype.uml
+    """
     __tablename__ = "petclinic_pettype"
 
     all_entity_id_seq = Sequence('id_seq_petclinic_pettype')
@@ -53,6 +57,10 @@ class PetType(db.Model):
 
 
 class PetTypeForm(ModelForm):
+    """
+    .. uml:: entities.uml
+    .. uml:: pettype.uml
+    """
     class Meta:
         model = PetType
 

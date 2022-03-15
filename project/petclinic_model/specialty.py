@@ -5,6 +5,10 @@ from project.app_config.database import db, items_per_page, ModelForm, app
 
 
 class Specialty(db.Model):
+    """
+    .. uml:: entities.uml
+    .. uml:: specialty.uml
+    """
     __tablename__ = "petclinic_specialty"
 
     all_entity_id_seq = Sequence('id_seq_petclinic_specialty')
