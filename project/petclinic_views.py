@@ -338,7 +338,7 @@ class DomainModelPetUrls:
         page_info = WebPageContent("petclinic_owner", "search")
         page_data = Owner.search(searchterm)
         return render_template(
-            "petclinic_model/owner/index.html",
+            "petclinic_model/pet/index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -384,17 +384,15 @@ class DomainModelPetUrls:
         """usecase pet_new as uc5002"""
         pass
 
-
     @staticmethod
-    @app.route("/pet/<pet_id>", methods=['GET', 'POST'])
+    @app.route("/pet/<pet_id>/edit", methods=['GET', 'POST'])
     def url_pet_edit():
         """usecase pet_change as uc5003"""
         pass
 
-
     @staticmethod
-    @app.route("/pet/<>/remove", methods=['GET', 'POST'])
-    def url_pet_show():
+    @app.route("/pet/<pet_id>/remove", methods=['GET', 'POST'])
+    def url_pet_remove():
         """usecase pet_remove as uc5004"""
         pass
 
@@ -410,9 +408,22 @@ class DomainModelVisitUrls:
         app.logger.info(" DomainModelVisitUrls [init]")
 
     @staticmethod
+    @app.route("/visit/search")
+    def url_visit_search():
+        """ usecase visit_search as uc7000"""
+        searchterm = request.args.get('searchterm', '', type=str)
+        page_info = WebPageContent("petclinic_visit", "search")
+        page_data = Visit.search(searchterm)
+        return render_template(
+            "petclinic_model/visit/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
     @app.route("/visit")
     def url_visit_index():
-        """"""
+        """usecase visit_list as uc7001"""
         page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_visit", "index")
         page_data = Visit.get_all(page)
@@ -425,7 +436,7 @@ class DomainModelVisitUrls:
     @staticmethod
     @app.route("/visit/new", methods=['GET', 'POST'])
     def url_visit_new():
-        """"""
+        """usecase visit_new as uc7002"""
         form = VisitForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = Visit()
@@ -442,6 +453,24 @@ class DomainModelVisitUrls:
                 form=form,
                 page_info=page_info
             )
+
+    @staticmethod
+    @app.route("/visit/<pet_id>", methods=['GET', 'POST'])
+    def url_visit_show():
+        """usecase visit_show as uc7003"""
+        pass
+
+    @staticmethod
+    @app.route("/visit/<pet_id>/edit", methods=['GET', 'POST'])
+    def url_visit_edit():
+        """usecase visit_change as uc7004"""
+        pass
+
+    @staticmethod
+    @app.route("/visit/<pet_id>/remove", methods=['GET', 'POST'])
+    def url_visit_remove():
+        """usecase visit_remove as uc7005"""
+        pass
 
 
 domain_model_visit_urls = DomainModelVisitUrls()
@@ -461,7 +490,7 @@ class DomainModelPetTypeUrls:
     def url_pettype_search():
         """usecase pettype_search as uc4000"""
         searchterm = request.args.get('searchterm', '', type=str)
-        page_info = WebPageContent("petclinic_owner", "search")
+        page_info = WebPageContent("petclinic_pettype", "search")
         page_data = Owner.search(searchterm)
         return render_template(
             "petclinic_model/owner/index.html",
@@ -532,8 +561,22 @@ class DomainModelVetUrls:
         app.logger.info(" DomainModelVetUrls [init]")
 
     @staticmethod
+    @app.route("/vet/search")
+    def url_pettype_search():
+        """usecase vet_search as uc3000"""
+        searchterm = request.args.get('searchterm', '', type=str)
+        page_info = WebPageContent("petclinic_vet", "search")
+        page_data = Vet.search(searchterm)
+        return render_template(
+            "petclinic_model/vet/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
     @app.route("/vet")
     def url_vet_index():
+        """usecase vet_list as uc3001"""
         page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_vet", "index")
         page_data = Vet.get_all(page)
@@ -546,6 +589,7 @@ class DomainModelVetUrls:
     @staticmethod
     @app.route("/vet/new", methods=['GET', 'POST'])
     def url_vet_new():
+        """usecase vet_new as uc3002"""
         form = VetForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = Vet()
@@ -565,6 +609,24 @@ class DomainModelVetUrls:
                 page_info=page_info
             )
 
+    @staticmethod
+    @app.route("/vet/show", methods=['GET', 'POST'])
+    def url_vet_show():
+        """usecase vet_show as uc3003"""
+        pass
+
+    @staticmethod
+    @app.route("/vet/edit", methods=['GET', 'POST'])
+    def url_vet_change():
+        """usecase vet_change as uc3004"""
+        pass
+
+    @staticmethod
+    @app.route("/vet/remove", methods=['GET', 'POST'])
+    def url_vet_remove():
+        """usecase vet_remove as uc3006"""
+        pass
+
 
 domain_model_vet_urls = DomainModelVetUrls()
 
@@ -578,8 +640,22 @@ class DomainModelSpecialtyUrls:
         app.logger.info(" DomainModelSpecialtyUrls [init]")
 
     @staticmethod
+    @app.route("/specialty/search")
+    def url_specialty_search():
+        """usecase specialty_search as uc2000"""
+        searchterm = request.args.get('searchterm', '', type=str)
+        page_info = WebPageContent("petclinic_specialty", "search")
+        page_data = Specialty.search(searchterm)
+        return render_template(
+            "petclinic_model/specialty/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
     @app.route("/specialty")
     def url_specialty_index():
+        """usecase specialty_list as uc2001"""
         page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_specialty", "index")
         page_data = Specialty.get_all(page)
@@ -592,6 +668,7 @@ class DomainModelSpecialtyUrls:
     @staticmethod
     @app.route("/specialty/new", methods=['GET', 'POST'])
     def url_specialty_new():
+        """usecase specialty_new as uc2002"""
         form = SpecialtyForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = Specialty()
@@ -606,6 +683,24 @@ class DomainModelSpecialtyUrls:
                 form=form,
                 page_info=page_info
             )
+
+    @staticmethod
+    @app.route("/specialty/show", methods=['GET', 'POST'])
+    def url_specialty_show():
+        """usecase specialty_show as uc2003"""
+        pass
+
+    @staticmethod
+    @app.route("/specialty/edit", methods=['GET', 'POST'])
+    def url_specialty_change():
+        """usecase specialty_change as uc2004"""
+        pass
+
+    @staticmethod
+    @app.route("/specialty/remove", methods=['GET', 'POST'])
+    def url_specialty_remove():
+        """usecase specialty_remove as uc2005"""
+        pass
 
 
 domain_model_specialty_urls = DomainModelSpecialtyUrls()
