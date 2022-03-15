@@ -6,6 +6,10 @@
     <div class="container">
         <div class="row">
             <div class="col">
+                <div class="jumbotron">
+                    <h1 class="display-4">{{ page_info.title }}</h1>
+                    <p class="lead">{{ page_info.subtitle }}</p>
+                    <hr class="my-4">
                     <p>
                       Python Flask Version of Spring Petclinic
                       with SQLAlchemy, Celery et al.
@@ -15,21 +19,14 @@
                         <form method="POST" enctype="multipart/form-data">
                           {{ form.csrf_token }}
                           <div class="mb-3">
-                            {{ form.first_name.label(class_="form-label") }}
-                            {{ form.first_name(class_="form-control") }}
-                          </div>
-                          <div class="mb-3">
-                            {{ form.last_name.label(class_="form-label") }}
-                            {{ form.last_name(class_="form-control") }}
-                          </div>
-                          <div class="mb-3">
-                            {{ form.specialty_select.label(class_="form-label") }}
-                            {{ form.specialty_select(class_="form-control") }}
+                            {{ form.name.label(class_="form-label") }}
+                            {{ form.name(class_="form-control") }}
                           </div>
                           {{ form.submit(class_="btn btn-primary") }}
                         </form>
                       </div>
                     </p>
+                </div>
             </div>
         </div>
     </div>
