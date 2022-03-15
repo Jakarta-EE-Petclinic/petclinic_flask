@@ -531,20 +531,45 @@ class DomainModelPetTypeUrls:
             )
 
     @staticmethod
-    @app.route("/pettype/show", methods=['GET', 'POST'])
-    def url_pettype_show():
+    @app.route("/pettype/<int:pettype_id>/show", methods=['GET', 'POST'])
+    def url_pettype_show(pettype_id: int):
         """usecase pettype_change as uc4003"""
-        pass
+        form = PetTypeForm()
+        o = PetType.find_by_id(pettype_id)
+        form.name.data = o.name
+        page_info = WebPageContent("petclinic_pettype", "show")
+        return render_template(
+            "petclinic_model/pettype/show.html",
+            form=form,
+            pettype_id=pettype_id,
+            page_info=page_info
+        )
 
     @staticmethod
-    @app.route("/pettype/edit", methods=['GET', 'POST'])
-    def url_pettype_change():
+    @app.route("/pettype/<int:pettype_id>/edit", methods=['GET', 'POST'])
+    def url_pettype_change(pettype_id: int):
         """usecase pettype_change as uc4003"""
-        pass
+        form = PetTypeForm()
+        if request.method == 'POST' and form.validate_on_submit():
+            o = PetType.find_by_id(pettype_id)
+            o.name = form.name.data
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_pettype_index'))
+        else:
+            o = PetType()
+            form.name.data = o.name
+            page_info = WebPageContent("petclinic_pettype", "edit")
+            return render_template(
+                "petclinic_model/pettype/edit.html",
+                form=form,
+                pettype_id=pettype_id,
+                page_info=page_info
+            )
 
     @staticmethod
-    @app.route("/pettype/remove", methods=['GET', 'POST'])
-    def url_pettype_remove():
+    @app.route("/pettype/<int:pettype_id>/remove", methods=['GET', 'POST'])
+    def url_pettype_remove(pettype_id: int):
         """usecase pettype_remove as uc4004"""
         pass
 

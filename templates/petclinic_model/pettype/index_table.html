@@ -8,7 +8,11 @@
                     <tbody>
                     {% for o in page_data.items %}
                         <tr>
-                            <td>{{ o.name }}</td>
+                            <td>
+                            <a href="{{ url_for('url_pettype_show', pettype_id=o.id) }}">
+                              {{ o.name }}
+                            </a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
