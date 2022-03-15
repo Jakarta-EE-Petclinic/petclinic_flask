@@ -22,7 +22,8 @@ package flask_petclinic {
         au --> uc3001
         au --> uc3002
         au --> uc3003
-        au --> uc3004
+        uc3002 --> uc3004
+        uc3003 --> uc3004
         au --> uc3005
     }
 

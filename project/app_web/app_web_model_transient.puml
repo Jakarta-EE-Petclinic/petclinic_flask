@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+package flask_petclinic {
+
+    package app_web_model_transient {
+
+        entity WebPageContent {
+            title: String
+            subtitle: String
+            subtitle_info: String
+        }
+
+        interface AnonymousUserMixin {
+            is_authenticated: Boolean
+            is_active: Boolean
+            is_anonymous: Boolean
+            get_id()
+        }
+
+        entity AnonymousUserValueObject {
+        }
+
+        AnonymousUserValueObject -> AnonymousUserMixin
+    }
+
+}
+
+@enduml

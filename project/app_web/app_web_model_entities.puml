@@ -3,7 +3,7 @@ left to right direction
 
 package flask_petclinic {
 
-    package app {
+    package app_web_model_entities {
 
         entity Notification {
             id: Integer

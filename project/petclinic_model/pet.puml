@@ -14,9 +14,10 @@ package flask_petclinic {
         usecase pet_search as uc5000
         usecase pet_list as uc5001
         usecase pet_new as uc5002
-        usecase pet_change as uc5003
-        usecase pet_remove as uc5004
-        usecase pet_choose_pettype as uc5005
+        usecase pet_show as uc5003
+        usecase pet_change as uc5004
+        usecase pet_remove as uc5005
+        usecase pet_choose_pettype as uc5006
 
         au --> uc5000
         au --> uc5001
@@ -24,6 +25,9 @@ package flask_petclinic {
         au --> uc5003
         au --> uc5004
         au --> uc5005
+
+        uc5002 --> uc5006
+        uc5003 --> uc5006
     }
 }
 @enduml

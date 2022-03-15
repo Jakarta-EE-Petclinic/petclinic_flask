@@ -3,7 +3,7 @@
 
 package flask_petclinic {
 
-   package petclinic {
+   package petclinic_model {
 
         entity Owner {
             id: Integer
