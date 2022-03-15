@@ -28,8 +28,9 @@ class ModelForm(BaseModelForm):
 
 
 class PetclinicApplication:
+    """preparing the application and its components at the beginning ofs startup"""
     def __init__(self, testing=False):
-        self.app = Flask("flask_petclinic")
+        self.app = Flask("petclinic_flask")
         self.app_cors = CORS()
         self.csrf = CSRFProtect()
         if testing:
