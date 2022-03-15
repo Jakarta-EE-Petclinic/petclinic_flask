@@ -20,6 +20,7 @@ package flask_petclinic {
         usecase owner_add_new_pet as uc6004
         usecase owner_change_pet as uc6005
         usecase owner_remove_pet as uc6006
+        usecase owner_give_pet_to_another_owner as uc6007
 
         au --> uc6000
         au --> uc6001
@@ -28,6 +29,7 @@ package flask_petclinic {
         au --> uc6004
         au --> uc6005
         au --> uc6006
+        au --> uc6007
     }
 
 }

@@ -181,12 +181,36 @@ app_web_urls = ApplicationUrls()
 
 
 class DomainModelOwnerUrls:
+    """Use Cases petclinic_owner
+    usecase owner_search as uc6000
+    usecase owner_list as uc6001
+    usecase owner_change as uc6002
+    usecase owner_new as uc6003
+    usecase owner_add_new_pet as uc6004
+    usecase owner_change_pet as uc6005
+    usecase owner_remove_pet as uc6006
+    usecase owner_give_pet_to_another_owner as uc6007
+    """
     def __init__(self):
         app.logger.info(" DomainModelOwnerUrls [init]")
 
     @staticmethod
+    @app.route("/owner/search")
+    def url_owner_search():
+        """usecase owner_search as uc6000"""
+        searchterm = request.args.get('searchterm', '', type=str)
+        page_info = WebPageContent("petclinic_owner", "search")
+        page_data = Owner.search(searchterm)
+        return render_template(
+            "petclinic_model/owner/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
+
+    @staticmethod
     @app.route("/owner")
     def url_owner_index():
+        """usecase owner_list as uc6001"""
         page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_owner", "index")
         page_data = Owner.get_all(page)
@@ -199,6 +223,7 @@ class DomainModelOwnerUrls:
     @staticmethod
     @app.route("/owner/new", methods=['GET', 'POST'])
     def url_owner_new():
+        """usecase owner_new as uc6003"""
         form = OwnerNewForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = Owner()
@@ -223,6 +248,7 @@ class DomainModelOwnerUrls:
     @staticmethod
     @app.route("/owner/<int:owner_id>")
     def url_owner_shows(owner_id: int):
+        """usecase owner_change as uc6002"""
         page_info = WebPageContent("petclinic_owner", "show")
         form = OwnerShowForm()
         o = Owner.find_by_id(owner_id)
@@ -244,6 +270,7 @@ class DomainModelOwnerUrls:
     @staticmethod
     @app.route("/owner/<int:owner_id>/edit", methods=['GET', 'POST'])
     def url_owner_edit(owner_id: int):
+        """owner_change as uc6002"""
         page_info = WebPageContent("petclinic_owner", "edit")
         form = OwnerEditForm()
         o = Owner.find_by_id(owner_id)
@@ -273,17 +300,61 @@ class DomainModelOwnerUrls:
                 page_info=page_info
             )
 
+    @staticmethod
+    @app.route("/owner/<int:owner_id>/pet/new", methods=['GET', 'POST'])
+    def url_owner_add_new_pet():
+        """usecase owner_add_new_pet as uc6004"""
+        pass
+
+    @staticmethod
+    @app.route("/owner/<int:owner_id>/pet/<int:pet_id>", methods=['GET', 'POST'])
+    def url_owner_change_pet():
+        """usecase owner_change_pet as uc6005"""
+        pass
+
+    @staticmethod
+    @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/remove", methods=['GET', 'POST'])
+    def url_owner_remove_pet():
+        """usecase owner_remove_pet as uc6006"""
+        pass
+
+    @staticmethod
+    @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/remove", methods=['GET', 'POST'])
+    def url_owner_give_pet_to_another_owner():
+        """usecase owner_give_pet_to_another_owner as uc6007"""
+        pass
 
 domain_model_owner_urls = DomainModelOwnerUrls()
 
 
 class DomainModelPetUrls:
+    """Use Cases petclinic_pet
+    usecase pet_search as uc5000
+    usecase pet_list as uc5001
+    usecase pet_new as uc5002
+    usecase pet_change as uc5003
+    usecase pet_remove as uc5004"""
     def __init__(self):
         app.logger.info(" DomainModelPetUrls [init]")
+
+
+    @staticmethod
+    @app.route("/pet/search")
+    def url_pet_search():
+        """usecase pet_search as uc5000"""
+        searchterm = request.args.get('searchterm', '', type=str)
+        page_info = WebPageContent("petclinic_owner", "search")
+        page_data = Owner.search(searchterm)
+        return render_template(
+            "petclinic_model/owner/index.html",
+            page_data=page_data,
+            page_info=page_info
+        )
 
     @staticmethod
     @app.route("/pet")
     def url_pet_index():
+        """usecase pet_list as uc5001"""
         page = request.args.get('page', 1, type=int)
         page_info = WebPageContent("petclinic_pet", "index")
         page_data = Pet.get_all(page)
@@ -296,6 +367,7 @@ class DomainModelPetUrls:
     @staticmethod
     @app.route("/pet/new", methods=['GET', 'POST'])
     def url_pet_new():
+        """usecase pet_new as uc5002"""
         form = PetForm()
         if request.method == 'POST' and form.validate_on_submit():
             o = Pet()
@@ -314,11 +386,35 @@ class DomainModelPetUrls:
                 page_info=page_info
             )
 
+    @staticmethod
+    @app.route("/pet/<>", methods=['GET', 'POST'])
+    def url_pet_show():
+        """usecase pet_new as uc5002"""
+        pass
+
+
+    @staticmethod
+    @app.route("/pet/<>/edit", methods=['GET', 'POST'])
+    def url_pet_edit():
+        """usecase pet_change as uc5003"""
+        pass
+
+
+    @staticmethod
+    @app.route("/pet/<>/remove", methods=['GET', 'POST'])
+    def url_pet_show():
+        """usecase pet_remove as uc5004"""
+        pass
 
 domain_model_pet_urls = DomainModelPetUrls()
 
 
 class DomainModelVisitUrls:
+    """Use Cases petclinic_visit
+    usecase pet_list_visits as uc7000
+    usecase pet_add_visit_to_pet_and_vet as uc7001
+    usecase pet_change_visit_to_pet_and_vet as uc7002
+    usecase pet_remove_visit as uc7003"""
     def __init__(self):
         app.logger.info(" DomainModelVisitUrls [init]")
 
@@ -359,6 +455,12 @@ domain_model_visit_urls = DomainModelVisitUrls()
 
 
 class DomainModelPetTypeUrls:
+    """Use Cases petclinic_pettype
+    usecase pettype_search as uc4000
+    usecase pettype_list as uc4001
+    usecase pettype_new as uc4002
+    usecase pettype_change as uc4003
+    usecase pettype_remove as uc4004"""
     def __init__(self):
         app.logger.info(" DomainModelPetTypeUrls [init]")
 
@@ -397,6 +499,13 @@ domain_model_pettype_urls = DomainModelPetTypeUrls()
 
 
 class DomainModelVetUrls:
+    """Use Cases petclinic_vet
+        usecase vet_search as uc3000
+        usecase vet_list as uc3001
+        usecase vet_new as uc3002
+        usecase vet_change as uc3003
+        usecase vet_choose_specialties as uc3004
+        usecase vet_remove as uc3005"""
     def __init__(self):
         app.logger.info(" DomainModelVetUrls [init]")
 
@@ -439,6 +548,12 @@ domain_model_vet_urls = DomainModelVetUrls()
 
 
 class DomainModelSpecialtyUrls:
+    """Use Cases petclinic_specialty
+    usecase specialty_search as uc2000
+    usecase specialty_list as uc2001
+    usecase specialty_new as uc2002
+    usecase specialty_change as uc2003
+    usecase specialty_remove as uc2004"""
     def __init__(self):
         app.logger.info(" DomainModelSpecialtyUrls [init]")
 
