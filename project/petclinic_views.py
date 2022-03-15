@@ -10,7 +10,7 @@ from sqlalchemy.orm.collections import InstrumentedList
 from project.app_config.database import app, db, login_manager
 
 from project.app_web.user import LoginForm, User, UserService
-from project.app_web.model_transient import WebPageContent
+from project.app_web.cms_transient import WebPageContent
 from project.app_web.services import AdminService
 from project.app_web.notification import Notification, NotificationService
 
@@ -562,7 +562,7 @@ class DomainModelVetUrls:
 
     @staticmethod
     @app.route("/vet/search")
-    def url_pettype_search():
+    def url_vet_search():
         """usecase vet_search as uc3000"""
         searchterm = request.args.get('searchterm', '', type=str)
         page_info = WebPageContent("petclinic_vet", "search")
