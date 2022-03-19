@@ -64,7 +64,7 @@ class PetTypeForm(ModelForm):
     class Meta:
         model = PetType
 
-    submit = SubmitField('Save New PetType')
+    submit = SubmitField('Save PetType')
 
 
 class PetTypeService:

@@ -57,10 +57,14 @@ class Specialty(db.Model):
 
 
 class SpecialtyForm(ModelForm):
+    """
+    .. uml:: entities.uml
+    .. uml:: specialty.uml
+    """
     class Meta:
         model = Specialty
 
-    submit = SubmitField('Save New Specialty')
+    submit = SubmitField('Save Specialty')
 
 
 class SpecialtyService:

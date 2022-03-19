@@ -90,7 +90,7 @@ class VetForm(ModelForm):
         query_factory=Specialty.find_all,
         get_pk=lambda x: x.id, get_label=lambda x: x.__str__()
     )
-    submit = SubmitField('Save New Vet')
+    submit = SubmitField('Save Vet')
 
 
 class VetService:

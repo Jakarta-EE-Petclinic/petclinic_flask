@@ -9,7 +9,7 @@
                     {% for o in page_data.items %}
                         <tr>
                             <td>
-                            <a href="{{ url_for('url_pettype_show', pettype_id=o.id) }}">
+                            <a href="{{ url_for('url_pettype_change', pettype_id=o.id) }}">
                               {{ o.name }}
                             </a>
                             </td>
