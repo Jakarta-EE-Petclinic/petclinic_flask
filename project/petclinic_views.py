@@ -640,10 +640,30 @@ class DomainModelVetUrls:
         pass
 
     @staticmethod
-    @app.route("/vet/edit", methods=['GET', 'POST'])
-    def url_vet_change():
+    @app.route("/vet/<int:vet_id>/edit", methods=['GET', 'POST'])
+    def url_vet_change(vet_id: int):
         """usecase vet_change as uc3004"""
-        pass
+        form = VetForm()
+        o = Vet().find_by_id(vet_id)
+        if request.method == 'POST' and form.validate_on_submit():
+            o.first_name = form.first_name.data
+            o.last_name = form.last_name.data
+            o.specialities.clear()
+            for s in form.specialty_select.data:
+                o.specialities.append(s)
+            db.session.add(o)
+            db.session.commit()
+            return redirect(url_for('url_vet_index'))
+        else:
+            form.first_name.data = o.first_name
+            form.last_name.data = o.last_name
+            form.specialty_select.data = o.specialities
+            page_info = WebPageContent("petclinic_vet", "edit")
+            return render_template(
+                "petclinic_model/vet/new.html",
+                form=form,
+                page_info=page_info
+            )
 
     @staticmethod
     @app.route("/vet/remove", methods=['GET', 'POST'])
