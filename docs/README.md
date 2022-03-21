@@ -1,13 +1,13 @@
-# flask_petclinic
+# petclinic_flask
 
 * Version 0.0.1
 
 ## git
 
-* [https://github.com/thomaswoehlke/flask_petclinic.git](https://github.com/thomaswoehlke/flask_petclinic.git)
+* [https://github.com/Jakarta-EE-Petclinic/petclinic_flask.git](https://github.com/Jakarta-EE-Petclinic/petclinic_flask.git)
 
 ````bash
-    git clone git@github.com:thomaswoehlke/flask_petclinic.git
+    git clone git@github.com:Jakarta-EE-Petclinic/petclinic_flask.git
 ````
 
 ## setup and run
