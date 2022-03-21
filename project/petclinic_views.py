@@ -297,27 +297,35 @@ class DomainModelOwnerUrls:
             )
 
     @staticmethod
-    @app.route("/owner/<int:owner_id>/pet/new", methods=['GET', 'POST'])
+    @app.route("/owner/<int:owner_id>/pet/add", methods=['GET', 'POST'])
     def url_owner_pet_add(owner_id: int):
         """usecase owner_add_new_pet as uc6004"""
+        form = OwnerEditForm()
+        o = Owner.find_by_id(owner_id)
         return redirect(url_for('url_owner_index'))
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>", methods=['GET', 'POST'])
     def url_owner_pet_change(owner_id: int, pet_id: int):
         """usecase owner_change_pet as uc6005"""
+        form = OwnerEditForm()
+        o = Owner.find_by_id(owner_id)
         return redirect(url_for('url_owner_index'))
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/remove", methods=['GET', 'POST'])
     def url_owner_remove_pet(owner_id: int, pet_id: int):
         """usecase owner_remove_pet as uc6006"""
+        form = OwnerEditForm()
+        o = Owner.find_by_id(owner_id)
         return redirect(url_for('url_owner_index'))
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/transfer-ownership", methods=['GET', 'POST'])
     def url_owner_give_pet_to_another_owner(owner_id: int, pet_id: int):
         """usecase owner_give_pet_to_another_owner as uc6007"""
+        form = OwnerEditForm()
+        o = Owner.find_by_id(owner_id)
         return redirect(url_for('url_owner_index'))
 
 

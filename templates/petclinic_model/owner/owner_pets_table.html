@@ -15,12 +15,12 @@
     {% for o in page_data.items %}
       <tr>
         <td>
-          <a href="{{ url_for('url_owner_shows', owner_id=o.id) }}">
+          <a href="{{ url_for('url_owner_show', owner_id=o.id) }}">
             {{ o.first_name }}
           </a>
         </td>
         <td>
-          <a href="{{ url_for('url_owner_shows', owner_id=o.id) }}">
+          <a href="{{ url_for('url_owner_show', owner_id=o.id) }}">
             {{ o.last_name }}
           </a>
         </td>
