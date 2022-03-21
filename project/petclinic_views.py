@@ -196,7 +196,7 @@ class DomainModelOwnerUrls:
         page_info = WebPageContent("petclinic_owner", "search")
         page_data = Owner.search(searchterm)
         return render_template(
-            "petclinic_model/owner/index.html",
+            "petclinic_model/owner/owner_index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -209,7 +209,7 @@ class DomainModelOwnerUrls:
         page_info = WebPageContent("petclinic_owner", "index")
         page_data = Owner.get_all(page)
         return render_template(
-            "petclinic_model/owner/index.html",
+            "petclinic_model/owner/owner_index.html",
             page_data=page_data,
             page_info=page_info
         )
@@ -230,11 +230,12 @@ class DomainModelOwnerUrls:
             o.email = form.email.data
             db.session.add(o)
             db.session.commit()
+            flash("saved new Owner "+o.__str__())
             return redirect(url_for('url_owner_index'))
         else:
             page_info = WebPageContent("petclinic_owner", "new")
             return render_template(
-                "petclinic_model/owner/new.html",
+                "petclinic_model/owner/owner_new.html",
                 form=form,
                 page_info=page_info
             )
@@ -254,7 +255,7 @@ class DomainModelOwnerUrls:
         form.telephone.data = o.telephone
         form.email.data = o.email
         return render_template(
-            "petclinic_model/owner/show.html",
+            "petclinic_model/owner/owner_show.html",
             owner=o,
             form=form,
             owner_id=owner_id,
@@ -278,6 +279,7 @@ class DomainModelOwnerUrls:
             o.email = form.email.data
             db.session.add(o)
             db.session.commit()
+            flash("saved edited Owner "+o.__str__())
             return redirect(url_for('url_owner_shows', owner_id=owner_id))
         else:
             form.first_name.data = o.first_name
@@ -288,7 +290,7 @@ class DomainModelOwnerUrls:
             form.telephone.data = o.telephone
             form.email.data = o.email
             return render_template(
-                "petclinic_model/owner/edit.html",
+                "petclinic_model/owner/owner_edit.html",
                 owner_id=owner_id,
                 form=form,
                 page_info=page_info
@@ -296,27 +298,28 @@ class DomainModelOwnerUrls:
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/new", methods=['GET', 'POST'])
-    def url_owner_add_new_pet():
+    def url_owner_pet_add(owner_id: int):
         """usecase owner_add_new_pet as uc6004"""
-        pass
+        return redirect(url_for('url_owner_index'))
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>", methods=['GET', 'POST'])
-    def url_owner_change_pet():
+    def url_owner_pet_change(owner_id: int, pet_id: int):
         """usecase owner_change_pet as uc6005"""
-        pass
+        return redirect(url_for('url_owner_index'))
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/remove", methods=['GET', 'POST'])
-    def url_owner_remove_pet():
+    def url_owner_remove_pet(owner_id: int, pet_id: int):
         """usecase owner_remove_pet as uc6006"""
-        pass
+        return redirect(url_for('url_owner_index'))
 
     @staticmethod
-    @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/remove", methods=['GET', 'POST'])
-    def url_owner_give_pet_to_another_owner():
+    @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/transfer-ownership", methods=['GET', 'POST'])
+    def url_owner_give_pet_to_another_owner(owner_id: int, pet_id: int):
         """usecase owner_give_pet_to_another_owner as uc6007"""
-        pass
+        return redirect(url_for('url_owner_index'))
+
 
 domain_model_owner_urls = DomainModelOwnerUrls()
 
@@ -328,7 +331,6 @@ class DomainModelPetUrls:
     """
     def __init__(self):
         app.logger.info(" DomainModelPetUrls [init]")
-
 
     @staticmethod
     @app.route("/pet/search")
@@ -369,6 +371,7 @@ class DomainModelPetUrls:
             o.pettype = form.pettype_select.data
             db.session.add(o)
             db.session.commit()
+            flash("saved edited Owner "+o.__str__())
             return redirect(url_for('url_pet_index'))
         else:
             page_info = WebPageContent("petclinic_pet", "new")
@@ -521,6 +524,7 @@ class DomainModelPetTypeUrls:
             o.name = form.name.data
             db.session.add(o)
             db.session.commit()
+            flash("saved new PetType "+o.__str__())
             return redirect(url_for('url_pettype_index'))
         else:
             page_info = WebPageContent("petclinic_pettype", "new")
@@ -555,6 +559,7 @@ class DomainModelPetTypeUrls:
             o.name = form.name.data
             db.session.add(o)
             db.session.commit()
+            flash("saved changed PetType "+o.__str__())
             return redirect(url_for('url_pettype_index'))
         else:
             form.name.data = o.name
@@ -624,6 +629,7 @@ class DomainModelVetUrls:
                 o.specialities.append(s)
             db.session.add(o)
             db.session.commit()
+            flash("saved news Vet "+o.__str__())
             return redirect(url_for('url_vet_index'))
         else:
             page_info = WebPageContent("petclinic_vet", "new")
@@ -653,6 +659,7 @@ class DomainModelVetUrls:
                 o.specialities.append(s)
             db.session.add(o)
             db.session.commit()
+            flash("saved changed Vet "+o.__str__())
             return redirect(url_for('url_vet_index'))
         else:
             form.first_name.data = o.first_name
@@ -719,6 +726,7 @@ class DomainModelSpecialtyUrls:
             o.name = form.name.data
             db.session.add(o)
             db.session.commit()
+            flash("saved new Specialty "+o.__str__())
             return redirect(url_for('url_specialty_index'))
         else:
             page_info = WebPageContent("petclinic_specialty", "new")
@@ -738,10 +746,10 @@ class DomainModelSpecialtyUrls:
             o.name = form.name.data
             db.session.add(o)
             db.session.commit()
+            flash("saved changed Specialty "+o.__str__())
             return redirect(url_for('url_specialty_index'))
         else:
             page_info = WebPageContent("url_specialty_show", "show")
-            #form.meta.model = o
             form.name.data = o.name
             return render_template(
                 "petclinic_model/specialty/show.html",
