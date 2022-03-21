@@ -1,11 +1,11 @@
 {
-    "name": "flask-petclinic-static",
+    "name": "petclinic-flask-static",
     "version": "0.0.1",
     "description": "Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.",
     "main": "/static/index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/thomaswoehlke/flask_covid19/tree/main/flask_petclinic/"
+        "url": "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/tree/main/flask_petclinic/"
     },
     "keywords": [
         "Petclinic",

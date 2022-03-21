@@ -1,6 +1,6 @@
 """
-flask_petclinic
--------------
+petclinic_flask
+---------------
 Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al
 """
 import logging
@@ -183,10 +183,10 @@ def run_npm_install():
 
 
 setup(
-    name="flask_petclinic",
+    name="petclinic_flask",
     description="Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.",
     version="0.0.1",
-    url="https://github.com/thomaswoehlke/flask_petclinic.git",
+    url="https://github.com/Jakarta-EE-Petclinic/petclinic_flask.git",
     author="Thomas Woehlke",
     author_email="thomas.woehlke@gmail.com",
     license="GNU General Public License v3 (GPLv3)",
