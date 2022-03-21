@@ -242,7 +242,7 @@ class DomainModelOwnerUrls:
 
     @staticmethod
     @app.route("/owner/<int:owner_id>")
-    def url_owner_shows(owner_id: int):
+    def url_owner_show(owner_id: int):
         """usecase owner_change as uc6002"""
         page_info = WebPageContent("petclinic_owner", "show")
         form = OwnerShowForm()
