@@ -69,12 +69,12 @@ and in another termninal:
 * usecase userprofile as uc1002
 * usecase userlist as uc1003
 
-![use_cases__app_user](uml/use_cases__app_user.png "use_cases__app_user")
+![use_cases__app_user](../project/app_web/use_cases__app_user.png "use_cases__app_user")
 
 ## Use Cases app_notification
 * usecase notification_list as uc1010
 
-![use_cases__app_notification](uml/use_cases__app_notification.png "use_cases__app_notification")
+![use_cases__app_notification](../project/app_web/use_cases__app_notification.png "use_cases__app_notification")
 
 
 ## Use Cases app_web
@@ -84,7 +84,7 @@ and in another termninal:
 * usecase db_dump_reimport as uc1023
 * usecase db_table_count as uc1024
 
-![use_cases__app_web](uml/use_cases__app_web.png "use_cases__app_web")
+![use_cases__app_web](../project/app_web/use_cases__app_web.png "use_cases__app_web")
 
 ## Use Cases petclinic_specialty
 * usecase specialty_search as uc2000
