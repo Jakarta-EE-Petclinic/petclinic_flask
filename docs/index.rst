@@ -6,18 +6,18 @@
 Welcome to flask_covid19's documentation!
 =========================================
 
-.. sqla-model:: project.app_web.notification.Notification
-.. sqla-model:: project.app_web.user.User
-.. sqla-model:: project.petclinic_model.owner.Owner
-.. sqla-model:: project.petclinic_model.pet.Pet
-.. sqla-model:: project.petclinic_model.pettype.PetType
-.. sqla-model:: project.petclinic_model.specialty.Specialty
-.. sqla-model:: project.petclinic_model.vet.Vet
-.. sqla-model:: project.petclinic_model.visit.Visit
+.. sqla-model:: project/app_web/notification.Notification
+.. sqla-model:: project/app_web/user.User
+.. sqla-model:: project/petclinic_model/owner.Owner
+.. sqla-model:: project/petclinic_model/pet.Pet
+.. sqla-model:: project/petclinic_model/pettype.PetType
+.. sqla-model:: project/petclinic_model/specialty.Specialty
+.. sqla-model:: project/petclinic_model/vet.Vet
+.. sqla-model:: project/petclinic_model/visit.Visit
 
-.. uml:: project.petclinic_model.entities.puml
-.. uml:: project.app_web.app_web_model_entities.puml
-.. uml:: project.app_web.app_web_model_transient.puml
+.. uml:: project/petclinic_model/entities.puml
+.. uml:: project/app_web/app_web_model_entities.puml
+.. uml:: project/app_web/app_web_model_transient.puml
 
 .. toctree::
    :maxdepth: 2

@@ -40,6 +40,9 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.log_cabinet",
+    "sphinxcontrib.plantuml",
+    "sphinxcontrib.images",
+    "sphinxcontrib.srclinks"
 ]
 
 source_suffix = {
