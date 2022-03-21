@@ -254,9 +254,11 @@ class DomainModelOwnerUrls:
         form.city.data = o.city
         form.telephone.data = o.telephone
         form.email.data = o.email
+        pet_list = Pet.find_by_owner(o)
         return render_template(
             "petclinic_model/owner/owner_show.html",
             owner=o,
+            pet_list=pet_list,
             form=form,
             owner_id=owner_id,
             page_info=page_info

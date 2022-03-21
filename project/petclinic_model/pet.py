@@ -62,6 +62,10 @@ class Pet(db.Model):
         return cls.__query_all().paginate(page, per_page=items_per_page)
 
     @classmethod
+    def find_by_owner(cls, owner: Owner):
+        return db.session.query(cls).filter(cls.owner_id == owner.id)
+
+    @classmethod
     def find_all(cls):
         return cls.__query_all().all()
 
