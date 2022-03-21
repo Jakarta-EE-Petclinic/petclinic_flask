@@ -1,0 +1,83 @@
+{% extends 'app_web/layout/page_layout.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        Python Flask Version of Spring Petclinic
+        with SQLAlchemy, Celery et al.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="tw-box">
+          <form method="POST" enctype="multipart/form-data">
+            {{ owner_form.csrf_token }}
+            {{ owner_form.hidden_tag() }}
+            <div class="mb-3">
+              {{ owner_form.first_name.label(class_="form-label", disabled=True) }}
+              {{ owner_form.first_name(class_="form-control", disabled=True) }}
+            </div>
+            <div class="mb-3">
+              {{ owner_form.last_name.label(class_="form-label", disabled=True) }}
+              {{ owner_form.last_name(class_="form-control", disabled=True) }}
+            </div>
+            <div class="mb-3">
+              {{ owner_form.street_address.label(class_="form-label", disabled=True) }}
+              {{ owner_form.street_address(class_="form-control", disabled=True) }}
+            </div>
+            <div class="mb-3">
+              {{ owner_form.zip_code.label(class_="form-label", disabled=True) }}
+              {{ owner_form.zip_code(class_="form-control", disabled=True) }}
+            </div>
+            <div class="mb-3">
+              {{ owner_form.city.label(class_="form-label", disabled=True) }}
+              {{ owner_form.city(class_="form-control", disabled=True) }}
+            </div>
+            <div class="mb-3">
+              {{ owner_form.telephone.label(class_="form-label", disabled=True) }}
+              {{ owner_form.telephone(class_="form-control", disabled=True) }}
+            </div>
+            <div class="mb-3">
+              {{ owner_form.email.label(class_="form-label", disabled=True) }}
+              {{ owner_form.email(class_="form-control", disabled=True) }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="tw-box">
+          <form method="POST" enctype="multipart/form-data">
+            {{ pet_form.csrf_token }}
+            {{ pet_form.hidden_tag() }}
+            <div class="mb-3">
+              {{ pet_form.name.label(class_="form-label") }}
+              {{ pet_form.name(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ pet_form.date_of_birth.label(class_="form-label") }}
+              {{ pet_form.date_of_birth(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ pet_form.pettype_select.label(class_="form-label") }}
+              {{ pet_form.pettype_select(class_="form-select") }}
+            </div>
+            <a href="{{ url_for('url_owner_show', owner_id=owner_id) }}"
+               class="btn btn-secondary">Cancel</a>
+            {{ pet_form.submit(class_="btn btn-primary") }}
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {% include 'petclinic_model/owner/owner_pets_table.html' %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

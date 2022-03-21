@@ -108,7 +108,7 @@ class PetForm(ModelForm):
         lambda x: x.id, lambda x: x.__str__(),
         True, 'Bitte waehlen Sie einen Owner aus',
     )
-    submit = SubmitField('Save New Pet')
+    submit = SubmitField('Save Pet')
 
 
 class PetService:

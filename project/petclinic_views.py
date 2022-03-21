@@ -302,7 +302,7 @@ class DomainModelOwnerUrls:
     @app.route("/owner/<int:owner_id>/pet/add", methods=['GET', 'POST'])
     def url_owner_pet_add(owner_id: int):
         """usecase owner_add_new_pet as uc6004"""
-        page_info = WebPageContent("petclinic_owner", "show")
+        page_info = WebPageContent("petclinic_owner", "add pet")
         owner_form = OwnerShowForm()
         pet_form = PetForm()
         oo = Owner.find_by_id(owner_id)
@@ -339,9 +339,41 @@ class DomainModelOwnerUrls:
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>", methods=['GET', 'POST'])
     def url_owner_pet_change(owner_id: int, pet_id: int):
         """usecase owner_change_pet as uc6005"""
-        form = OwnerEditForm()
-        o = Owner.find_by_id(owner_id)
-        return redirect(url_for('url_owner_index'))
+        page_info = WebPageContent("petclinic_owner", "edit pet")
+        owner_form = OwnerEditForm()
+        pet_form = PetForm()
+        oo = Owner.find_by_id(owner_id)
+        o = Pet.find_by_id(pet_id)
+        if request.method == 'POST' and pet_form.validate_on_submit():
+            o.name = pet_form.name.data
+            o.date_of_birth = pet_form.date_of_birth.data
+            o.pettype = pet_form.pettype_select.data
+            o.owner = oo
+            db.session.add(o)
+            db.session.commit()
+            flash("saved edited Owner "+o.__str__())
+            return redirect(url_for('url_owner_show', owner_id=owner_id))
+        else:
+            owner_form.first_name.data = oo.first_name
+            owner_form.last_name.data = oo.last_name
+            owner_form.street_address.data = oo.street_address
+            owner_form.zip_code.data = oo.zip_code
+            owner_form.city.data = oo.city
+            owner_form.telephone.data = oo.telephone
+            owner_form.email.data = oo.email
+            pet_form.name.data = o.name
+            pet_form.date_of_birth.data = o.date_of_birth
+            pet_form.pettype_select.data = o.pettype
+            pet_list = Pet.find_by_owner(oo)
+            return render_template(
+                "petclinic_model/owner/owner_pet_edit.html",
+                owner=oo,
+                pet_list=pet_list,
+                owner_form=owner_form,
+                pet_form=pet_form,
+                owner_id=owner_id,
+                page_info=page_info
+            )
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/remove", methods=['GET', 'POST'])

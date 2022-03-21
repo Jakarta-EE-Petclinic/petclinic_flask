@@ -8,12 +8,18 @@
     </tr>
     </thead>
     <tbody>
-    {% for o in pet_list %}
+    {% for p in pet_list %}
+      {% if pet_id!=p.id %}
       <tr>
-        <td>{{ o.name }}</td>
-        <td>{{ o.date_of_birth }}</td>
-        <td>{{ o.pettype }}</td>
+        <td>
+          <a href="{{ url_for('url_owner_pet_change', owner_id=owner_id, pet_id=p.id) }}">
+          {{ p.name }}
+          </a>
+        </td>
+        <td>{{ p.date_of_birth }}</td>
+        <td>{{ p.pettype }}</td>
       </tr>
+      {% endif %}
     {% endfor %}
     </tbody>
     <tfoot class="table-secondary">
