@@ -4,27 +4,27 @@
 
 ### Entities_Petclinic
 
-![app_web_model_transient](../project/app_web/app_web_model_transient.png)
+![app_web_model_transient](../project/app_web/cms_transient.png)
 
-![app_web_model_entities](../project/app_web/app_web_model_entities.png)
+![app_web_model_entities](../project/app_web/cms_entities.png)
 
 ![Entities_Petclinic](../project/petclinic_model/entities.png)
 
 ## Use Cases
 
 ### Use Cases app_user
-![use_cases__app_user](../project/app_web/use_cases__app_user.png)
+![use_cases__app_user](../project/app_web/user.png)
 * usecase login as uc1000
 * usecase logout as uc1001
 * usecase userprofile as uc1002
 * usecase userlist as uc1003
 
 ### Use Cases app_notification
-![use_cases__app_notification](../project/app_web/use_cases__app_notification.png)
+![use_cases__app_notification](../project/app_web/notification.png)
 * usecase notification_list as uc1010
 
 ### Use Cases app_web
-![use_cases__app_web](../project/app_web/use_cases__app_web.png)
+![use_cases__app_web](../project/app_web/services.png)
 * usecase db_create as uc1020
 * usecase db_drop_and_create as uc1021
 * usecase db_dump as uc1022
