@@ -3,6 +3,7 @@ Pallets-Sphinx-Themes
 Sphinx
 myst-parser
 babel>=2.9.1
+sqlalchemy-sphinx
 sphinx-issues
 sphinx-tabs
 sphinx-sqlalchemy
@@ -12,3 +13,6 @@ sphinxcontrib-srclinks
 sphinxcontrib-gravizo
 sphinxcontrib-needs
 sphinxcontrib-plantuml
+sphinxcontrib-sqltable
+sphinxcontrib-websupport
+sphinxcontrib-sadisplay

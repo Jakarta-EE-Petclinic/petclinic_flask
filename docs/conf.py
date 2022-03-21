@@ -42,7 +42,8 @@ extensions = [
     "sphinxcontrib.log_cabinet",
     "sphinxcontrib.plantuml",
     "sphinxcontrib.images",
-    "sphinxcontrib.srclinks"
+    "sphinxcontrib.sqltable",
+    "sphinxcontrib.sadisp"
 ]
 
 source_suffix = {
