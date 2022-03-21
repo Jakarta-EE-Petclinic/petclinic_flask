@@ -3,7 +3,12 @@
 ## Domain_Class_Modell
 
 ### Entities_Petclinic
-![Entities_Petclinic](uml/Domain_Class_Modell__Entities_Petclinic.png)
+
+![app_web_model_transient](../project/app_web/app_web_model_transient.png)
+
+![app_web_model_entities](../project/app_web/app_web_model_entities.png)
+
+![Entities_Petclinic](../project/petclinic_model/entities.png)
 
 ## Use Cases
 
@@ -27,7 +32,7 @@
 * usecase db_table_count as uc1024
 
 ### Use Cases petclinic_specialty
-![use_cases__petclinic_specialty](uml/use_cases__petclinic_specialty.png)
+![use_cases__petclinic_specialty](../project/petclinic_model/specialty.png)
 * usecase specialty_search as uc2000
 * usecase specialty_list as uc2001
 * usecase specialty_new as uc2002
@@ -35,7 +40,7 @@
 * usecase specialty_remove as uc2004
 
 ### Use Cases petclinic_vet
-![use_cases__petclinic_vet](uml/use_cases__petclinic_vet.png)
+![use_cases__petclinic_vet](../project/petclinic_model/vet.png)
 * usecase vet_search as uc3000
 * usecase vet_list as uc3001
 * usecase vet_new as uc3002
@@ -44,7 +49,7 @@
 * usecase vet_remove as uc3005
 
 ### Use Cases petclinic_pettype
-![use_cases__petclinic_pet](uml/use_cases__petclinic_pet.png)
+![use_cases__petclinic_pet](../project/petclinic_model/pet.png)
 * usecase pettype_search as uc4000
 * usecase pettype_list as uc4001
 * usecase pettype_new as uc4002
@@ -52,7 +57,7 @@
 * usecase pettype_remove as uc4004
 
 ### Use Cases petclinic_pet
-![use_cases__petclinic_pettype](uml/use_cases__petclinic_pettype.png)
+![use_cases__petclinic_pettype](../project/petclinic_model/pettype.png)
 * usecase pet_search as uc5000
 * usecase pet_list as uc5001
 * usecase pet_new as uc5002
@@ -61,7 +66,7 @@
 * usecase pet_choose_pettype as uc5005
 
 ### Use Cases petclinic_owner
-![use_cases__petclinic_owner](uml/use_cases__petclinic_owner.png)
+![use_cases__petclinic_owner](../project/petclinic_model/owner.png)
 * usecase owner_search as uc6000
 * usecase owner_list as uc6001
 * usecase owner_change as uc6002
@@ -71,7 +76,7 @@
 * usecase owner_remove_pet as uc6006
 
 ### Use Cases petclinic_visit
-![use_cases__petclinic_visit](uml/use_cases__petclinic_visit.png)
+![use_cases__petclinic_visit](../project/petclinic_model/visit.png)
 * usecase pet_list_visits as uc7000
 * usecase pet_add_visit_to_pet_and_vet as uc7001
 * usecase pet_change_visit_to_pet_and_vet as uc7002
