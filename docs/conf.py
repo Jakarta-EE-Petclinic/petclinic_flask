@@ -60,7 +60,7 @@ intersphinx_mapping = {
     "blinker": ("https://pythonhosted.org/blinker/", None),
 }
 
-issues_github_path = "thomaswoehlke/flask_covid19"
+issues_github_path = "Jakarta-EE-Petclinic/petclinic_flask"
 
 # HTML -----------------------------------------------------------------
 

@@ -6,17 +6,18 @@
 Welcome to flask_covid19's documentation!
 =========================================
 
-.. sqla-model:: project.app_notification.notification.Notification
-.. sqla-model:: project.app_user.user.User
-.. sqla-model:: project.petclinic_owner.owner.Owner
-.. sqla-model:: project.petclinic_pet.pet.Pet
-.. sqla-model:: project.petclinic_pettype.pettype.PetType
-.. sqla-model:: project.petclinic_specialty.specialty.Specialty
-.. sqla-model:: project.petclinic_vet.vet.Vet
-.. sqla-model:: project.petclinic_visit.visit.Visit
+.. sqla-model:: project.app_web.notification.Notification
+.. sqla-model:: project.app_web.user.User
+.. sqla-model:: project.petclinic_model.owner.Owner
+.. sqla-model:: project.petclinic_model.pet.Pet
+.. sqla-model:: project.petclinic_model.pettype.PetType
+.. sqla-model:: project.petclinic_model.specialty.Specialty
+.. sqla-model:: project.petclinic_model.vet.Vet
+.. sqla-model:: project.petclinic_model.visit.Visit
 
-.. uml:: uml/Domain_Class_Modell.png
-.. uml:: uml/use_cases.puml
+.. uml:: project.petclinic_model.entities.puml
+.. uml:: project.app_web.app_web_model_entities.puml
+.. uml:: project.app_web.app_web_model_transient.puml
 
 .. toctree::
    :maxdepth: 2
