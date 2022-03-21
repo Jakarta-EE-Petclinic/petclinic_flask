@@ -6,7 +6,8 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.
+        Python Flask Version of Spring Petclinic
+        with SQLAlchemy, Celery et al.
       </div>
     </div>
     <div class="row">
@@ -53,9 +54,31 @@
     </div>
     <div class="row">
       <div class="col">
-        <a class="page-link" href="{{ url_for('url_owner_pet_add', owner_id=owner_id) }}">
-          <i class="fas fa-plus-square"></i> add New Pet
-        </a>
+        <div class="tw-box">
+          <form method="POST" enctype="multipart/form-data">
+            {{ pet_form.csrf_token }}
+            {{ pet_form.hidden_tag() }}
+            <div class="mb-3">
+              {{ pet_form.name.label(class_="form-label") }}
+              {{ pet_form.name(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ pet_form.date_of_birth.label(class_="form-label") }}
+              {{ pet_form.date_of_birth(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ pet_form.owner_select.label(class_="form-label") }}
+              {{ pet_form.owner_select(class_="form-select") }}
+            </div>
+            <div class="mb-3">
+              {{ pet_form.pettype_select.label(class_="form-label") }}
+              {{ pet_form.pettype_select(class_="form-select") }}
+            </div>
+            <a href="{{ url_for('url_pet_index', page=1) }}"
+               class="btn btn-secondary">Cancel</a>
+            {{ form.submit(class_="btn btn-primary") }}
+          </form>
+        </div>
       </div>
     </div>
     <div class="row">

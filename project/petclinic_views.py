@@ -218,16 +218,16 @@ class DomainModelOwnerUrls:
     @app.route("/owner/new", methods=['GET', 'POST'])
     def url_owner_new():
         """usecase owner_new as uc6003"""
-        form = OwnerNewForm()
-        if request.method == 'POST' and form.validate_on_submit():
+        owner_form = OwnerNewForm()
+        if request.method == 'POST' and owner_form.validate_on_submit():
             o = Owner()
-            o.first_name = form.first_name.data
-            o.last_name = form.last_name.data
-            o.street_address = form.street_address.data
-            o.zip_code = form.zip_code.data
-            o.city = form.city.data
-            o.telephone = form.telephone.data
-            o.email = form.email.data
+            o.first_name = owner_form.first_name.data
+            o.last_name = owner_form.last_name.data
+            o.street_address = owner_form.street_address.data
+            o.zip_code = owner_form.zip_code.data
+            o.city = owner_form.city.data
+            o.telephone = owner_form.telephone.data
+            o.email = owner_form.email.data
             db.session.add(o)
             db.session.commit()
             flash("saved new Owner "+o.__str__())
@@ -236,7 +236,7 @@ class DomainModelOwnerUrls:
             page_info = WebPageContent("petclinic_owner", "new")
             return render_template(
                 "petclinic_model/owner/owner_new.html",
-                form=form,
+                owner_form=owner_form,
                 page_info=page_info
             )
 
@@ -245,21 +245,21 @@ class DomainModelOwnerUrls:
     def url_owner_show(owner_id: int):
         """usecase owner_change as uc6002"""
         page_info = WebPageContent("petclinic_owner", "show")
-        form = OwnerShowForm()
+        owner_form = OwnerShowForm()
         o = Owner.find_by_id(owner_id)
-        form.first_name.data = o.first_name
-        form.last_name.data = o.last_name
-        form.street_address.data = o.street_address
-        form.zip_code.data = o.zip_code
-        form.city.data = o.city
-        form.telephone.data = o.telephone
-        form.email.data = o.email
+        owner_form.first_name.data = o.first_name
+        owner_form.last_name.data = o.last_name
+        owner_form.street_address.data = o.street_address
+        owner_form.zip_code.data = o.zip_code
+        owner_form.city.data = o.city
+        owner_form.telephone.data = o.telephone
+        owner_form.email.data = o.email
         pet_list = Pet.find_by_owner(o)
         return render_template(
             "petclinic_model/owner/owner_show.html",
             owner=o,
             pet_list=pet_list,
-            form=form,
+            owner_form=owner_form,
             owner_id=owner_id,
             page_info=page_info
         )
@@ -269,32 +269,32 @@ class DomainModelOwnerUrls:
     def url_owner_edit(owner_id: int):
         """owner_change as uc6002"""
         page_info = WebPageContent("petclinic_owner", "edit")
-        form = OwnerEditForm()
+        owner_form = OwnerEditForm()
         o = Owner.find_by_id(owner_id)
-        if request.method == 'POST' and form.validate_on_submit():
-            o.first_name = form.first_name.data
-            o.last_name = form.last_name.data
-            o.street_address = form.street_address.data
-            o.zip_code = form.zip_code.data
-            o.city = form.city.data
-            o.telephone = form.telephone.data
-            o.email = form.email.data
+        if request.method == 'POST' and owner_form.validate_on_submit():
+            o.first_name = owner_form.first_name.data
+            o.last_name = owner_form.last_name.data
+            o.street_address = owner_form.street_address.data
+            o.zip_code = owner_form.zip_code.data
+            o.city = owner_form.city.data
+            o.telephone = owner_form.telephone.data
+            o.email = owner_form.email.data
             db.session.add(o)
             db.session.commit()
             flash("saved edited Owner "+o.__str__())
             return redirect(url_for('url_owner_shows', owner_id=owner_id))
         else:
-            form.first_name.data = o.first_name
-            form.last_name.data = o.last_name
-            form.street_address.data = o.street_address
-            form.zip_code.data = o.zip_code
-            form.city.data = o.city
-            form.telephone.data = o.telephone
-            form.email.data = o.email
+            owner_form.first_name.data = o.first_name
+            owner_form.last_name.data = o.last_name
+            owner_form.street_address.data = o.street_address
+            owner_form.zip_code.data = o.zip_code
+            owner_form.city.data = o.city
+            owner_form.telephone.data = o.telephone
+            owner_form.email.data = o.email
             return render_template(
                 "petclinic_model/owner/owner_edit.html",
                 owner_id=owner_id,
-                form=form,
+                owner_form=owner_form,
                 page_info=page_info
             )
 
@@ -302,9 +302,37 @@ class DomainModelOwnerUrls:
     @app.route("/owner/<int:owner_id>/pet/add", methods=['GET', 'POST'])
     def url_owner_pet_add(owner_id: int):
         """usecase owner_add_new_pet as uc6004"""
-        form = OwnerEditForm()
-        o = Owner.find_by_id(owner_id)
-        return redirect(url_for('url_owner_index'))
+        page_info = WebPageContent("petclinic_owner", "show")
+        owner_form = OwnerShowForm()
+        pet_form = PetForm()
+        oo = Owner.find_by_id(owner_id)
+        if request.method == 'POST' and pet_form.validate_on_submit():
+            o = Pet()
+            o.name = pet_form.name.data
+            o.date_of_birth = pet_form.date_of_birth
+            o.pettype = pet_form.pettype_select.data
+            db.session.add(o)
+            db.session.commit()
+            flash("saved edited Owner "+o.__str__())
+            return redirect(url_for('url_owner_show', owner_id=owner_id))
+        else:
+            owner_form.first_name.data = oo.first_name
+            owner_form.last_name.data = oo.last_name
+            owner_form.street_address.data = oo.street_address
+            owner_form.zip_code.data = oo.zip_code
+            owner_form.city.data = oo.city
+            owner_form.telephone.data = oo.telephone
+            owner_form.email.data = oo.email
+            pet_list = Pet.find_by_owner(oo)
+            return render_template(
+                "petclinic_model/owner/owner_pet_add.html",
+                owner=oo,
+                pet_list=pet_list,
+                owner_form=owner_form,
+                pet_form=pet_form,
+                owner_id=owner_id,
+                page_info=page_info
+            )
 
     @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>", methods=['GET', 'POST'])
