@@ -309,8 +309,9 @@ class DomainModelOwnerUrls:
         if request.method == 'POST' and pet_form.validate_on_submit():
             o = Pet()
             o.name = pet_form.name.data
-            o.date_of_birth = pet_form.date_of_birth
+            o.date_of_birth = pet_form.date_of_birth.data
             o.pettype = pet_form.pettype_select.data
+            o.owner = oo
             db.session.add(o)
             db.session.commit()
             flash("saved edited Owner "+o.__str__())

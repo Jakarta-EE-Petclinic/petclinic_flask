@@ -44,10 +44,6 @@
               {{ owner_form.email.label(class_="form-label", disabled=True) }}
               {{ owner_form.email(class_="form-control", disabled=True) }}
             </div>
-            <a href="{{ url_for('url_owner_index', page=1) }}"
-               class="btn btn-secondary">Cancel</a>
-            <a href="{{ url_for('url_owner_edit', owner_id=owner_id) }}"
-               class="btn btn-primary">Edit</a>
           </form>
         </div>
       </div>
@@ -76,7 +72,7 @@
             </div>
             <a href="{{ url_for('url_pet_index', page=1) }}"
                class="btn btn-secondary">Cancel</a>
-            {{ form.submit(class_="btn btn-primary") }}
+            {{ pet_form.submit(class_="btn btn-primary") }}
           </form>
         </div>
       </div>
