@@ -16,3 +16,5 @@ sphinxcontrib-plantuml
 sphinxcontrib-sqltable
 sphinxcontrib-websupport
 sphinxcontrib-sadisplay
+sphinxcontrib.sqltable
+sqla2uml

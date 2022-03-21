@@ -6,14 +6,14 @@
 Welcome to petclinic_flask's documentation!
 ===========================================
 
-.. sadisplay:: project.app_web.notification.Notification
-.. sadisplay:: project.app_web.project.app_web.user.User
-.. sadisplay:: project.petclinic_model.owner.Owner
-.. sadisplay:: project.petclinic_model.pet.Pet
-.. sadisplay:: project.petclinic_model.pettype.PetType
-.. sadisplay:: project.petclinic_model.specialty.Specialty
-.. sadisplay:: project.petclinic_model.vet.Vet
-.. sadisplay:: project.petclinic_model.visit.Visit
+.. sqla-model:: project.app_web.notification.Notification
+.. sqla-model:: project.app_web.project.app_web.user.User
+.. sqla-model:: project.petclinic_model.owner.Owner
+.. sqla-model:: project.petclinic_model.pet.Pet
+.. sqla-model:: project.petclinic_model.pettype.PetType
+.. sqla-model:: project.petclinic_model.specialty.Specialty
+.. sqla-model:: project.petclinic_model.vet.Vet
+.. sqla-model:: project.petclinic_model.visit.Visit
 
 .. uml:: ../project/petclinic_model/entities.puml
 .. uml:: ../project/app_web/app_web_model_entities.puml

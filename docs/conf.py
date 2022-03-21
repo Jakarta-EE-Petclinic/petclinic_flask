@@ -43,7 +43,8 @@ extensions = [
     "sphinxcontrib.plantuml",
     "sphinxcontrib.images",
     "sphinxcontrib.sqltable",
-    "sphinxcontrib.sadisp"
+    "sphinxcontrib.sadisp",
+    "sphinxcontrib.sqltable"
 ]
 
 source_suffix = {
