@@ -60,8 +60,11 @@ and in another termninal:
 
 ## Domain_Class_Modell: Entities_Petclinic
 
-![Entities_Petclinic](uml/Domain_Class_Modell__Entities_Petclinic.png "Entities_Petclinic")
+![Entities_Petclinic](../project/app_web/app_web_model_entities.png "Entities_Petclinic")
 
+## Domain_Class_Modell: Transient
+
+![Entities_Petclinic](../project/app_web/app_web_model_transient.png "Entities_Petclinic")
 
 ## Use Cases app_user
 * usecase login as uc1000
@@ -76,7 +79,6 @@ and in another termninal:
 
 ![use_cases__app_notification](../project/app_web/use_cases__app_notification.png "use_cases__app_notification")
 
-
 ## Use Cases app_web
 * usecase db_create as uc1020
 * usecase db_drop_and_create as uc1021
@@ -86,6 +88,10 @@ and in another termninal:
 
 ![use_cases__app_web](../project/app_web/use_cases__app_web.png "use_cases__app_web")
 
+## Domain_Class_Modell: Petclinic entities
+
+![Domain_Class_Modell: Petclinic entities](../project/petclinic_model/entities.png "Domain_Class_Modell: Petclinic entities")
+
 ## Use Cases petclinic_specialty
 * usecase specialty_search as uc2000
 * usecase specialty_list as uc2001
@@ -93,7 +99,7 @@ and in another termninal:
 * usecase specialty_change as uc2003
 * usecase specialty_remove as uc2004
 
-![use_cases__petclinic_specialty](uml/use_cases__petclinic_specialty.png "use_cases__petclinic_specialty")
+![use_cases__petclinic_specialty](../project/petclinic_model/specialty.png "use_cases__petclinic_specialty")
 
 ## Use Cases petclinic_vet
 * usecase vet_search as uc3000
@@ -103,7 +109,7 @@ and in another termninal:
 * usecase vet_choose_specialties as uc3004
 * usecase vet_remove as uc3005
 
-![use_cases__petclinic_vet](uml/use_cases__petclinic_vet.png "use_cases__petclinic_vet")
+![use_cases__petclinic_vet](../project/petclinic_model/vet.png "use_cases__petclinic_vet")
 
 ## Use Cases petclinic_pettype
 * usecase pettype_search as uc4000
@@ -112,7 +118,7 @@ and in another termninal:
 * usecase pettype_change as uc4003
 * usecase pettype_remove as uc4004
 
-![use_cases__petclinic_pettype](uml/use_cases__petclinic_pettype.png "use_cases__petclinic_pettype")
+![use_cases__petclinic_pettype](../project/petclinic_model/pettype.png "use_cases__petclinic_pettype")
 
 ## Use Cases petclinic_pet
 * usecase pet_search as uc5000
@@ -122,7 +128,7 @@ and in another termninal:
 * usecase pet_remove as uc5004
 * usecase pet_choose_pettype as uc5005
 
-![use_cases__petclinic_pet](uml/use_cases__petclinic_pet.png "use_cases__petclinic_pet")
+![use_cases__petclinic_pet](../project/petclinic_model/pet.png "use_cases__petclinic_pet")
 
 ## Use Cases petclinic_owner
 * usecase owner_search as uc6000
@@ -133,7 +139,7 @@ and in another termninal:
 * usecase owner_change_pet as uc6005
 * usecase owner_remove_pet as uc6006
 
-![use_cases__petclinic_owner](uml/use_cases__petclinic_owner.png "use_cases__petclinic_owner")
+![use_cases__petclinic_owner](../project/petclinic_model/owner.png "use_cases__petclinic_owner")
 
 ## Use Cases petclinic_visit
 * usecase pet_list_visits as uc7000
@@ -141,5 +147,5 @@ and in another termninal:
 * usecase pet_change_visit_to_pet_and_vet as uc7002
 * usecase pet_remove_visit as uc7003
 
-![use_cases__petclinic_visit](uml/use_cases__petclinic_visit.png "use_cases__petclinic_visit")
+![use_cases__petclinic_visit](../project/petclinic_model/visit.png "use_cases__petclinic_visit")
 
