@@ -456,7 +456,7 @@ class DomainModelPetUrls:
         if request.method == 'POST' and search_form.validate_on_submit():
             page_info = WebPageContent("petclinic_pet", "search")
             searchterm = search_form.searchterm.data
-            page_data = Pet.search(searchterm)
+            page_data = Pet.search(searchterm, page)
         else:
             page_info = WebPageContent("petclinic_pet", "index")
             page_data = Pet.get_all(page)

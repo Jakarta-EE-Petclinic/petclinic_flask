@@ -22,8 +22,8 @@ class PetType(db.Model):
         return self.name
 
     @classmethod
-    def search(cls, searchterm: str):
-        return cls.__query_all().all()
+    def search(cls, searchterm: str, page: int):
+        return cls.__query_all().paginate(page, per_page=items_per_page)
 
     @classmethod
     def remove_all(cls):
