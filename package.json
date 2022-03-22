@@ -1,6 +1,6 @@
 {
     "name": "petclinic-flask-static",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.",
     "main": "/static/index.js",
     "repository": {
