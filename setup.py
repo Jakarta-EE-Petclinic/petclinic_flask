@@ -61,7 +61,7 @@ requires_build = [
     "python-dotenv",
     "Flask",
     "urllib3>=1.26.5",
-    "Pillow>=9.0.0",
+    "Pillow>=9.0.1",
 ]
 
 requires_test = [
@@ -198,7 +198,7 @@ def run_npm_install():
 setup(
     name="petclinic_flask",
     description="Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.",
-    version="0.0.1",
+    version="1.0.0",
     url="https://github.com/Jakarta-EE-Petclinic/petclinic_flask.git",
     author="Thomas Woehlke",
     author_email="thomas.woehlke@gmail.com",
