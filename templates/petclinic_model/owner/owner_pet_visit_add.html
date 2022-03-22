@@ -85,12 +85,12 @@
               {{ visit_form.information(class_="form-control") }}
             </div>
             <div class="mb-3">
-              {{ pet_form.vet_select.label(class_="form-label") }}
-              {{ pet_form.vet_select(class_="form-select") }}
+              {{ visit_form.vet_select.label(class_="form-label") }}
+              {{ visit_form.vet_select(class_="form-select") }}
             </div>
             <a href="{{ url_for('url_owner_show', owner_id=owner_id) }}"
                class="btn btn-secondary">Cancel</a>
-            {{ pet_form.submit(class_="btn btn-primary") }}
+            {{ visit_form.submit(class_="btn btn-primary") }}
           </form>
         </div>
       </div>

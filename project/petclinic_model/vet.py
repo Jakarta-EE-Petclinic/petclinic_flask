@@ -44,6 +44,9 @@ class Vet(db.Model):
         backref=db.backref('vets', lazy=True)
     )
 
+    def __str__(self):
+        return self.first_name + " " + self.last_name
+
     @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()

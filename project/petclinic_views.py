@@ -386,13 +386,16 @@ class DomainModelOwnerUrls:
         o = Owner.find_by_id(owner_id)
         p = Pet.find_by_id(pet_id)
         if request.method == 'POST' and visit_form.validate_on_submit():
+            vis = visit_form.vet_select.data
+            app.logger.info(vis)
             v = Visit()
             v.datum = visit_form.datum.data
             v.information = visit_form.information.data
             v.pet = p
+            v.vet = vis
             db.session.add(v)
             db.session.commit()
-            flash("saved new Visit "+o.__str__()+" for Pet "+p.__str__())
+            flash("saved new Visit "+v.__str__()+" for Pet "+p.__str__())
             return redirect(url_for('url_owner_show', owner_id=owner_id))
         else:
             owner_form.first_name.data = o.first_name

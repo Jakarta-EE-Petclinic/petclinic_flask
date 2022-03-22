@@ -93,13 +93,13 @@ class VisitForm(ModelForm):
     pet_select = QuerySelectField(
         'pet_select', [InputRequired('Bitte waehlen Sie ein Pet aus')],
         Pet.find_all,
-        lambda x: x.id, lambda x: x.__str__(),
+        lambda p: p.id, lambda p: p.__str__(),
         True, 'Bitte waehlen Sie ein Pet aus',
     )
     vet_select = QuerySelectField(
         'vet_select', [InputRequired('Bitte waehlen Sie ein Vet aus')],
         Vet.find_all,
-        lambda x: x.id, lambda x: x.__str__(),
+        lambda v: v.id, lambda v: v.__str__(),
         True, 'Bitte waehlen Sie ein Vet aus',
     )
     submit = SubmitField('Save Visit')
