@@ -1,2 +1,12 @@
 recursive-include templates *
 recursive-include static *
+exclude .idea
+exclude version
+exclude Makefile
+exclude _config.yml
+exclude requirements
+exclude tests
+#prune node_modules
+#prune petclinic_flask.egg-info
+#prune dist
+#prune build
