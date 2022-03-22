@@ -8,6 +8,7 @@ from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm.collections import InstrumentedList
 
 from project.app_config.database import app, db, login_manager
+from project.app_web.search import SearchForm
 
 from project.app_web.user import LoginForm, User, UserService
 from project.app_web.cms_transient import WebPageContent
@@ -189,28 +190,22 @@ class DomainModelOwnerUrls:
         app.logger.info(" DomainModelOwnerUrls [init]")
 
     @staticmethod
-    @app.route("/owner/search")
-    def url_owner_search():
-        """usecase owner_search as uc6000"""
-        searchterm = request.args.get('searchterm', '', type=str)
-        page_info = WebPageContent("petclinic_owner", "search")
-        page_data = Owner.search(searchterm)
-        return render_template(
-            "petclinic_model/owner/owner_index.html",
-            page_data=page_data,
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app.route("/owner")
+    @app.route("/owner", methods=['GET', 'POST'])
     def url_owner_index():
-        """usecase owner_list as uc6001"""
+        """usecase owner_search as uc6000, usecase owner_list as uc6001"""
         page = request.args.get('page', 1, type=int)
-        page_info = WebPageContent("petclinic_owner", "index")
-        page_data = Owner.get_all(page)
+        search_form = SearchForm()
+        if request.method == 'POST' and search_form.validate_on_submit():
+            page_info = WebPageContent("petclinic_owner", "search")
+            searchterm = search_form.searchterm.data
+            page_data = Owner.search(searchterm)
+        else:
+            page_info = WebPageContent("petclinic_owner", "index")
+            page_data = Owner.get_all(page)
         return render_template(
             "petclinic_model/owner/owner_index.html",
             page_data=page_data,
+            search_form=search_form,
             page_info=page_info
         )
 

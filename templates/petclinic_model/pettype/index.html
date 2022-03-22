@@ -12,11 +12,12 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col-6">
         <a class="page-link" href="{{ url_for('url_pettype_new') }}">
           <i class="fas fa-plus-square"></i> add New PetType
         </a>
       </div>
+      {% include 'app_web/fragments/search_form.html' %}
     </div>
     <div class="row">
       <div class="col">

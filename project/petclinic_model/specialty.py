@@ -22,6 +22,10 @@ class Specialty(db.Model):
         return self.name
 
     @classmethod
+    def search(cls, searchterm: str):
+        return cls.__query_all().all()
+
+    @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()
         db.session.commit()

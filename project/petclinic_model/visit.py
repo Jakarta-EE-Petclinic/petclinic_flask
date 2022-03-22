@@ -44,6 +44,10 @@ class Visit(db.Model):
     )
 
     @classmethod
+    def search(cls, searchterm: str):
+        return cls.__query_all().all()
+
+    @classmethod
     def find_by_pet(cls, pet: Pet):
         return db.session.query(cls).filter(cls.pet_id == pet.id).all()
 

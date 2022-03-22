@@ -1,0 +1,12 @@
+  <div class="col-6">
+    <form method="POST" enctype="multipart/form-data">
+        {{ search_form.csrf_token }}
+      <div class="input-group mb-3">
+        <span class="input-group-text"
+              id="petclinic-search">
+          <i class="fas fa-search"></i>
+        </span>
+        {{ search_form.searchterm(class_="form-control", placeholder_="Searchterm") }}
+      </div>
+    </form>
+  </div>

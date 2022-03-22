@@ -48,6 +48,10 @@ class Vet(db.Model):
         return self.first_name + " " + self.last_name
 
     @classmethod
+    def search(cls, searchterm: str):
+        return cls.__query_all().all()
+
+    @classmethod
     def remove_all(cls):
         db.session.query(cls).delete()
         db.session.commit()
