@@ -1,41 +1,38 @@
 {% extends 'app_web/layout/page_layout.html' %}
 
 {% block content %}
-    {{super()}}
+  {{ super() }}
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p>
-                  Python Flask Version of Spring Petclinic
-                  with SQLAlchemy, Celery et al.
-                </p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.
+      </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-              <a class="page-link" href="{{ url_for('url_pettype_new') }}">
-                <i class="fas fa-plus-square"></i> add New PetType
-              </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                {% include 'petclinic_model/pettype/index_pagination.html' %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                {% include 'petclinic_model/pettype/index_table.html' %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                {% include 'petclinic_model/pettype/index_pagination.html' %}
-            </div>
-        </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <a class="page-link" href="{{ url_for('url_pettype_new') }}">
+          <i class="fas fa-plus-square"></i> add New PetType
+        </a>
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        {% include 'petclinic_model/pettype/index_pagination.html' %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {% include 'petclinic_model/pettype/index_table.html' %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {% include 'petclinic_model/pettype/index_pagination.html' %}
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
