@@ -11,37 +11,39 @@
     <tbody>
     {% for p in pet_list %}
       {% if pet_id!=p.id %}
-      <tr>
-        <td>
-          <a href="{{ url_for('url_owner_pet_change', owner_id=owner_id, pet_id=p.id) }}">
-          {{ p.name }}
-          </a>
-        </td>
-        <td>{{ p.date_of_birth }}</td>
-        <td>{{ p.pettype }}</td>
-        <td>
-          <table class="table table-hover table-striped table-dark">
-            <thead class="table-secondary">
-            <tr>
-              <th scope="col">datum</th>
-              <th scope="col">information</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for v in p.visits %}
-            <tr>
-              <td>{{ v.datum }}</td>
-              <td>{{ v.information }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-          </table>
-           <a href="{{ url_for('url_owner_pet_visit_add', owner_id=owner_id, pet_id=p.id) }}"
-               class="btn btn-primary"><i class="fas fa-plus-square"></i>
-             Add new Visit
-           </a>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <a
+              href="{{ url_for('url_owner_pet_change', owner_id=owner_id, pet_id=p.id) }}">
+              {{ p.name }}
+            </a>
+          </td>
+          <td>{{ p.date_of_birth }}</td>
+          <td>{{ p.pettype }}</td>
+          <td>
+            <table class="table table-hover table-striped table-dark">
+              <thead class="table-secondary">
+              <tr>
+                <th scope="col">datum</th>
+                <th scope="col">information</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for v in p.visits %}
+                <tr>
+                  <td>{{ v.datum }}</td>
+                  <td>{{ v.information }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            <a
+              href="{{ url_for('url_owner_pet_visit_add', owner_id=owner_id, pet_id=p.id) }}"
+              class="btn btn-primary"><i class="fas fa-plus-square"></i>
+              Add new Visit
+            </a>
+          </td>
+        </tr>
       {% endif %}
     {% endfor %}
     </tbody>

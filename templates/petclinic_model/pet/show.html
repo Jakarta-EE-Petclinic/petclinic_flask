@@ -1,43 +1,44 @@
 {% extends 'app_web/layout/page_layout.html' %}
 
 {% block content %}
-    {{super()}}
+  {{ super() }}
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p>
-                  Python Flask Version of Spring Petclinic
-                  with SQLAlchemy, Celery et al.
-                </p>
-                <p>
-                  <div class="tw-box">
-                  <form method="POST" enctype="multipart/form-data">
-                    {{ form.csrf_token }}
-                    {{ form.hidden_tag() }}
-                      <div class="mb-3">
-                        {{ form.name.label(class_="form-label") }}
-                        {{ form.name(class_="form-control") }}
-                      </div>
-                      <div class="mb-3">
-                        {{ form.date_of_birth.label(class_="form-label") }}
-                        {{ form.date_of_birth(class_="form-control") }}
-                      </div>
-                      <div class="mb-3">
-                        {{ form.owner_select.label(class_="form-label") }}
-                        {{ form.owner_select(class_="form-select") }}
-                      </div>
-                      <div class="mb-3">
-                        {{ form.pettype_select.label(class_="form-label") }}
-                        {{ form.pettype_select(class_="form-select") }}
-                      </div>
-                      <a href="{{ url_for('url_pet_index', page=1) }}" class="btn btn-primary">Cancel</a>
-                      {{ form.submit(class_="btn btn-primary") }}
-                  </form>
-                  </div>
-                </p>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>
+          Python Flask Version of Spring Petclinic
+          with SQLAlchemy, Celery et al.
+        </p>
+        <p>
+        <div class="tw-box">
+          <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+              {{ form.name.label(class_="form-label") }}
+              {{ form.name(class_="form-control") }}
             </div>
+            <div class="mb-3">
+              {{ form.date_of_birth.label(class_="form-label") }}
+              {{ form.date_of_birth(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ form.owner_select.label(class_="form-label") }}
+              {{ form.owner_select(class_="form-select") }}
+            </div>
+            <div class="mb-3">
+              {{ form.pettype_select.label(class_="form-label") }}
+              {{ form.pettype_select(class_="form-select") }}
+            </div>
+            <a href="{{ url_for('url_pet_index', page=1) }}"
+               class="btn btn-secondary">Cancel</a>
+            {{ form.submit(class_="btn btn-primary") }}
+          </form>
         </div>
+        </p>
+      </div>
     </div>
+  </div>
 
 {% endblock %}

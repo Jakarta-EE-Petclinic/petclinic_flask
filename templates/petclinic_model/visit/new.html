@@ -1,28 +1,39 @@
 {% extends 'app_web/layout/page_layout.html' %}
 
 {% block content %}
-    {{super()}}
+  {{ super() }}
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p>
-                  Python Flask Version of Spring Petclinic
-                  with SQLAlchemy, Celery et al.
-                </p>
-                <p>
-                  <div class="tw-box">
-                  <form method="POST" enctype="multipart/form-data">
-                    {{ form.csrf_token }}
-                    {{ form.datum.label }} {{ form.datum }}
-                    {{ form.information.label }} {{ form.information }}
-                    {{ form.pet_select.label }} {{ form.pet_select }}
-                    {{ form.submit }}
-                  </form>
-                  </div>
-                </p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        Python Flask Version of Spring Petclinic with SQLAlchemy, Celery et al.
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <div class="tw-box">
+          <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+              {{ form.datum.label(class_="form-label") }}
+              {{ form.datum(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ form.information.label(class_="form-label") }}
+              {{ form.information(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ form.pet_select.label(class_="form-label") }}
+              {{ form.pet_select(class_="form-select") }}
+            </div>
+            <a href="{{ url_for('url_visit_index', page=1) }}"
+               class="btn btn-secondary">Cancel</a>
+            {{ form.submit(class_="btn btn-primary") }}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
