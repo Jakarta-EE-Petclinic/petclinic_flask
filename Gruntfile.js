@@ -9,7 +9,7 @@ module.exports = function(grunt) {
                   '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-                src: 'flask_covid19/<%= pkg.name %>.js',
+                src: 'petclinic_flask/<%= pkg.name %>.js',
                 dest: 'build/<%= pkg.name %>.min.js'
             }
         },
