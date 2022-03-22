@@ -198,7 +198,7 @@ class DomainModelOwnerUrls:
         if request.method == 'POST' and search_form.validate_on_submit():
             page_info = WebPageContent("petclinic_owner", "search")
             searchterm = search_form.searchterm.data
-            page_data = Owner.search(searchterm)
+            page_data = Owner.search(searchterm, page)
         else:
             page_info = WebPageContent("petclinic_owner", "index")
             page_data = Owner.get_all(page)
@@ -528,7 +528,7 @@ class DomainModelVisitUrls:
         if request.method == 'POST' and search_form.validate_on_submit():
             page_info = WebPageContent("petclinic_visit", "search")
             searchterm = search_form.searchterm.data
-            page_data = Visit.search(searchterm)
+            page_data = Visit.search(searchterm, page)
         else:
             page_info = WebPageContent("petclinic_visit", "index")
             page_data = Visit.get_all(page)
@@ -599,7 +599,7 @@ class DomainModelPetTypeUrls:
         if request.method == 'POST' and search_form.validate_on_submit():
             page_info = WebPageContent("petclinic_pettype", "search")
             searchterm = search_form.searchterm.data
-            page_data = PetType.search(searchterm)
+            page_data = PetType.search(searchterm, page)
         else:
             page_info = WebPageContent("petclinic_pettype", "index")
             page_data = PetType.get_all(page)
@@ -694,7 +694,7 @@ class DomainModelVetUrls:
         if request.method == 'POST' and search_form.validate_on_submit():
             page_info = WebPageContent("petclinic_vet", "search")
             searchterm = search_form.searchterm.data
-            page_data = Vet.search(searchterm)
+            page_data = Vet.search(searchterm, page)
         else:
             page_info = WebPageContent("petclinic_vet", "index")
             page_data = Vet.get_all(page)
@@ -789,12 +789,12 @@ class DomainModelSpecialtyUrls:
         if request.method == 'POST' and search_form.validate_on_submit():
             page_info = WebPageContent("petclinic_specialty", "search")
             searchterm = search_form.searchterm.data
-            page_data = Specialty.search(searchterm)
+            page_data = Specialty.search(searchterm, page)
         else:
             page_info = WebPageContent("petclinic_specialty", "index")
             page_data = Specialty.get_all(page)
         return render_template(
-            "petclinic_model/vet/index.html",
+            "petclinic_model/specialty/index.html",
             page_data=page_data,
             search_form=search_form,
             page_info=page_info
