@@ -376,6 +376,52 @@ class DomainModelOwnerUrls:
             )
 
     @staticmethod
+    @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/visit/add", methods=['GET', 'POST'])
+    def url_owner_pet_visit_add(owner_id: int, pet_id: int):
+        """usecase owner_remove_pet as uc6006"""
+        page_info = WebPageContent("petclinic_owner", "add visit to pet")
+        owner_form = OwnerEditForm()
+        pet_form = PetForm()
+        visit_form = VisitForm()
+        o = Owner.find_by_id(owner_id)
+        p = Pet.find_by_id(pet_id)
+        if request.method == 'POST' and pet_form.validate_on_submit():
+            p.name = pet_form.name.data
+            p.date_of_birth = pet_form.date_of_birth.data
+            p.pettype = pet_form.pettype_select.data
+            p.owner = o
+            db.session.add(p)
+            db.session.commit()
+            flash("saved edited Owner "+o.__str__())
+            return redirect(url_for('url_owner_show', owner_id=owner_id))
+        else:
+            owner_form.first_name.data = o.first_name
+            owner_form.last_name.data = o.last_name
+            owner_form.street_address.data = o.street_address
+            owner_form.zip_code.data = o.zip_code
+            owner_form.city.data = o.city
+            owner_form.telephone.data = o.telephone
+            owner_form.email.data = o.email
+            pet_form.name.data = p.name
+            pet_form.date_of_birth.data = p.date_of_birth
+            pet_form.pettype_select.data = p.pettype
+            pet_list = Pet.find_by_owner(o)
+            visit_list = Visit.find_by_pet(p)
+            return render_template(
+                "petclinic_model/owner/owner_pet_visit_add.html",
+                owner=o,
+                pet=p,
+                pet_list=pet_list,
+                visit_list=visit_list,
+                owner_form=owner_form,
+                pet_form=pet_form,
+                visit_form=visit_form,
+                owner_id=owner_id,
+                pet_id=pet_id,
+                page_info=page_info
+            )
+
+    @staticmethod
     @app.route("/owner/<int:owner_id>/pet/<int:pet_id>/remove", methods=['GET', 'POST'])
     def url_owner_remove_pet(owner_id: int, pet_id: int):
         """usecase owner_remove_pet as uc6006"""
