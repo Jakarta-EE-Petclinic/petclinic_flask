@@ -55,16 +55,34 @@
             {{ pet_form.csrf_token }}
             {{ pet_form.hidden_tag() }}
             <div class="mb-3">
-              {{ pet_form.name.label(class_="form-label") }}
-              {{ pet_form.name(class_="form-control") }}
+              {{ pet_form.name.label(class_="form-label", disabled=True) }}
+              {{ pet_form.name(class_="form-control", disabled=True) }}
             </div>
             <div class="mb-3">
-              {{ pet_form.date_of_birth.label(class_="form-label") }}
-              {{ pet_form.date_of_birth(class_="form-control") }}
+              {{ pet_form.date_of_birth.label(class_="form-label", disabled=True) }}
+              {{ pet_form.date_of_birth(class_="form-control", disabled=True) }}
             </div>
             <div class="mb-3">
-              {{ pet_form.pettype_select.label(class_="form-label") }}
-              {{ pet_form.pettype_select(class_="form-select") }}
+              {{ pet_form.pettype_select.label(class_="form-label", disabled=True) }}
+              {{ pet_form.pettype_select(class_="form-select", disabled=True) }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="tw-box">
+          <form method="POST" enctype="multipart/form-data">
+            {{ visit_form.csrf_token }}
+            {{ visit_form.hidden_tag() }}
+            <div class="mb-3">
+              {{ visit_form.datum.label(class_="form-label") }}
+              {{ visit_form.datum(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ visit_form.information.label(class_="form-label") }}
+              {{ visit_form.information(class_="form-control") }}
             </div>
             <a href="{{ url_for('url_owner_show', owner_id=owner_id) }}"
                class="btn btn-secondary">Cancel</a>

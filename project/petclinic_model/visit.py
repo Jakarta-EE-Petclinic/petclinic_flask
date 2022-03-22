@@ -83,9 +83,9 @@ class VisitForm(ModelForm):
         'pet_select', [InputRequired('Bitte waehlen Sie ein Pet aus')],
         Pet.find_all,
         lambda x: x.id, lambda x: x.__str__(),
-        True, 'Bitte waehlen Sie einen PetType aus',
+        True, 'Bitte waehlen Sie ein Pet aus',
     )
-    submit = SubmitField('Save New Visit')
+    submit = SubmitField('Save Visit')
 
 
 class VisitService:
