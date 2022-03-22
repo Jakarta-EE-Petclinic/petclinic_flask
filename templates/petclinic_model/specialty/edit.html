@@ -19,7 +19,8 @@
                         {{ form.name.label(class_="form-label") }}
                         {{ form.name(class_="form-control") }}
                       </div>
-                      <a href="{{ url_for('url_specialty_index', page=1) }}" class="btn btn-primary">Cancel</a>
+                      <a href="{{ url_for('url_specialty_index', page=1) }}"
+                         class="btn btn-secondary">Cancel</a>
                       {{ form.submit(class_="btn btn-primary") }}
                     </form>
                   </div>
