@@ -44,8 +44,24 @@ class Visit(db.Model):
     )
 
     @classmethod
+    def prepare_search(cls):
+        sql = [
+            "ALTER TABLE petclinic_visit ADD COLUMN ts tsvector GENERATED ALWAYS AS (to_tsvector('english', information)) STORED;",
+            "CREATE INDEX ts_idx ON petclinic_visit USING GIN (ts);"
+        ]
+        unbuffered = True
+        for sql_statement in sql:
+            db.session.query(sql_statement, unbuffered)
+        db.session.commit()
+        return None
+
+    @classmethod
     def search(cls, searchterm: str, page: int):
-        return cls.__query_all().paginate(page, per_page=items_per_page)
+        unbuffered = True
+        sql = "SELECT name "\
+            + "FROM petclinic_visit " \
+            + "WHERE ts @@ to_tsquery('english', '"+searchterm+"');"
+        return db.session.query(sql, unbuffered).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_pet(cls, pet: Pet):

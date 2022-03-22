@@ -48,8 +48,24 @@ class Pet(db.Model):
                self.owner.__str__()
 
     @classmethod
+    def prepare_search(cls):
+        sql = [
+            "ALTER TABLE petclinic_pet ADD COLUMN ts tsvector GENERATED ALWAYS AS (to_tsvector('english', name)) STORED;",
+            "CREATE INDEX ts_idx ON petclinic_pet USING GIN (ts);"
+        ]
+        unbuffered = True
+        for sql_statement in sql:
+            db.session.query(sql_statement, unbuffered)
+        db.session.commit()
+        return None
+
+    @classmethod
     def search(cls, searchterm: str, page: int):
-        return cls.__query_all().paginate(page, per_page=items_per_page)
+        unbuffered = True
+        sql = "SELECT name, date_of_birth, owner_id, pettype_id "\
+            + "FROM petclinic_pet " \
+            + "WHERE ts @@ to_tsquery('english', '"+searchterm+"');"
+        return db.session.query(sql, unbuffered).paginate(page, per_page=items_per_page)
 
     @classmethod
     def remove_all(cls):
