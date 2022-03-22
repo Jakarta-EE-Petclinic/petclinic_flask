@@ -448,15 +448,22 @@ class DomainModelPetUrls:
         app.logger.info(" DomainModelPetUrls [init]")
 
     @staticmethod
-    @app.route("/pet/search")
-    def url_pet_search():
-        """usecase pet_search as uc5000"""
-        searchterm = request.args.get('searchterm', '', type=str)
-        page_info = WebPageContent("petclinic_owner", "search")
-        page_data = Owner.search(searchterm)
+    @app.route("/owner", methods=['GET', 'POST'])
+    def url_owner_index():
+        """usecase owner_search as uc6000, usecase owner_list as uc6001"""
+        page = request.args.get('page', 1, type=int)
+        search_form = SearchForm()
+        if request.method == 'POST' and search_form.validate_on_submit():
+            page_info = WebPageContent("petclinic_owner", "search")
+            searchterm = search_form.searchterm.data
+            page_data = Owner.search(searchterm)
+        else:
+            page_info = WebPageContent("petclinic_owner", "index")
+            page_data = Owner.get_all(page)
         return render_template(
-            "petclinic_model/pet/index.html",
+            "petclinic_model/owner/owner_index.html",
             page_data=page_data,
+            search_form=search_form,
             page_info=page_info
         )
 
@@ -526,28 +533,22 @@ class DomainModelVisitUrls:
         app.logger.info(" DomainModelVisitUrls [init]")
 
     @staticmethod
-    @app.route("/visit/search")
-    def url_visit_search():
-        """ usecase visit_search as uc7000"""
-        searchterm = request.args.get('searchterm', '', type=str)
-        page_info = WebPageContent("petclinic_visit", "search")
-        page_data = Visit.search(searchterm)
-        return render_template(
-            "petclinic_model/visit/index.html",
-            page_data=page_data,
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app.route("/visit")
+    @app.route("/visit", methods=['GET', 'POST'])
     def url_visit_index():
-        """usecase visit_list as uc7001"""
+        """usecase owner_search as uc7000, usecase visit_list as uc7001"""
         page = request.args.get('page', 1, type=int)
-        page_info = WebPageContent("petclinic_visit", "index")
-        page_data = Visit.get_all(page)
+        search_form = SearchForm()
+        if request.method == 'POST' and search_form.validate_on_submit():
+            page_info = WebPageContent("petclinic_visit", "search")
+            searchterm = search_form.searchterm.data
+            page_data = Visit.search(searchterm)
+        else:
+            page_info = WebPageContent("petclinic_visit", "index")
+            page_data = Visit.get_all(page)
         return render_template(
             "petclinic_model/visit/index.html",
             page_data=page_data,
+            search_form=search_form,
             page_info=page_info
         )
 
@@ -602,30 +603,23 @@ class DomainModelPetTypeUrls:
     def __init__(self):
         app.logger.info(" DomainModelPetTypeUrls [init]")
 
-
     @staticmethod
-    @app.route("/pettype/search")
-    def url_pettype_search():
-        """usecase pettype_search as uc4000"""
-        searchterm = request.args.get('searchterm', '', type=str)
-        page_info = WebPageContent("petclinic_pettype", "search")
-        page_data = Owner.search(searchterm)
-        return render_template(
-            "petclinic_model/owner/index.html",
-            page_data=page_data,
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app.route("/pettype")
+    @app.route("/pettype", methods=['GET', 'POST'])
     def url_pettype_index():
-        """usecase pettype_list as uc4001"""
+        """usecase owner_search as uc4000, usecase visit_list as uc4001"""
         page = request.args.get('page', 1, type=int)
-        page_info = WebPageContent("petclinic_pettype", "index")
-        page_data = PetType.get_all(page)
+        search_form = SearchForm()
+        if request.method == 'POST' and search_form.validate_on_submit():
+            page_info = WebPageContent("petclinic_pettype", "search")
+            searchterm = search_form.searchterm.data
+            page_data = PetType.search(searchterm)
+        else:
+            page_info = WebPageContent("petclinic_pettype", "index")
+            page_data = PetType.get_all(page)
         return render_template(
             "petclinic_model/pettype/index.html",
             page_data=page_data,
+            search_form=search_form,
             page_info=page_info
         )
 
@@ -705,28 +699,22 @@ class DomainModelVetUrls:
         app.logger.info(" DomainModelVetUrls [init]")
 
     @staticmethod
-    @app.route("/vet/search")
-    def url_vet_search():
-        """usecase vet_search as uc3000"""
-        searchterm = request.args.get('searchterm', '', type=str)
-        page_info = WebPageContent("petclinic_vet", "search")
-        page_data = Vet.search(searchterm)
-        return render_template(
-            "petclinic_model/vet/index.html",
-            page_data=page_data,
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app.route("/vet")
+    @app.route("/vet", methods=['GET', 'POST'])
     def url_vet_index():
-        """usecase vet_list as uc3001"""
+        """usecase owner_search as uc3000, usecase visit_list as uc3001"""
         page = request.args.get('page', 1, type=int)
-        page_info = WebPageContent("petclinic_vet", "index")
-        page_data = Vet.get_all(page)
+        search_form = SearchForm()
+        if request.method == 'POST' and search_form.validate_on_submit():
+            page_info = WebPageContent("petclinic_vet", "search")
+            searchterm = search_form.searchterm.data
+            page_data = Vet.search(searchterm)
+        else:
+            page_info = WebPageContent("petclinic_vet", "index")
+            page_data = Vet.get_all(page)
         return render_template(
             "petclinic_model/vet/index.html",
             page_data=page_data,
+            search_form=search_form,
             page_info=page_info
         )
 
@@ -806,28 +794,22 @@ class DomainModelSpecialtyUrls:
         app.logger.info(" DomainModelSpecialtyUrls [init]")
 
     @staticmethod
-    @app.route("/specialty/search")
-    def url_specialty_search():
-        """usecase specialty_search as uc2000"""
-        searchterm = request.args.get('searchterm', '', type=str)
-        page_info = WebPageContent("petclinic_specialty", "search")
-        page_data = Specialty.search(searchterm)
-        return render_template(
-            "petclinic_model/specialty/index.html",
-            page_data=page_data,
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app.route("/specialty")
+    @app.route("/specialty", methods=['GET', 'POST'])
     def url_specialty_index():
-        """usecase specialty_list as uc2001"""
+        """usecase owner_search as uc2000, usecase visit_list as uc2001"""
         page = request.args.get('page', 1, type=int)
-        page_info = WebPageContent("petclinic_specialty", "index")
-        page_data = Specialty.get_all(page)
+        search_form = SearchForm()
+        if request.method == 'POST' and search_form.validate_on_submit():
+            page_info = WebPageContent("petclinic_specialty", "search")
+            searchterm = search_form.searchterm.data
+            page_data = Specialty.search(searchterm)
+        else:
+            page_info = WebPageContent("petclinic_specialty", "index")
+            page_data = Specialty.get_all(page)
         return render_template(
-            "petclinic_model/specialty/index.html",
+            "petclinic_model/vet/index.html",
             page_data=page_data,
+            search_form=search_form,
             page_info=page_info
         )
 
