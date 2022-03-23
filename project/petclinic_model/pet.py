@@ -63,7 +63,7 @@ class Pet(db.Model):
     @classmethod
     def search(cls, searchterm: str, page: int):
         unbuffered = True
-        sql = "SELECT name, date_of_birth, owner_id, pettype_id "\
+        sql = "SELECT * "\
             + "FROM petclinic_pet " \
             + "WHERE ts @@ to_tsquery('english', '"+searchterm+"');"
         query = db.session.execute(sql)
