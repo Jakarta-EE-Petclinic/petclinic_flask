@@ -6,7 +6,7 @@
 
 ![app_web_model_transient](../project/app_web/cms_transient.png)
 
-![app_web_model_entities](../project/app_web/cms_entities.png)
+![app_web_model_entities](../project/app_web/entities.png)
 
 ![Entities_Petclinic](../project/petclinic_model/entities.png)
 
