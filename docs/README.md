@@ -1,6 +1,6 @@
 # petclinic_flask
 
-* Version 0.0.1
+* Version 1.0.0
 
 ## git
 
@@ -97,7 +97,6 @@ and in another termninal:
 * usecase specialty_list as uc2001
 * usecase specialty_new as uc2002
 * usecase specialty_change as uc2003
-* usecase specialty_remove as uc2004
 
 ![use_cases__petclinic_specialty](../project/petclinic_model/specialty.png "use_cases__petclinic_specialty")
 
@@ -107,7 +106,6 @@ and in another termninal:
 * usecase vet_new as uc3002
 * usecase vet_change as uc3003
 * usecase vet_choose_specialties as uc3004
-* usecase vet_remove as uc3005
 
 ![use_cases__petclinic_vet](../project/petclinic_model/vet.png "use_cases__petclinic_vet")
 
@@ -116,7 +114,6 @@ and in another termninal:
 * usecase pettype_list as uc4001
 * usecase pettype_new as uc4002
 * usecase pettype_change as uc4003
-* usecase pettype_remove as uc4004
 
 ![use_cases__petclinic_pettype](../project/petclinic_model/pettype.png "use_cases__petclinic_pettype")
 
@@ -125,7 +122,6 @@ and in another termninal:
 * usecase pet_list as uc5001
 * usecase pet_new as uc5002
 * usecase pet_change as uc5003
-* usecase pet_remove as uc5004
 * usecase pet_choose_pettype as uc5005
 
 ![use_cases__petclinic_pet](../project/petclinic_model/pet.png "use_cases__petclinic_pet")
@@ -137,7 +133,6 @@ and in another termninal:
 * usecase owner_new as uc6003
 * usecase owner_add_new_pet as uc6004
 * usecase owner_change_pet as uc6005
-* usecase owner_remove_pet as uc6006
 
 ![use_cases__petclinic_owner](../project/petclinic_model/owner.png "use_cases__petclinic_owner")
 
@@ -145,7 +140,6 @@ and in another termninal:
 * usecase pet_list_visits as uc7000
 * usecase pet_add_visit_to_pet_and_vet as uc7001
 * usecase pet_change_visit_to_pet_and_vet as uc7002
-* usecase pet_remove_visit as uc7003
 
 ![use_cases__petclinic_visit](../project/petclinic_model/visit.png "use_cases__petclinic_visit")
 
