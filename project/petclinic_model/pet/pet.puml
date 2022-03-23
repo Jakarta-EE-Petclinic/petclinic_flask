@@ -20,10 +20,8 @@ package flask_petclinic {
 
         au -- uc5000
         au -- uc5001
-        au -- uc5002
+        ' au -- uc5002
         au -- uc5003
-        au -- uc5004
-        au -- uc5005
 
         uc5001 <-- uc5000
         uc5001 <-- uc5002
