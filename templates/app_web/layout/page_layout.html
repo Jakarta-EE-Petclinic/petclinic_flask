@@ -4,6 +4,38 @@
 
 {% block styles %}
 {{super()}}
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ url_for('static', filename='apple-touch-icon-144x144-precomposed.png') }}">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ url_for('static', filename='apple-touch-icon-114x114-precomposed.png') }}">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ url_for('static', filename='apple-touch-icon-72x72-precomposed.png') }}">
+<link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='apple-touch-icon-precomposed.png') }}">
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon-precomposed.png') }}">
+<meta name="msapplication-TileImage" content="{{ url_for('static', filename='apple-touch-icon-144x144-precomposed.png') }}"><!-- white shape -->
+<meta name="msapplication-TileColor" content="#3673a5"><!-- python blue -->
+<meta name="msapplication-navbutton-color" content="#3673a5">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Peclinic Flask">
+<meta property="og:title" content="Peclinic Flask">
+<meta property="og:description" content="Python Flask Version of Java Spring Petclinic with SQLAlchemy">
+<meta property="og:image" content="{{ url_for('static', filename='opengraph-icon-200x200.png') }}">
+<meta property="og:image:secure_url" content="{{ url_for('static', filename='opengraph-icon-200x200.png') }}">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Peclinic Flask"/>
+<meta name="twitter:description" content="Python Flask Version of Java Spring Petclinic with SQLAlchemy"/>
+<meta name="twitter:creator" content="@GustaveSchiller"/>
+<meta name="twitter:site" content="@GustaveSchiller"/>
+<meta name="twitter:image" content="https://news-for-future.de/storage/news_for_future/_processed_/5/3/csm_Zugang-verwehrt-9783855351282-303x500_c9b03c11f1.jpg"/>
+<meta name="twitter:image:alt" content="Francis Seeck, 2022: Zugang verwehrt. Keine Chance in der Klassengesellschaft: wie Klassismus soziale Ungleichheit fördert"/>
+<meta property="og:email" content="thomas.woehlke.bochum@gmail.com"/>
+<meta property="og:phone_number" content="+49 234 52007953"/>
+<meta property="og:fax_number" content="+49 234 52007953s"/>
+<meta property="og:latitude" content="51.4496901"/>
+<meta property="og:longitude" content="7.2422762"/>
+<meta property="og:street-address" content="Laerheidestr. 8"/>
+<meta property="og:locality" content="Bochum"/>
+<meta property="og:region" content="Nordrhein-Westfalen"/>
+<meta property="og:postal-code" content="44799"/>
+<meta property="og:country-name" content="Deutschland"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootswatch/superhero/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/flask_petclinic.css') }}">

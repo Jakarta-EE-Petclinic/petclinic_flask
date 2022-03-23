@@ -58,6 +58,8 @@ clean_windows:
 	$(shell rm -rf node_modules)
 	$(shell rm -rf .tox)
 	$(shell rm -rf broker)
+	$(shell rm -rf build)
+	$(shell rm -rf dist)
 	@echo "---------------------------"
 	@echo "making clean_windows DONE"
 	@echo "---------------------------"
