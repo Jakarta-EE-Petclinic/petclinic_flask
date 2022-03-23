@@ -15,16 +15,19 @@ package flask_petclinic {
         usecase vet_search as uc3000
         usecase vet_list as uc3001
         usecase vet_new as uc3002
-        usecase vet_show as uc3003
         usecase vet_change as uc3004
         usecase vet_choose_specialties as uc3005
 
-        au --> uc3000
-        au --> uc3001
-        au --> uc3002
-        au --> uc3003
-        uc3003 --> uc3005
+        au -- uc3000
+        au -- uc3001
+        au -- uc3002
+
+        uc3001 <-- uc3000
+        uc3001 <-- uc3002
+        uc3001 <-- uc3004
         uc3004 --> uc3005
+        uc3002 --> uc3005
+
     }
 
 }

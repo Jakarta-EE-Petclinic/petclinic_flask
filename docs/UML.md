@@ -59,10 +59,11 @@
 ![use_cases__petclinic_vet](../project/petclinic_model/vet/vet.png "use_cases__petclinic_vet")
 
 ### Use Cases petclinic_pettype
-* usecase pettype_search as uc4000
-* usecase pettype_list as uc4001
-* usecase pettype_new as uc4002
-* usecase pettype_change as uc4003
+* usecase pet_search as uc5000
+* usecase pet_list as uc5001
+* usecase pet_new as uc5002
+* usecase pet_change as uc5003
+* usecase pet_choose_pettype as uc5004
 
 ![use_cases__petclinic_pettype](../project/petclinic_model/pettype/pettype.png "use_cases__petclinic_pettype")
 
@@ -89,20 +90,20 @@
 ![use_cases__petclinic_visit](../project/petclinic_model/visit/visit.png "use_cases__petclinic_visit")
 
 ### Use Cases petclinic_owner
-* usecase owner_search as uc6000
-* usecase owner_list as uc6001
-* usecase owner_new as uc6002
-* usecase owner_show as uc6003
-* usecase owner_change as uc6004
+* usecase owner_search as uc7000
+* usecase owner_list as uc7001
+* usecase owner_new as uc7002
+* usecase owner_show as uc7003
+* usecase owner_change as uc7004
 
-* usecase owner_pet_list as uc5010
-* usecase owner_pet_add_new as uc5011
-* usecase owner_pet_show as uc5012
-* usecase owner_pet_change as uc5013
-* usecase owner_pet_give_to_another_owner as uc5015
+* usecase owner_pet_list as uc7100
+* usecase owner_pet_add_new as uc7101
+* usecase owner_pet_show as uc7102
+* usecase owner_pet_change as uc7103
+* usecase owner_pet_give_to_another_owner as uc7104
 
-* usecase owner_pet_visits_list as uc7010
-* usecase owner_pet_visits_add_new as uc7011
-* usecase owner_pet_visits_change as uc7012
+* usecase owner_pet_visits_list as uc7200
+* usecase owner_pet_visits_add_new as uc7201
+* usecase owner_pet_visits_change as uc7202
 
 ![use_cases__petclinic_owner](../project/petclinic_model/owner/owner.png "use_cases__petclinic_owner")

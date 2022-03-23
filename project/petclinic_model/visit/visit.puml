@@ -18,12 +18,16 @@ package flask_petclinic {
         usecase visit_show as uc6003
         usecase visit_change as uc6004
 
-        au --> uc6000
-        au --> uc6001
-        au --> uc6002
-        au --> uc6003
-        au --> uc6004
+        uc6001 <- uc6000
+        uc6001 <- uc6002
+        uc6001 <- uc6003
+        uc6003 <- uc6004
 
+        au -- uc6000
+        au -- uc6001
+        au -- uc6002
+        au -- uc6003
+        au -- uc6004
     }
 
     package petclinic_pet_visit {
@@ -32,9 +36,12 @@ package flask_petclinic {
         usecase pet_add_visit_to_pet_and_vet as uc6021
         usecase pet_change_visit_to_pet_and_vet as uc6022
 
-        au --> uc6020
-        au --> uc6021
-        au --> uc6022
+        uc6020 <-- uc6021
+        uc6020 <-- uc6022
+
+        au -- uc6020
+        au -- uc6021
+        au -- uc6022
     }
 
 }

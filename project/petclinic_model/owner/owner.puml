@@ -18,12 +18,16 @@ package flask_petclinic {
         usecase owner_show as uc7003
         usecase owner_change as uc7004
 
-        au --> uc7000
-        au --> uc7001
-        au --> uc7002
-        au --> uc7003
-        au --> uc7004
+        au -- uc7000
+        au -- uc7001
+        au -- uc7002
+        au -- uc7003
+        au -- uc7004
 
+        uc7001 <-- uc7000
+        uc7001 <-- uc7002
+        uc7001 <-- uc7003
+        uc7003 <-- uc7004
     }
 
     package petclinic_owner_pets {
@@ -34,22 +38,29 @@ package flask_petclinic {
         usecase owner_pet_change as uc7103
         usecase owner_pet_give_to_another_owner as uc7104
 
+        au -- uc7100
+        au -- uc7101
+        au -- uc7102
+        au -- uc7103
+        au -- uc7104
+
         uc7003 --> uc7100
-        uc7003 --> uc7101
-        uc7003 --> uc7102
-        uc7003 --> uc7103
-        uc7003 --> uc7104
+        uc7100 <-- uc7101
+        uc7100 <-- uc7102
+        uc7102 <-- uc7103
+        uc7102 <-- uc7104
     }
 
     package petclinic_owner_pet_visits {
 
         usecase owner_pet_visits_list as uc7200
         usecase owner_pet_visits_add_new as uc7201
-        usecase owner_pet_visits_change as uc7202
+
+        au -- uc7200
+        au -- uc7201
 
         uc7102 --> uc7200
-        uc7102 --> uc7201
-        uc7102 --> uc7202
+        uc7200 <-- uc7201
     }
 
 }

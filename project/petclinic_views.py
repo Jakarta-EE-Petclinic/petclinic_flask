@@ -648,22 +648,7 @@ class DomainModelPetTypeUrls:
             )
 
     @staticmethod
-    @app.route("/pettype/<int:pettype_id>/show", methods=['GET', 'POST'])
-    def url_pettype_show(pettype_id: int):
-        """usecase pettype_change as uc4003"""
-        form = PetTypeForm()
-        o = PetType.find_by_id(pettype_id)
-        form.name.data = o.name
-        page_info = WebPageContent("petclinic_pettype", "show")
-        return render_template(
-            "petclinic_model/pettype/show.html",
-            form=form,
-            pettype_id=pettype_id,
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app.route("/pettype/<int:pettype_id>/edit", methods=['GET', 'POST'])
+    @app.route("/pettype/<int:pettype_id>", methods=['GET', 'POST'])
     def url_pettype_change(pettype_id: int):
         """usecase pettype_change as uc4003"""
         form = PetTypeForm()
@@ -741,15 +726,9 @@ class DomainModelVetUrls:
             )
 
     @staticmethod
-    @app.route("/vet/show", methods=['GET', 'POST'])
-    def url_vet_show():
-        """usecase vet_show as uc3003"""
-        pass
-
-    @staticmethod
     @app.route("/vet/<int:vet_id>/edit", methods=['GET', 'POST'])
     def url_vet_change(vet_id: int):
-        """usecase vet_change as uc3004"""
+        """usecase vet_show as uc3003, usecase vet_change as uc3004"""
         form = VetForm()
         o = Vet().find_by_id(vet_id)
         if request.method == 'POST' and form.validate_on_submit():
@@ -827,8 +806,8 @@ class DomainModelSpecialtyUrls:
 
     @staticmethod
     @app.route("/specialty/<int:specialty_id>", methods=['GET', 'POST'])
-    def url_specialty_show(specialty_id: int):
-        """usecase specialty_show as uc2003"""
+    def url_specialty_change(specialty_id: int):
+        """usecase specialty_change as uc2003"""
         o = Specialty.find_by_id(specialty_id)
         form = SpecialtyForm()
         if request.method == 'POST' and form.validate_on_submit():
@@ -838,7 +817,7 @@ class DomainModelSpecialtyUrls:
             flash("saved changed Specialty "+o.__str__())
             return redirect(url_for('url_specialty_index'))
         else:
-            page_info = WebPageContent("url_specialty_show", "show")
+            page_info = WebPageContent("url_specialty", "change")
             form.name.data = o.name
             return render_template(
                 "petclinic_model/specialty/show.html",
