@@ -39,7 +39,7 @@ class Specialty(db.Model):
         sql = "SELECT name "\
             + "FROM petclinic_specialty " \
             + "WHERE ts @@ to_tsquery('english', '"+searchterm+"');"
-        return db.session.query(sql, unbuffered).paginate(page, per_page=items_per_page)
+        return db.session.query(sql, unbuffered).fetchall().paginate(page, per_page=items_per_page)
 
     @classmethod
     def remove_all(cls):

@@ -1,4 +1,4 @@
-from sqlalchemy import Sequence
+from sqlalchemy import Sequence, text
 from wtforms import SubmitField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
@@ -41,11 +41,9 @@ class Owner(db.Model):
 
     @classmethod
     def search(cls, searchterm: str, page: int):
-        unbuffered = True
-        sql = "SELECT first_name, last_name, street_address, zip_code, city, "\
-            + "telephone, email FROM petclinic_owner " \
-            + "WHERE ts @@ to_tsquery('english', '"+searchterm+"');"
-        return db.session.query(sql, unbuffered).paginate(page, per_page=items_per_page)
+        unbuffered = False
+        sql = "SELECT * FROM petclinic_owner WHERE ts @@ to_tsquery(\'english\', \'"+searchterm+"\')"
+        return db.session.execute(sql).fetchall().paginate(page, per_page=items_per_page)
 
     @classmethod
     def remove_all(cls):
