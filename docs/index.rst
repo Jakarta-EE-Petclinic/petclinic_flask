@@ -15,20 +15,22 @@ Welcome to petclinic_flask's documentation!
 .. sqla-model:: project.petclinic_model.vet.Vet
 .. sqla-model:: project.petclinic_model.visit.Visit
 
-.. uml:: ../project/petclinic_model/entities.puml
-.. uml:: ../project/app_web/entities.puml
-.. uml:: ../project/app_web/cms_transient.puml
-.. uml:: ../project/app_web/notification.puml
-.. uml:: ../project/app_web/user.puml
-.. uml:: ../project/app_web/services.puml
+.. uml:: ../project/petclinic_model/entities/entities.puml
+.. uml:: ../project/app_web/entities/entities.puml
+.. uml:: ../project/app_web/cms/cms_transient.puml
+.. uml:: ../project/app_web/notification/notification.puml
+.. uml:: ../project/app_web/user/user.puml
+.. uml:: ../project/app_web/services/services.puml
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    README.md
+   UML.md
    CHANGES.md
    TODO.md
+   SETUP_DEV_ENV.md
    db/MariadDB.md
    db/PostgresSQL.md
 

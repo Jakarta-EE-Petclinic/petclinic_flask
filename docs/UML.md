@@ -8,11 +8,11 @@
 
 #### Entities_Application
 
-![Entities_Application](../project/app_web/entities.png "Entities_Application")
+![Entities_Application](../project/app_web/entities/entities.png "Entities_Application")
 
 #### Transient_Application
 
-![Transient_Application](../project/app_web/cms_transient.png "Transient_Application")
+![Transient_Application](../project/app_web/cms/cms_transient.png "Transient_Application")
 
 ### Use Cases app_web
 
@@ -22,12 +22,12 @@
 * usecase userprofile as uc1002
 * usecase userlist as uc1003
 
-![use_cases__user](../project/app_web/user.png "use_cases__user")
+![use_cases__user](../project/app_web/user/user.png "use_cases__user")
 
 #### Use Cases Notification
 * usecase notification_list as uc1100
 
-![use_cases__notification](../project/app_web/notification.png "use_cases__notification")
+![use_cases__notification](../project/app_web/notification/notification.png "use_cases__notification")
 
 #### Use Cases db Service
 * usecase db_create as uc1200
@@ -36,7 +36,7 @@
 * usecase db_dump_reimport as uc1203
 * usecase db_table_count as uc1204
 
-![use_cases__db_service](../project/app_web/services.png "use_cases__db_service")
+![use_cases__db_service](../project/app_web/services/services.png "use_cases__db_service")
 
 ### Use Cases Petclinic
 
