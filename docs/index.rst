@@ -16,8 +16,11 @@ Welcome to petclinic_flask's documentation!
 .. sqla-model:: project.petclinic_model.visit.Visit
 
 .. uml:: ../project/petclinic_model/entities.puml
-.. uml:: ../project/app_web/app_web_model_entities.puml
-.. uml:: ../project/app_web/app_web_model_transient.puml
+.. uml:: ../project/app_web/entities.puml
+.. uml:: ../project/app_web/cms_transient.puml
+.. uml:: ../project/app_web/notification.puml
+.. uml:: ../project/app_web/user.puml
+.. uml:: ../project/app_web/services.puml
 
 .. toctree::
    :maxdepth: 2
