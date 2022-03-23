@@ -5,7 +5,6 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required, login_user, current_user, logout_user
 from sqlalchemy.exc import OperationalError
-from sqlalchemy.orm.collections import InstrumentedList
 
 from project.app_config.database import app, db, login_manager
 from project.app_web.search import SearchForm
@@ -79,6 +78,14 @@ class ApplicationUrls:
             page_info=page_info
         )
 
+
+app_web_urls = ApplicationUrls()
+
+
+class ApplicationNotificationUrls:
+    def __init__(self):
+        app.logger.info(" ApplicationNotificationUrls [init]")
+
     @staticmethod
     @app.route("/notification")
     @login_required
@@ -89,7 +96,8 @@ class ApplicationUrls:
         return render_template(
             "app_notification/notification/app_all_notification.html",
             page_data=page_data,
-            page_info=page_info)
+            page_info=page_info
+        )
 
     @staticmethod
     @app.route("/notification/read")
@@ -103,10 +111,18 @@ class ApplicationUrls:
         db.session.commit()
         return redirect(url_for("url_all_notification", page=page))
 
+
+app_web_notification_urls = ApplicationNotificationUrls()
+
+
+class ApplicationUserUrls:
+    def __init__(self):
+        app.logger.info(" ApplicationUserUrls [init]")
+
     @staticmethod
     @app.route("/login", methods=["GET"])
     def login_form():
-        page_info = WebPageContent("app_user", "Login")
+        page_info = WebPageContent("User", "Login")
         if current_user.is_authenticated:
             return redirect(url_for("profile"))
         form = LoginForm()
@@ -119,7 +135,7 @@ class ApplicationUrls:
     @staticmethod
     @app.route("/login", methods=["POST"])
     def login():
-        page_info = WebPageContent("USR", "Login")
+        page_info = WebPageContent("User", "Login")
         if current_user.is_authenticated:
             return redirect(url_for("profile"))
         form = LoginForm()
@@ -130,7 +146,11 @@ class ApplicationUrls:
                 return redirect(url_for("login"))
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for("profile"))
-        return flask.render_template("app_user/login.html", form=form, page_info=page_info)
+        return flask.render_template(
+            "app_user/login.html",
+            form=form,
+            page_info=page_info
+        )
 
     @staticmethod
     @app.route("/logout")
@@ -143,8 +163,11 @@ class ApplicationUrls:
     @app.route("/profile")
     @login_required
     def profile():
-        page_info = WebPageContent("USR", "profile")
-        return flask.render_template("app_user/profile.html", page_info=page_info)
+        page_info = WebPageContent("User", "Profile")
+        return flask.render_template(
+            "app_user/profile.html",
+            page_info=page_info
+        )
 
     @staticmethod
     @login_manager.user_loader
@@ -168,17 +191,22 @@ class ApplicationUrls:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "app_user/user_info.html", page_data=page_data, page_info=page_info
+            "app_user/user_info.html",
+            page_data=page_data,
+            page_info=page_info
         )
 
     @staticmethod
     @app_user.route("/tasks")
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
-        return render_template("app_user/user_tasks.html", page_info=page_info)
+        return render_template(
+            "app_user/user_tasks.html",
+            page_info=page_info
+        )
 
 
-app_web_urls = ApplicationUrls()
+app_web_user_urls = ApplicationUserUrls()
 
 
 class DomainModelOwnerUrls:
@@ -502,12 +530,6 @@ class DomainModelPetUrls:
         """usecase pet_change as uc5003"""
         pass
 
-    @staticmethod
-    @app.route("/pet/<pet_id>/remove", methods=['GET', 'POST'])
-    def url_pet_remove():
-        """usecase pet_remove as uc5004"""
-        pass
-
 
 domain_model_pet_urls = DomainModelPetUrls()
 
@@ -571,12 +593,6 @@ class DomainModelVisitUrls:
     @app.route("/visit/<pet_id>/edit", methods=['GET', 'POST'])
     def url_visit_edit():
         """usecase visit_change as uc7004"""
-        pass
-
-    @staticmethod
-    @app.route("/visit/<pet_id>/remove", methods=['GET', 'POST'])
-    def url_visit_remove():
-        """usecase visit_remove as uc7005"""
         pass
 
 
@@ -668,12 +684,6 @@ class DomainModelPetTypeUrls:
                 page_info=page_info
             )
 
-    @staticmethod
-    @app.route("/pettype/<int:pettype_id>/remove", methods=['GET', 'POST'])
-    def url_pettype_remove(pettype_id: int):
-        """usecase pettype_remove as uc4004"""
-        pass
-
 
 domain_model_pettype_urls = DomainModelPetTypeUrls()
 
@@ -763,12 +773,6 @@ class DomainModelVetUrls:
                 page_info=page_info
             )
 
-    @staticmethod
-    @app.route("/vet/remove", methods=['GET', 'POST'])
-    def url_vet_remove():
-        """usecase vet_remove as uc3006"""
-        pass
-
 
 domain_model_vet_urls = DomainModelVetUrls()
 
@@ -841,12 +845,6 @@ class DomainModelSpecialtyUrls:
                 form=form,
                 page_info=page_info
             )
-
-    @staticmethod
-    @app.route("/specialty/remove", methods=['GET', 'POST'])
-    def url_specialty_remove():
-        """usecase specialty_remove as uc2005"""
-        pass
 
 
 domain_model_specialty_urls = DomainModelSpecialtyUrls()
