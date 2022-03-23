@@ -10,21 +10,22 @@
       </div>
     </div>
     <div class="row">
-      <div class="tw-box">
-        <form method="POST" enctype="multipart/form-data">
-          {{ form.csrf_token }}
-          {{ form.hidden_tag() }}
-          <div class="mb-3">
-            {{ form.name.label(class_="form-label") }}
-            {{ form.name(class_="form-control") }}
-          </div>
-          <a href="{{ url_for('url_pettype_index', page=1) }}"
-             class="btn btn-secondary">Cancel</a>
-          {{ form.submit(class_="btn btn-primary") }}
-        </form>
+      <div class="col">
+        <div class="tw-box">
+          <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+              {{ form.name.label(class_="form-label") }}
+              {{ form.name(class_="form-control") }}
+            </div>
+            <a href="{{ url_for('url_pettype_index', page=1) }}"
+               class="btn btn-secondary">Cancel</a>
+            {{ form.submit(class_="btn btn-primary") }}
+          </form>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 
 {% endblock %}

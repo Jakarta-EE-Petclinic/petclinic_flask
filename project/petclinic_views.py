@@ -820,7 +820,7 @@ class DomainModelSpecialtyUrls:
             page_info = WebPageContent("url_specialty", "change")
             form.name.data = o.name
             return render_template(
-                "petclinic_model/specialty/show.html",
+                "petclinic_model/specialty/edit.html",
                 form=form,
                 page_info=page_info
             )
