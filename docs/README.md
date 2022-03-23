@@ -60,11 +60,11 @@ and in another termninal:
 
 ## Domain_Class_Modell: Entities_Petclinic
 
-![Entities_Petclinic](../project/app_web/app_web_model_entities.png "Entities_Petclinic")
+![Entities_Petclinic](../project/app_web/entities.png "Entities_Petclinic")
 
 ## Domain_Class_Modell: Transient
 
-![Entities_Petclinic](../project/app_web/app_web_model_transient.png "Entities_Petclinic")
+![Entities_Petclinic](../project/app_web/cms_transient.png "Entities_Petclinic")
 
 ## Use Cases app_user
 * usecase login as uc1000
@@ -72,12 +72,12 @@ and in another termninal:
 * usecase userprofile as uc1002
 * usecase userlist as uc1003
 
-![use_cases__app_user](../project/app_web/use_cases__app_user.png "use_cases__app_user")
+![use_cases__app_user](../project/app_web/user.png "use_cases__app_user")
 
 ## Use Cases app_notification
 * usecase notification_list as uc1010
 
-![use_cases__app_notification](../project/app_web/use_cases__app_notification.png "use_cases__app_notification")
+![use_cases__app_notification](../project/app_web/notification.png "notification,png")
 
 ## Use Cases app_web
 * usecase db_create as uc1020
@@ -86,7 +86,7 @@ and in another termninal:
 * usecase db_dump_reimport as uc1023
 * usecase db_table_count as uc1024
 
-![use_cases__app_web](../project/app_web/use_cases__app_web.png "use_cases__app_web")
+![use_cases__app_web](../project/app_web/services.png "use_cases__app_web")
 
 ## Domain_Class_Modell: Petclinic entities
 
