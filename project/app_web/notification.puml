@@ -11,10 +11,10 @@ au <|-- sa
 package flask_petclinic {
 
     package app_notification {
-        usecase notification_list as uc1010
+        usecase notification_list as uc1100
 
-        au --> uc1010
-        sa --> uc1010
+        au --> uc1100
+        sa --> uc1100
     }
 }
 @enduml

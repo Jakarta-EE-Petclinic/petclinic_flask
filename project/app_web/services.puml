@@ -11,17 +11,17 @@ au <|-- sa
 package flask_petclinic {
 
     package app_web {
-        usecase db_create as uc1020
-        usecase db_drop_and_create as uc1021
-        usecase db_dump as uc1022
-        usecase db_dump_reimport as uc1023
-        usecase db_table_count as uc1024
+        usecase db_create as uc1200
+        usecase db_drop_and_create as uc1201
+        usecase db_dump as uc1202
+        usecase db_dump_reimport as uc1203
+        usecase db_table_count as uc1204
 
-        sa --> uc1020
-        sa --> uc1021
-        sa --> uc1022
-        sa --> uc1023
-        sa --> uc1024
+        sa --> uc1200
+        sa --> uc1201
+        sa --> uc1202
+        sa --> uc1203
+        sa --> uc1204
     }
 
 }

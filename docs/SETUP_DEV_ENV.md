@@ -1,15 +1,13 @@
-# flask_petclinic
+# Development Setup
 
-## dev environment
-
-### git - github
+## Source Code Repository: github
 * [https://github.com/Jakarta-EE-Petclinic/petclinic_flask.git](https://github.com/Jakarta-EE-Petclinic/petclinic_flask.git)
 
 ````bash
     git clone git@github.com:Jakarta-EE-Petclinic/petclinic_flask.git
 ````
 
-### setup
+## setup and run
 
 ````bash
     make venv
@@ -18,21 +16,21 @@
     ./run.sh
 ````
 
-### run testserver
+and in another termninal:
 
 ````bash
     . ./venv/bin/activate
     ./run.sh
 ````
 
-### update dependencies
+## update dependencies
 
 ````bash
     . ./venv/bin/activate
     make update
  ````
 
-### change configuration
+## change configuration
 
 ````bash
     vim project/app_config/app_config.py
@@ -41,7 +39,7 @@
     make start
 ````
 
-### change dependencies
+## change dependencies
 
 ````bash
     . ./venv/bin/activate
@@ -54,5 +52,3 @@
     vim requirements/in/windows.in
     make update
 ````
-
-## UML

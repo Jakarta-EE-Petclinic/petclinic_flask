@@ -19,13 +19,13 @@ from pallets_sphinx_themes import ProjectLink
 
 # -- Project information -----------------------------------------------------
 
-project = "flask_petclinic"
+project = "petclinic_flask"
 copyright = "2021, Thomas Woehlke"
 author = "Thomas Woehlke"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
-version = "0.0.1"
+release = "1.0.0"
+version = "1.0.0"
 
 # -- General configuration ---------------------------------------------------
 
@@ -73,15 +73,28 @@ html_theme = "flask"
 html_theme_options = {"index_sidebar_logo": True}
 html_context = {
     "project_links": [
-        ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
-        ProjectLink("PyPI Releases", "https://pypi.org/project/petclinic_flask/"),
-        ProjectLink("Source Code", "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/"),
         ProjectLink(
-            "Issue Tracker", "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/issues/"
+            "Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"
         ),
-        ProjectLink("Website", "https://palletsprojects.com/p/petclinic_flask/"),
-        ProjectLink("Twitter", "https://twitter.com/ThomasWoehlke"),
-        ProjectLink("Chat", "https://discord.gg/ThomasWoehlke"),
+        ProjectLink(
+            "PyPI Releases", "https://pypi.org/project/petclinic_flask/"
+        ),
+        ProjectLink(
+            "Source Code", "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/"
+        ),
+        ProjectLink(
+            "Issue Tracker",
+            "https://github.com/Jakarta-EE-Petclinic/petclinic_flask/issues/"
+        ),
+        ProjectLink(
+            "Website", "https://palletsprojects.com/p/petclinic_flask/"
+        ),
+        ProjectLink(
+            "Twitter", "https://twitter.com/ThomasWoehlke"
+        ),
+        ProjectLink(
+            "Chat", "https://discord.gg/ThomasWoehlke"
+        ),
     ]
 }
 html_sidebars = {

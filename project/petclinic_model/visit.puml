@@ -12,29 +12,29 @@ package flask_petclinic {
 
     package petclinic_visit {
 
-        usecase visit_search as uc7000
-        usecase visit_list as uc7001
-        usecase visit_new as uc7002
-        usecase visit_show as uc7003
-        usecase visit_change as uc7004
+        usecase visit_search as uc6000
+        usecase visit_list as uc6001
+        usecase visit_new as uc6002
+        usecase visit_show as uc6003
+        usecase visit_change as uc6004
 
-        au --> uc7000
-        au --> uc7001
-        au --> uc7002
-        au --> uc7003
-        au --> uc7004
+        au --> uc6000
+        au --> uc6001
+        au --> uc6002
+        au --> uc6003
+        au --> uc6004
 
     }
 
     package petclinic_pet_visit {
 
-        usecase pet_list_visits as uc7020
-        usecase pet_add_visit_to_pet_and_vet as uc7021
-        usecase pet_change_visit_to_pet_and_vet as uc7022
+        usecase pet_list_visits as uc6020
+        usecase pet_add_visit_to_pet_and_vet as uc6021
+        usecase pet_change_visit_to_pet_and_vet as uc6022
 
-        au --> uc7020
-        au --> uc7021
-        au --> uc7022
+        au --> uc6020
+        au --> uc6021
+        au --> uc6022
     }
 
 }

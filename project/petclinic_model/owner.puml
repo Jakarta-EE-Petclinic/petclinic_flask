@@ -12,48 +12,44 @@ package flask_petclinic {
 
     package petclinic_owner {
 
-        usecase owner_search as uc6000
-        usecase owner_list as uc6001
-        usecase owner_new as uc6002
-        usecase owner_show as uc6003
-        usecase owner_change as uc6004
+        usecase owner_search as uc7000
+        usecase owner_list as uc7001
+        usecase owner_new as uc7002
+        usecase owner_show as uc7003
+        usecase owner_change as uc7004
 
-        au --> uc6000
-        au --> uc6001
-        au --> uc6002
-        au --> uc6003
-        au --> uc6004
+        au --> uc7000
+        au --> uc7001
+        au --> uc7002
+        au --> uc7003
+        au --> uc7004
 
     }
 
     package petclinic_owner_pets {
 
-        usecase owner_pet_list as uc5010
-        usecase owner_pet_add_new as uc5011
-        usecase owner_pet_show as uc5012
-        usecase owner_pet_change as uc5013
-        usecase owner_pet_remove as uc5014
-        usecase owner_pet_give_to_another_owner as uc5015
+        usecase owner_pet_list as uc7100
+        usecase owner_pet_add_new as uc7101
+        usecase owner_pet_show as uc7102
+        usecase owner_pet_change as uc7103
+        usecase owner_pet_give_to_another_owner as uc7104
 
-        uc6003 --> uc5010
-        uc6003 --> uc5011
-        uc6003 --> uc5012
-        uc6003 --> uc5013
-        uc6003 --> uc5014
-        uc6003 --> uc5015
+        uc7003 --> uc7100
+        uc7003 --> uc7101
+        uc7003 --> uc7102
+        uc7003 --> uc7103
+        uc7003 --> uc7104
     }
 
     package petclinic_owner_pet_visits {
 
-        usecase owner_pet_visits_list as uc7010
-        usecase owner_pet_visits_add_new as uc7011
-        usecase owner_pet_visits_change as uc7012
-        usecase owner_pet_visits_remove as uc7013
+        usecase owner_pet_visits_list as uc7200
+        usecase owner_pet_visits_add_new as uc7201
+        usecase owner_pet_visits_change as uc7202
 
-        uc5012 --> uc7010
-        uc5012 --> uc7011
-        uc5012 --> uc7012
-        uc5012 --> uc7013
+        uc7102 --> uc7200
+        uc7102 --> uc7201
+        uc7102 --> uc7202
     }
 
 }
