@@ -17,14 +17,12 @@ package flask_petclinic {
         usecase owner_new as uc6002
         usecase owner_show as uc6003
         usecase owner_change as uc6004
-        usecase owner_remove as uc6005
 
         au --> uc6000
         au --> uc6001
         au --> uc6002
         au --> uc6003
         au --> uc6004
-        au --> uc6005
 
     }
 

@@ -15,13 +15,11 @@ package flask_petclinic {
         usecase pettype_list as uc4001
         usecase pettype_new as uc4002
         usecase pettype_change as uc4003
-        usecase pettype_remove as uc4004
 
         au --> uc4000
         au --> uc4001
         au --> uc4002
         au --> uc4003
-        au --> uc4004
     }
 }
 @enduml

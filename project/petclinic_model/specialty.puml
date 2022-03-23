@@ -15,13 +15,11 @@ package flask_petclinic {
         usecase specialty_list as uc2001
         usecase specialty_new as uc2002
         usecase specialty_show as uc2003
-        usecase specialty_remove as uc2005
 
         au --> uc2000
         au --> uc2001
         au --> uc2002
         au --> uc2003
-        au --> uc2005
     }
 
 }
