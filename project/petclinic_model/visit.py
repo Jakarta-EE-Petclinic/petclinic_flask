@@ -1,3 +1,4 @@
+from flask_sqlalchemy import Pagination
 from sqlalchemy import Sequence
 from wtforms import SubmitField
 from wtforms.validators import InputRequired
@@ -61,7 +62,14 @@ class Visit(db.Model):
         sql = "SELECT name "\
             + "FROM petclinic_visit " \
             + "WHERE ts @@ to_tsquery('english', '"+searchterm+"');"
-        return db.session.query(sql, unbuffered).paginate(page, per_page=items_per_page)
+        query = db.session.execute(sql)
+        list = query.fetchall()
+        result_page = Pagination(
+            query=query, page=page,
+            per_page=items_per_page, total=len(list),
+            items=list
+        )
+        return result_page
 
     @classmethod
     def find_by_pet(cls, pet: Pet):
