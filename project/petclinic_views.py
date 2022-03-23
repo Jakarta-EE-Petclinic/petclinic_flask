@@ -187,7 +187,6 @@ class DomainModelOwnerUrls:
     .. uml:: petclinic_model/owner.uml
     """
     def __init__(self):
-        Owner.prepare_search()
         app.logger.info(" DomainModelOwnerUrls [init]")
 
     @staticmethod
@@ -446,7 +445,6 @@ class DomainModelPetUrls:
     .. uml:: petclinic_model/pet.uml
     """
     def __init__(self):
-        Pet.prepare_search()
         app.logger.info(" DomainModelPetUrls [init]")
 
     @staticmethod
@@ -510,6 +508,7 @@ class DomainModelPetUrls:
         """usecase pet_remove as uc5004"""
         pass
 
+
 domain_model_pet_urls = DomainModelPetUrls()
 
 
@@ -519,7 +518,6 @@ class DomainModelVisitUrls:
     .. uml:: petclinic_model/visit.uml
     """
     def __init__(self):
-        Visit.prepare_search()
         app.logger.info(" DomainModelVisitUrls [init]")
 
     @staticmethod
@@ -591,7 +589,6 @@ class DomainModelPetTypeUrls:
     .. uml:: petclinic_model/pettype.uml
     """
     def __init__(self):
-        PetType.prepare_search()
         app.logger.info(" DomainModelPetTypeUrls [init]")
 
     @staticmethod
@@ -687,7 +684,6 @@ class DomainModelVetUrls:
     .. uml:: petclinic_model/vet.uml
     """
     def __init__(self):
-        Vet.prepare_search()
         app.logger.info(" DomainModelVetUrls [init]")
 
     @staticmethod
@@ -783,7 +779,6 @@ class DomainModelSpecialtyUrls:
     .. uml:: petclinic_model/specialty.uml
     """
     def __init__(self):
-        Specialty.prepare_search()
         app.logger.info(" DomainModelSpecialtyUrls [init]")
 
     @staticmethod
