@@ -33,6 +33,7 @@ Welcome to petclinic_flask's documentation!
    SETUP_DEV_ENV.md
    db/MariadDB.md
    db/PostgresSQL.md
+   db/postgresql/pgpass.txt
 
 Indices and tables
 ==================
