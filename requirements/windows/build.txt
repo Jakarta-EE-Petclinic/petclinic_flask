@@ -12,7 +12,7 @@ build==0.7.0
     # via -r requirements/in/build.in
 cachecontrol[filecache]==0.12.10
     # via pip-audit
-certifi==2021.10.8
+certifi==2022.12.7
     # via
     #   pipenv
     #   requests
