@@ -59,10 +59,6 @@ class Vet(db.Model):
         'Specialty', secondary=specialities_table, lazy='subquery',
         backref=db.backref('vets', lazy=True)
     )
-    #visits = db.relationship(
-    #    'Visit', secondary=visits_table, lazy='subquery',
-    #    backref=db.backref('visits', lazy=True)
-    #)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
