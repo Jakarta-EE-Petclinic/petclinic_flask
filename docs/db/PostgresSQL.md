@@ -3,7 +3,7 @@
 ## create user
 
 ````PostgreSQL
-    CREATE ROLE flask_petclinic WITH
+    CREATE ROLE petclinic_flask WITH
         LOGIN
         SUPERUSER
         CREATEDB
@@ -11,7 +11,7 @@
         INHERIT
         REPLICATION
         CONNECTION LIMIT -1
-        PASSWORD 'flask_petclinicpwd';
+        PASSWORD 'petclinic_flask';
 
     GRANT pg_execute_server_program, pg_monitor, pg_read_all_settings,
         pg_read_all_stats, pg_read_server_files, pg_signal_backend
@@ -22,22 +22,22 @@
 ## create tablespace
 
 ````PostgreSQL
-    CREATE TABLESPACE tablespace_flask_petclinic
+    CREATE TABLESPACE tablespace_petclinic_flask
       OWNER flask_petclinic
-      LOCATION '/opt/postgresql/tablespace_flask_petclinic';
+      LOCATION '/opt/postgresql/tablespace_petclinic_flask';
 
-    ALTER TABLESPACE tablespace_flask_petclinic
-      OWNER TO flask_petclinic;
+    ALTER TABLESPACE tablespace_petclinic_flask
+      OWNER TO petclinic_flask;
 ````
 
 ## create database
 
-flask_petclinic
+petclinic_flask
 
 ````PostgreSQL
-    CREATE DATABASE flask_petclinic
+    CREATE DATABASE petclinic_flask
         WITH
-        OWNER = flask_petclinic
+        OWNER = petclinic_flask
         TEMPLATE = template0
         ENCODING = 'UTF8'
         LC_COLLATE = 'de_DE.UTF-8'
@@ -49,13 +49,13 @@ flask_petclinic
 flask_petclinic_testing
 
 ````PostgreSQL
-    CREATE DATABASE flask_petclinic_testing
+    CREATE DATABASE petclinic_flask_testing
         WITH
-        OWNER = flask_petclinic
-        TEMPLATE = flask_petclinic
+        OWNER = petclinic_flask
+        TEMPLATE = petclinic_flask
         ENCODING = 'UTF8'
         LC_COLLATE = 'de_DE.UTF-8'
         LC_CTYPE = 'de_DE.UTF-8'
-        TABLESPACE = tablespace_flask_petclinic
+        TABLESPACE = tablespace_petclinic_flask
         CONNECTION LIMIT = -1;
 ````
