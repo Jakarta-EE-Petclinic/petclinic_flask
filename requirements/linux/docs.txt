@@ -308,7 +308,7 @@ webencodings==0.5.1
     # via html5lib
 werkzeug==2.0.2
     # via flask
-wheel==0.37.0
+wheel==0.38.1
     # via
     #   -r requirements/in/build.in
     #   pip-tools
