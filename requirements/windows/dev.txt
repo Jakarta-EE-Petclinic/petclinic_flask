@@ -186,7 +186,7 @@ myst-parser==0.15.2
     # via -r requirements/in\docs.in
 nodeenv==1.6.0
     # via pre-commit
-numpy==1.21.4
+numpy==1.22.0
     # via matplotlib
 packageurl-python==0.9.6
     # via cyclonedx-python-lib
