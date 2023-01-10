@@ -231,7 +231,7 @@ pre-commit==2.16.0
     # via -r requirements/in\build.in
 progress==1.6
     # via pip-audit
-protobuf==3.19.1
+protobuf==3.19.5
     # via mysql-connector-python
 psycopg2==2.9.2
     # via -r requirements/in/dev.in
