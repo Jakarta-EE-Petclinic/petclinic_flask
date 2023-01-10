@@ -22,6 +22,21 @@ specialities_table = db.Table(
         primary_key=True
     )
 )
+visits_table = db.Table(
+    'petclinic_vet_visits',
+    db.Column(
+        'vet_id',
+        db.Integer,
+        db.ForeignKey('petclinic_vet.id'),
+        primary_key=True
+    ),
+    db.Column(
+        'specialty_id',
+        db.Integer,
+        db.ForeignKey('petclinic_visit.id'),
+        primary_key=True
+    )
+)
 
 
 class Vet(db.Model):
@@ -44,6 +59,10 @@ class Vet(db.Model):
         'Specialty', secondary=specialities_table, lazy='subquery',
         backref=db.backref('vets', lazy=True)
     )
+    #visits = db.relationship(
+    #    'Visit', secondary=visits_table, lazy='subquery',
+    #    backref=db.backref('visits', lazy=True)
+    #)
 
     def __str__(self):
         return self.first_name + " " + self.last_name

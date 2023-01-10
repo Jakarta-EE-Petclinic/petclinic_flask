@@ -6,7 +6,6 @@ from wtforms_alchemy import QuerySelectField
 
 from project.app_config.database import db, items_per_page, ModelForm, app
 from project.petclinic_model.pet import Pet
-from project.petclinic_model.vet import Vet
 
 
 class Visit(db.Model):
@@ -31,16 +30,6 @@ class Visit(db.Model):
         lazy="joined",
         cascade="save-update",
         order_by="asc(Pet.date_of_birth)",
-        backref=db.backref('visits', lazy=True)
-    )
-    vet_id = db.Column(
-        db.Integer, db.ForeignKey("petclinic_vet.id"), nullable=False
-    )
-    vet = db.relationship(
-        "Vet",
-        lazy="joined",
-        cascade="save-update",
-        order_by="asc(Vet.last_name)",
         backref=db.backref('visits', lazy=True)
     )
 
@@ -123,12 +112,6 @@ class VisitForm(ModelForm):
         Pet.find_all,
         lambda p: p.id, lambda p: p.__str__(),
         True, 'Bitte waehlen Sie ein Pet aus',
-    )
-    vet_select = QuerySelectField(
-        'vet_select', [InputRequired('Bitte waehlen Sie ein Vet aus')],
-        Vet.find_all,
-        lambda v: v.id, lambda v: v.__str__(),
-        True, 'Bitte waehlen Sie ein Vet aus',
     )
     submit = SubmitField('Save Visit')
 
