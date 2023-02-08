@@ -46,7 +46,7 @@ click==8.0.3
     # via
     #   flask
     #   pip-tools
-cryptography==36.0.0
+cryptography==39.0.1
     # via
     #   -r requirements/in/typing.in
     #   mysqldb-wrapper
