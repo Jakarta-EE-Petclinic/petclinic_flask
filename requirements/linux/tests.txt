@@ -176,7 +176,7 @@ virtualenv-clone==0.5.7
     # via pipenv
 webencodings==0.5.1
     # via html5lib
-werkzeug==2.0.2
+werkzeug==2.2.3
     # via
     #   flask
     #   pytest-flask
